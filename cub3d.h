@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/03 18:28:58 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/04 17:58:19 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,20 @@
 # define SUCCESS 0
 # define FAILURE 1
 
-//typedef struct t_cub
-
+typedef struct s_cub
+{
+	char	**elem;
+	char	**map;
+	int		width;
+	int		height;
+}			t_cub;
 		/*  LE BOSS DES LEAKS */
 
 void	manager(void *ptr, int err);
 
+
 		/* PARSING */
 
-char	*ft_strjjoin(char *s1, char *s2);
-char	**get_tab(char **tab, char **av, int func);
-
+char	**get_tab(char **av);
+int		parser(t_cub *map, int ac, char **av);
 #endif

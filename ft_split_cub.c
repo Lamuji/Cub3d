@@ -6,76 +6,43 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 18:19:45 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/03 18:30:23 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/04 15:33:40 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static char	**ft_split_map(char const *str, char set, int num)
+static char	*ft_strjjoin(char *s1, char *s2)
 {
-	char	**tab;
-	int		i;
-	int		m_tab;
-	int		len_word;
-	int		count;
+	size_t		i;
+	size_t		len_s2;
+	char		*dest;
 
-	m_tab = 0;
-	i = -1;
-	if (!str)
+	if (s1 == NULL)
+		s1 = ft_calloc(1, 1);
+	i = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	dest = malloc(sizeof(char) * (i + len_s2 + 1));
+	manager(dest, 0);
+	if (!dest)
 		return (NULL);
-	tab = ft_calloc(sizeof(tab), (ft_countwords((char *)str, set) + 1));
-	manager(tab, 0);
-	while (str[++i])
+	i = -1;
+	while (s1[++i])
+		dest[i] = s1[i];
+	len_s2 = -1;
+	while (s2[++len_s2])
 	{
-		if (num > i)
-			i++;
-		len_word = 0;
-		if (str[i] != set)
-		{
-			while (str[i + len_word] != set && str[i + len_word] != '\0')
-				len_word++;
-			tab[m_tab++] = ft_strndup(str + i, len_word);
-			i = i + len_word - 1;
-		}
+		dest[i] = s2[len_s2];
+		i++;
 	}
-	tab[m_tab] = 0;
-	return (tab);
+	dest[i] = '\0';
+	free(s1);
+	return (dest);
 }
 
-static char	**ft_split_elem(char const *str, char set, int num)
+char	**get_tab(char **av)
 {
-	char	**tab;
-	int		i;
-	int		m_tab;
-	int		len_word;
-	int		count;
-
-	m_tab = 0;
-	count = 0;
-	i = -1;
-	if (!str)
-		return (NULL);
-	tab = ft_calloc(sizeof(tab), (ft_countwords((char *)str, set) + 1));
-	manager(tab, 0);
-	while (str[++i] && count < num)
-	{
-		len_word = 0;
-		if (str[i] != set)
-		{
-			while (str[i + len_word] != set && str[i + len_word] != '\0')
-				len_word++;
-			tab[m_tab++] = ft_strndup(str + i, len_word);
-			i = i + len_word - 1;
-			count++;
-		}
-	}
-	tab[m_tab] = 0;
-	return (tab);
-}
-
-char	**get_tab(char **tab, char **av, int func)
-{
+	char **tab;
 	char	*line;
 	int		fd;
 	int		r;
@@ -95,10 +62,7 @@ char	**get_tab(char **tab, char **av, int func)
 		buffer[r] = '\0';
 		line = ft_strjjoin(line, buffer);
 	}
-	if (func == 1)
-		tab = ft_split_elem(line, '\n', 6);
-	else
-		tab = ft_split_map(line, '\n', 6);
+	tab = ft_split(line, '\n');
 	manager(tab, 0);
 	return (tab);
 }
