@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/04 16:56:21 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/04 18:13:04 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	main(int ac, char **av)
 
 	ft_bzero(&cub, sizeof(t_cub));
 	create_tabs(&cub, av);
-	parser(&cub, ac, av);
+	printf("%zu\n", ft_strlen(cub.map[1]));
+	//parser(&cub, ac, av);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/04 17:58:19 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/04 17:59:12 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ typedef struct s_cub
 
 void	manager(void *ptr, int err);
 
-
 		/* PARSING */
-
 char	**get_tab(char **av);
 int		parser(t_cub *map, int ac, char **av);
 #endif
