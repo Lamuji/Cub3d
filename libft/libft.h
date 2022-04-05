@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 16:24:54 by hkrifa            #+#    #+#             */
-/*   Updated: 2022/04/03 17:46:44 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/05 12:16:20 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
+int		ft_arrlen(char **str);
+int		ft_arrlenmax(char **str);
 char	*ft_strndup(char const *s, size_t n);
 int		ft_countwords(char *str, char set);
 size_t	ft_strlen( const char *str);
