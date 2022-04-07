@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 16:28:53 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/06 16:14:00 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/07 19:11:39 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	check_holes(char **tab)
 	size_t	i;
 	size_t	j;
 
-	i = 0;
+	i = 1;
 	while (tab[i])
 	{
 		j = 0;
@@ -97,15 +97,18 @@ void	parser(t_cub *cub, int ac, char **av)
 {
 	check_pos(cub);
 	if (!arg_is_correct(ac, av[1]))
-		ft_putendl_exit("Error. - Bad extension", STDERR_FILENO);
-	if (check_invalid_char(cub->map))
-		ft_putendl_exit("Error. - Character error", STDERR_FILENO);
-	if (check_holes(cub->map))
-		ft_putendl_exit("Error. - Map error", STDERR_FILENO);
-	if (cub->count_pos != 1)
-		ft_putendl_exit("Error. - Too many or no starting pos", STDERR_FILENO);
+		ft_putendl_exit("Error: Bad extension", STDERR_FILENO);
 	if (!elem_nbr(cub))
-		ft_putendl_exit("Error. - Wrong format elements", STDERR_FILENO);
+		ft_putendl_exit("Error: Wrong format or missing elements", STDERR_FILENO);
+	if (cub->count_pos != 1)
+		ft_putendl_exit("Error: Too many or no starting pos", STDERR_FILENO);
+	if (check_invalid_char(cub->map))
+		ft_putendl_exit("Error: Invalid character", STDERR_FILENO);
+	if (!check_closed(cub->map))
+		ft_putendl_exit("Error: Map not closed", STDERR_FILENO);
+	if (check_holes(cub->map))
+		ft_putendl_exit("Error: Map error", STDERR_FILENO);
+	printf("salut\n");
 }
 
 // mauvais nb d'arguments OK

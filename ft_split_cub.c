@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 18:19:45 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/06 10:18:11 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/07 19:16:16 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static char	*ft_strjjoin(char *s1, char *s2)
 	i = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
 	dest = malloc(sizeof(char) * (i + len_s2 + 1));
-	manager(dest, 0);
+	manager(dest);
 	if (!dest)
 		return (NULL);
 	i = -1;
@@ -99,7 +99,7 @@ char	**get_tab(char **av)
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 	{
-		ft_putendl_fd("Error. -File doesn't exist", STDERR_FILENO);
+		ft_putendl_fd("Error. - File doesn't exist", STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
 	while (r > 0)
@@ -109,6 +109,6 @@ char	**get_tab(char **av)
 		line = ft_strjjoin(line, buffer);
 	}
 	tab = ft_split(line, '\n');
-	manager(tab, 0);
+	manager(tab);
 	return (tab);
 }

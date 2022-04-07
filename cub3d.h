@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/07 02:05:09 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/07 19:16:08 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_cub
 }			t_cub;
 
 		/*  LE BOSS DES LEAKS */
-void	manager(void *ptr, int err);
+void	manager(void *ptr);
 
 		/* PARSING */
 char	**get_tab(char **av);
@@ -46,6 +46,7 @@ int		arg_is_correct(int ac, char *str);
 int		check_invalid_char(char **str);
 void	check_pos(t_cub *cub);
 int		elem_nbr(t_cub *cub);
+int		check_closed(char **str);
 //procuration dalil naima 1er dec 1968
 
 #endif

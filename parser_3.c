@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arrlenmax.c                                     :+:      :+:    :+:   */
+/*   parser_3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 12:14:38 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/07 17:44:53 by rfkaier          ###   ########.fr       */
+/*   Created: 2022/04/07 18:30:17 by rfkaier           #+#    #+#             */
+/*   Updated: 2022/04/07 18:55:18 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cub3d.h"
 
-int	ft_arrlenmax(char **str)
+int	check_closed(char **str)
 {
 	int	i;
-	int res;
+	int	j;
 
 	i = 0;
-	res = 0;
 	while (str[i])
 	{
-		if (res < ft_strlen(str[i]))
-			res = ft_strlen(str[i]);
-		if (!str[i + 1])
-		 	return (res);
+		j = 0;
+		while (str[i][j])
+		{
+			if (str[0][j] != '1' && str[0][j] != '*')
+				return (0);
+			if (str[i + 1] == NULL)
+			{
+				if (str[i][j] != '1' && str[i][j] != '*')
+					return (0);
+			}
+			j++;
+		}
 		i++;
 	}
-	return (res);
+	return (1);
 }
