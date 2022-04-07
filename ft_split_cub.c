@@ -6,11 +6,57 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 18:19:45 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/04 15:33:40 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/06 10:18:11 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void 	turn_into_square(char **str)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (str[i])
+	{
+		j = 0;
+		while (str[i][j])
+		{
+			if (str[i][j] == ' ')
+				str[i][j] = '*';
+			j++;
+		}
+		i++;
+	}
+}
+
+char	*ft_strdupmap(const char *src, int len)
+{
+	size_t	i;
+	char	*dest;
+
+	dest = ft_calloc(sizeof(char), (len + 1));
+	if (dest == NULL)
+		return (0);
+	i = 0;
+	while (i < len)
+	{
+		if (src[i] == '\0')
+		{
+			while (i < len)
+			{
+				dest[i] = '*';
+				i++;
+			}
+		}
+		else
+			dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
 
 static char	*ft_strjjoin(char *s1, char *s2)
 {
@@ -42,7 +88,7 @@ static char	*ft_strjjoin(char *s1, char *s2)
 
 char	**get_tab(char **av)
 {
-	char **tab;
+	char	**tab;
 	char	*line;
 	int		fd;
 	int		r;
@@ -53,7 +99,7 @@ char	**get_tab(char **av)
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 	{
-		ft_putendl_fd("file doesn't exist", STDERR_FILENO);
+		ft_putendl_fd("Error. -File doesn't exist", STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
 	while (r > 0)

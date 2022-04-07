@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 16:24:54 by hkrifa            #+#    #+#             */
-/*   Updated: 2022/04/05 12:16:20 by rfkaier          ###   ########.fr       */
+/*   Created: 2021/04/02 16:24:54 by rfkaier            #+#    #+#             */
+/*   Updated: 2022/04/06 11:31:01 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
+int		ft_ch_int(char *str, char *to_find);
+void	ft_putendl_exit(char *s, int fd);
 int		ft_arrlen(char **str);
 int		ft_arrlenmax(char **str);
 char	*ft_strndup(char const *s, size_t n);

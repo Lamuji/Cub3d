@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:22:13 by hkrifa            #+#    #+#             */
-/*   Updated: 2022/03/23 12:28:04 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/06 16:18:49 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strdup(const char *src)
 	len = ft_strlen((char *)src);
 	dest = malloc(sizeof(char) * (len + 1));
 	if (dest == NULL)
-		return (0);
+		return (NULL);
 	i = 0;
 	while (i < len)
 	{

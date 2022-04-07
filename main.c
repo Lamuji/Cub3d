@@ -6,63 +6,11 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/05 13:32:23 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/07 03:16:56 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static void 	turn_into_square(char **str)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (str[i])
-	{
-		j = 0;
-		while (str[i][j])
-		{
-			if (str[i][j] == ' ')
-				str[i][j] = '*';
-			j++;
-		}
-		i++;
-	}
-}
-
-static	char	*ft_strdupmap(const char *src, int len)
-{
-	size_t	i;
-	char	*dest;
-
-	dest = ft_calloc(sizeof(char), (len + 1));
-	if (dest == NULL)
-		return (0);
-	i = 0;
-	while (i < len)
-	{
-		if (src[i] == '\0')
-		{
-			while (i < len)
-			{
-				dest[i] = '*';
-				i++;
-			}
-		}
-		else
-			dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-static	void	init_struct(t_cub *cub)
-{
-	turn_into_square(cub->map);
-	//printf("%d\n", cub->width);
-}
 
 static	void	create_tabs(t_cub *cub, char **av)
 {
@@ -84,15 +32,24 @@ static	void	create_tabs(t_cub *cub, char **av)
 		manager(cub->elem[i], 0);
 	}
 	j = 0;
-	cub->width = ft_arrlenmax(&tab[i]);
+	cub->widthsquare = ft_arrlenmax(&tab[i]);
 	while (tab[i])
 	{
-		cub->map[j] = ft_strdupmap(tab[i], cub->width);
-		//printf("%s\n", cub->map[j]);
+		cub->map[j] = ft_strdupmap(tab[i], cub->widthsquare);
 		manager(cub->map[j], 0);
 		i++;
 		j++;
 	}
+}
+
+static	void	init_struct(t_cub *cub, char **av)
+{
+	create_tabs(cub, av);
+	turn_into_square(cub->map);
+	cub->height = ft_arrlen(cub->map);
+	cub->count_pos = 0;
+	cub->rgb = ft_calloc(sizeof(int), 3);
+	manager(cub->rgb, 0);
 }
 
 void	manager(void *ptr, int err)
@@ -114,11 +71,9 @@ int	main(int ac, char **av)
 	t_cub	cub;
 	int i = -1;
 	ft_bzero(&cub, sizeof(t_cub));
-	create_tabs(&cub, av);
-	init_struct(&cub);
+	init_struct(&cub, av);
+	parser(&cub, ac, av);
 	while (cub.map[++i])
 		printf("%s\n", cub.map[i]);
-		
-	//parser(&cub, ac, av);
 	return (0);
 }
