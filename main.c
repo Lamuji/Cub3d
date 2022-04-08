@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/07 19:18:35 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/08 00:48:44 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static	void	create_tabs(t_cub *cub, char **av)
 {
-	char	**tab = NULL;
+	char	**tab;
 	int		i;
 	int		j;
 	int		tablen;
@@ -22,7 +22,7 @@ static	void	create_tabs(t_cub *cub, char **av)
 	i = -1;
 	tab = get_tab(av);
 	if (tab[0] == NULL)
-	 	ft_putendl_exit("Error. - file.cub is empty", STDERR_FILENO);
+		ft_putendl_exit("Error. - file.cub is empty", STDERR_FILENO);
 	tablen = ft_arrlen(tab);
 	cub->elem = ft_calloc(sizeof(char *), 7);
 	manager(cub->elem);
@@ -66,10 +66,12 @@ void	manager(void *ptr)
 int	main(int ac, char **av)
 {
 	t_cub	cub;
-	int j = 0;
-	int i = 0;
+	int i = -1;
 	ft_bzero(&cub, sizeof(t_cub));
 	init_struct(&cub, av);
 	parser(&cub, ac, av);
+	while (cub.map[++i])
+		printf("%s\n", cub.map[i]);
+	
 	return (0);
 }

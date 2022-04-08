@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 12:14:38 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/07 17:44:53 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/07 23:07:46 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_arrlenmax(char **str)
 {
-	int	i;
-	int res;
+	int		i;
+	size_t	res;
 
 	i = 0;
 	res = 0;
@@ -24,7 +24,7 @@ int	ft_arrlenmax(char **str)
 		if (res < ft_strlen(str[i]))
 			res = ft_strlen(str[i]);
 		if (!str[i + 1])
-		 	return (res);
+			return (res);
 		i++;
 	}
 	return (res);

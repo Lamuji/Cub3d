@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:19:29 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/07 19:16:38 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/08 00:37:24 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 static	int	norm_color(char *str, int *rgb)
 {
-	int	i = -1;
-	int j;
-	char **spl_color;
+	int		i;
+	int		j;
+	char	**spl_color;
 
+	i = -1;
 	spl_color = ft_split(((char *)str + 2),',');
 	manager(spl_color);
 	if (ft_arrlen(spl_color) != 3)
@@ -34,7 +35,7 @@ static	int	norm_color(char *str, int *rgb)
 static	int	ft_reverse_ch_int(char *str, char *to_find)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -59,11 +60,11 @@ static	int	ft_reverse_ch_int(char *str, char *to_find)
 
 static	int	check_params(char *str, t_cub *cub)
 {
-	if (ft_ch_int(str, "NO ") || ft_ch_int(str, "SO ") 
+	if (ft_ch_int(str, "NO ") || ft_ch_int(str, "SO ")
 		|| ft_ch_int(str, "EA ") || ft_ch_int(str, "WE "))
 	{
 		if (ft_reverse_ch_int(str, ".xpm"))
-			return(1);
+			return (1);
 	}
 	else if (ft_ch_int(str, "C ") || ft_ch_int(str, "F "))
 	{
@@ -75,8 +76,8 @@ static	int	check_params(char *str, t_cub *cub)
 
 void	check_pos(t_cub *cub)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (cub->map[i])
@@ -84,7 +85,7 @@ void	check_pos(t_cub *cub)
 		j = 0;
 		while (cub->map[i][j])
 		{
-			if (cub->map[i][j] == 'N'|| cub->map[i][j] == 'S'
+			if (cub->map[i][j] == 'N' || cub->map[i][j] == 'S'
 			|| cub->map[i][j] == 'E' || cub->map[i][j] == 'W')
 				cub->count_pos++;
 			j++;
@@ -111,15 +112,15 @@ int	elem_nbr(t_cub *cub)
 // mauvais nb d'arguments OK
 // pas un fichier .cub OK
 // dossier envoyé 
-// un paramètre (texture/couleur) est défini 2 fois 
-// un paramètre n'a pas été décrit ou est décrit après la map
+// un paramètre (texture/couleur) est défini 2 fois
+// un paramètre n'a pas été décrit ou est décrit après la map OK
 // fichier de texture qui finit pas par .xpm OK
 // couleur contient pas 3 nombres
-// que des nombres pour les couleurs (is digit) 
+// que des nombres pour les couleurs (is digit)
 // un nombre est plus petit que 0 ou plus grand que 255 OK
 // un paramètre est mal décrit (exemple: la ligne du nord commence par NOO et pas NO) OK
 // mauvais caractère dans la map OK
-// pas de map 
+// pas de map OK
 // espace pas entouré par des murs ou par un autre espace OK
 // trop de positions de départ OK 
 // aucune position de départ OK

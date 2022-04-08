@@ -6,13 +6,11 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 20:48:15 by edalmis           #+#    #+#             */
-/*   Updated: 2022/04/06 16:26:17 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/07 23:06:49 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-
 
 int	ft_ch_int(char *str, char *to_find)
 {

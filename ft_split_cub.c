@@ -6,13 +6,13 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 18:19:45 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/07 19:16:16 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/07 22:57:57 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void 	turn_into_square(char **str)
+void	turn_into_square(char **str)
 {
 	int	i;
 	int	j;

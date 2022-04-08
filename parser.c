@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 16:28:53 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/07 19:11:39 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/08 01:06:41 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	schr(char *str, int c)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (str[++i])
@@ -63,7 +63,7 @@ int	check_holes(char **tab)
 				if (!schr(NORM, tab[i][j + 1])
 			|| !schr(NORM, tab[i][j - 1]) || !schr(NORM, tab[i + 1][j])
 			|| !schr(NORM, tab[i - 1][j]))
-				return (1);
+					return (1);
 			}
 			j++;
 		}
@@ -99,7 +99,10 @@ void	parser(t_cub *cub, int ac, char **av)
 	if (!arg_is_correct(ac, av[1]))
 		ft_putendl_exit("Error: Bad extension", STDERR_FILENO);
 	if (!elem_nbr(cub))
-		ft_putendl_exit("Error: Wrong format or missing elements", STDERR_FILENO);
+		ft_putendl_exit("Error: Wrong format or missing elements",
+			STDERR_FILENO);
+	if (!check_double(cub->elem))
+		ft_putendl_exit("Error : Elements must be defined once", STDERR_FILENO);
 	if (cub->count_pos != 1)
 		ft_putendl_exit("Error: Too many or no starting pos", STDERR_FILENO);
 	if (check_invalid_char(cub->map))
@@ -108,7 +111,6 @@ void	parser(t_cub *cub, int ac, char **av)
 		ft_putendl_exit("Error: Map not closed", STDERR_FILENO);
 	if (check_holes(cub->map))
 		ft_putendl_exit("Error: Map error", STDERR_FILENO);
-	printf("salut\n");
 }
 
 // mauvais nb d'arguments OK
@@ -122,8 +124,9 @@ void	parser(t_cub *cub, int ac, char **av)
 // couleur contient pas 3 nombres
 // que des nombres pour les couleurs (is digit)
 // un nombre est plus petit que 0 ou plus grand que 255
-// un paramètre est mal décrit (exemple: la ligne du nord commence par NOO et pas NO)
-// mauvais caractère dans la map
+// un paramètre est mal décrit (exemple: la ligne du nord commence 
+//par NOO et pas NO) OK
+// mauvais caractère dans la map OK
 // pas de map
 // espace pas entouré par des murs ou par un autre espace
 // trop de positions de départ OK 
