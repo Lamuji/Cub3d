@@ -6,11 +6,11 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 18:19:45 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/07 22:57:57 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/08 17:06:44 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../incl/cub3d.h"
 
 void	turn_into_square(char **str)
 {

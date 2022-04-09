@@ -6,11 +6,11 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:19:29 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/08 00:37:24 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/09 15:04:36 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../incl/cub3d.h"
 
 static	int	norm_color(char *str, int *rgb)
 {
@@ -25,6 +25,13 @@ static	int	norm_color(char *str, int *rgb)
 		return (0);
 	while (spl_color[++i])
 	{
+		j = 0;
+		while (spl_color[i][j])
+		{
+			if (!ft_isdigit((int)spl_color[i][j]))
+				return (0);
+			j++;
+		}
 		rgb[i] = ft_atoi(((char *)spl_color[i]));
 		if (rgb[i] > 255 || rgb[i] < 0)
 			return (0);
@@ -111,12 +118,12 @@ int	elem_nbr(t_cub *cub)
 
 // mauvais nb d'arguments OK
 // pas un fichier .cub OK
-// dossier envoyé 
+// dossier envoyé
 // un paramètre (texture/couleur) est défini 2 fois
 // un paramètre n'a pas été décrit ou est décrit après la map OK
 // fichier de texture qui finit pas par .xpm OK
-// couleur contient pas 3 nombres
-// que des nombres pour les couleurs (is digit)
+// couleur contient pas 3 nombres OK
+// que des nombres pour les couleurs (is digit)  OK
 // un nombre est plus petit que 0 ou plus grand que 255 OK
 // un paramètre est mal décrit (exemple: la ligne du nord commence par NOO et pas NO) OK
 // mauvais caractère dans la map OK

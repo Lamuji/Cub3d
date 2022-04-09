@@ -6,11 +6,11 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/08 00:48:44 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/09 16:20:08 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../incl/cub3d.h"
 
 static	void	create_tabs(t_cub *cub, char **av)
 {
@@ -52,6 +52,8 @@ static	void	init_struct(t_cub *cub, char **av)
 	cub->count_pos = 0;
 	cub->rgb = ft_calloc(sizeof(int), 3);
 	manager(cub->rgb);
+	cub->mlx = mlx_init();
+	cub->win = mlx_new_window(cub->mlx, 1080, 1020, "Cub3d");
 }
 
 void	manager(void *ptr)
@@ -69,9 +71,13 @@ int	main(int ac, char **av)
 	int i = -1;
 	ft_bzero(&cub, sizeof(t_cub));
 	init_struct(&cub, av);
+	while (cub.elem[++i])
+		printf("%s\n", cub.elem[i]);
 	parser(&cub, ac, av);
-	while (cub.map[++i])
-		printf("%s\n", cub.map[i]);
-	
+	draw_minimap(&cub);
+	//mlx_hook(cub.win, 2, 0, deal_key, &cub);
+	// mlx_hook(cub.win, 17, 0, exit_game, &cub);
+	mlx_loop(cub.mlx);
+
 	return (0);
 }

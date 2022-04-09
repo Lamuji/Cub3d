@@ -6,11 +6,11 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 16:28:53 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/08 01:06:41 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/08 19:17:34 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../incl/cub3d.h"
 
 static int	schr(char *str, int c)
 {

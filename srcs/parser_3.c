@@ -6,11 +6,11 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 18:30:17 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/08 01:38:46 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/08 17:06:48 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../incl/cub3d.h"
 
 int	check_closed(char **str)
 {
