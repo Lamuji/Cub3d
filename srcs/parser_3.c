@@ -6,11 +6,36 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 18:30:17 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/08 17:06:48 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/10 04:56:19 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/cub3d.h"
+
+int		which_direction(char **str)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (str[i])
+	{
+		j = 0;
+		while (str[i][j])
+		{
+			if (str[i][j] == 'N')
+				return (NORTH);
+			if (str[i][j] == 'S')
+				return (SOUTH);
+			if (str[i][j] == 'E')
+				return (EAST);
+			if (str[i][j] == 'W')
+				return (WEST);
+			j++;
+		}
+		i++;
+	}
+}
 
 int	check_closed(char **str)
 {
