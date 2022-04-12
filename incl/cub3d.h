@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/10 04:56:29 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/12 03:47:39 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int		exit_game(void);
 void	draw_minimap(t_cub *cub);
 void	draw_player(t_cub *cub);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	vision(t_cub *cub, int dx, int dy);
 
 	/* utils */
 int		which_direction(char **str);

@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 15:07:47 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/10 01:35:22 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/11 17:10:37 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	draw_player(t_cub *cub)
 	}
 }
 
-static void	putminimap(t_data *data, int x, int y, int color)
+static	void	putminimap(t_data *data, int x, int y, int color)
 {
 	int tx;
 	int ty = y;
@@ -46,7 +46,7 @@ static void	putminimap(t_data *data, int x, int y, int color)
 		while (tx < x + 32)
 		{
 			my_mlx_pixel_put(data, tx, ty, color);
-			tx++;	
+			tx++;
 		}
 		ty++;
 	}

@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/10 04:41:21 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/12 03:37:41 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	main(int ac, char **av)
 	parser(&cub, ac, av);
 	draw_minimap(&cub);
 	draw_player(&cub);
-	player_vision(&cub);
+	vision(&cub);
 	mlx_put_image_to_window(cub.mlx, cub.win, cub.img.img, 0, 0);
 	mlx_hook(cub.win, 2, 0, deal_key, &cub);
 	mlx_hook(cub.win, 17, 0, exit_game, &cub);
