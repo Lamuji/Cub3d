@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 18:24:37 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/12 04:02:05 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/13 04:39:32 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,30 @@
 
 static	void	dda_algo(t_cub *cub, int dx, int dy)
 {
-	double xinc;
-	double yinc;
+	double xinc = 0;
+	double yinc = 0;
 	int step;
 	int i = 1;
-	if (abs(dx) > abs(dy))
+	if (abs(dx) >= abs(dy))
 		step = abs(dx);
 	else
 		step = abs(dy);
-	xinc = floor(dx/step);
-	yinc = floor(dy/step);
+	xinc = (double)dx / step;
+	yinc = (double)dy / step;
 	while (i <= step)
 	{
-		my_mlx_pixel_put(&cub->img, cub->player_x, cub->player_y, 0x000000FF);
-		cub->player_x += xinc;
-		cub->player_y += yinc;
+		my_mlx_pixel_put(&cub->img, floor(cub->player_x), cub->player_y, 0x000000FF);
+		cub->player_x = cub->player_x + xinc;
+		cub->player_y = cub->player_y + yinc;
 		i++;
 	}
 }
 
-void	vision(t_cub *cub, int dx, int dy)
+void	vision(t_cub *cub)
 {
-	// int dx = cub->widthsquare - cub->player_x;
-	// int dy = cub->height - cub->player_y;
+	which_direction(cub->map, cub->angle);
+	int dx = cub->player_x;
+	int dy = 0;
 	dda_algo(cub, dx, dy);
 }
 
@@ -46,7 +47,8 @@ int	deal_key(int keycode, t_cub *cub)
 		exit_game();
 	else if (keycode == LEFT)
 	{
-		vision(cub, (cub->widthsquare - 1) - cub->player_x, (cub->height - 1))
+		
+		dda_algo(cub);
 	}
 	// else if (keycode == D)
 	// {

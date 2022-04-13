@@ -3,7 +3,7 @@ CC = gcc
 
 AR = ar -rcs
 
-FLAGS = -g -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 LDFLAG = -lmlx -framework OpenGL -framework AppKit
 
 NAME = cub3d

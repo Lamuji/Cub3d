@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/12 03:47:39 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/13 04:38:50 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@
 # define RIGHT 124
 # define DOWN 125
 # define UP 126
-# define NORTH 1
-# define SOUTH 2
-# define EAST 3
-# define WEST 4
+# define NORTH 0
+# define SOUTH 180
+# define EAST 90
+# define WEST 270
 
 typedef struct	s_data {
 	void	*img;
@@ -49,12 +49,6 @@ typedef struct	s_data {
 	int		line_length;
 	int		endian;
 }				t_data;
-
-typedef	struct s_frml
-{
-	
-	
-}				t_frml;
 
 typedef struct s_cub
 {
@@ -67,12 +61,12 @@ typedef struct s_cub
 	int		pix_y;
 	int		count_pos;
 	int		*rgb;
+	int		angle;
 	void	*mlx;
 	void	*win;
-	int		player_x;
-	int		player_y;
+	double	player_x;
+	double	player_y;
 	t_data	img;
-	t_frml	frml;
 	
 }			t_cub;
 
@@ -102,10 +96,10 @@ int		exit_game(void);
 void	draw_minimap(t_cub *cub);
 void	draw_player(t_cub *cub);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	vision(t_cub *cub, int dx, int dy);
+void	vision(t_cub *cub);
 
 	/* utils */
-int		which_direction(char **str);
+void	which_direction(char **str, int angle);
 //procuration dalil naima 1er dec 1968
 
 #endif

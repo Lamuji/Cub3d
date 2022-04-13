@@ -6,13 +6,13 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 18:30:17 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/10 04:56:19 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/13 04:25:31 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/cub3d.h"
 
-int		which_direction(char **str)
+void	which_direction(char **str, int angle)
 {
 	int	i;
 	int	j;
@@ -24,13 +24,13 @@ int		which_direction(char **str)
 		while (str[i][j])
 		{
 			if (str[i][j] == 'N')
-				return (NORTH);
+				angle = NORTH;
 			if (str[i][j] == 'S')
-				return (SOUTH);
+				angle = SOUTH;
 			if (str[i][j] == 'E')
-				return (EAST);
+				angle = EAST;
 			if (str[i][j] == 'W')
-				return (WEST);
+				angle = WEST;
 			j++;
 		}
 		i++;
