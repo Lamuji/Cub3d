@@ -6,31 +6,61 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 18:30:17 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/13 04:25:31 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/16 04:37:31 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/cub3d.h"
 
-void	which_direction(char **str, int angle)
+static double convert_ang(double angle)
+{
+	return (angle * (3.14159 / 180));
+}
+
+void	define_starting_dydx(t_cub *cub)
+{
+	// if (cub->angle == NORTH)
+	// {
+		cub->dx = cos(180.00 * 10);
+		cub->dy = sin(180.00 * 10);
+		printf("[%f][%f]\n", cub->dx,cub->dy);
+	// }
+	// else if (cub->angle == SOUTH)
+	// {
+	// 	cub->dx = fabs(cos(SOUTH) * 10);
+	// 	cub->dy = fabs(sin(SOUTH) * 10);
+	// }
+	// else if (cub->angle == EAST)
+	// {
+	// 	cub->dx = fabs(cos(EAST) * 10);
+	// 	cub->dy = fabs(sin(EAST) * 10);
+	// }
+	// else if (cub->angle == WEST)
+	// {
+	// 	cub->dx = fabs(cos(EAST) * 10);
+	// 	cub->dy = fabs(sin(EAST) * 10);
+	// }
+}
+
+void	which_direction(t_cub *cub)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (str[i])
+	while (cub->map[i])
 	{
 		j = 0;
-		while (str[i][j])
+		while (cub->map[i][j])
 		{
-			if (str[i][j] == 'N')
-				angle = NORTH;
-			if (str[i][j] == 'S')
-				angle = SOUTH;
-			if (str[i][j] == 'E')
-				angle = EAST;
-			if (str[i][j] == 'W')
-				angle = WEST;
+			if (cub->map[i][j] == 'N')
+				cub->angle = NORTH;
+			if (cub->map[i][j] == 'S')
+				cub->angle = SOUTH;
+			if (cub->map[i][j] == 'E')
+				cub->angle = EAST;
+			if (cub->map[i][j] == 'W')
+				cub->angle = WEST;
 			j++;
 		}
 		i++;

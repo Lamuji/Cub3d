@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/13 04:38:50 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/16 04:11:29 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@
 # define RIGHT 124
 # define DOWN 125
 # define UP 126
-# define NORTH 0
-# define SOUTH 180
-# define EAST 90
-# define WEST 270
+# define NORTH 90
+# define SOUTH 270
+# define EAST 0
+# define WEST 180
 
 typedef struct	s_data {
 	void	*img;
@@ -61,11 +61,13 @@ typedef struct s_cub
 	int		pix_y;
 	int		count_pos;
 	int		*rgb;
-	int		angle;
+	double		angle;
 	void	*mlx;
 	void	*win;
 	double	player_x;
 	double	player_y;
+	double		dy;
+	double		dx;
 	t_data	img;
 	
 }			t_cub;
@@ -99,7 +101,8 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	vision(t_cub *cub);
 
 	/* utils */
-void	which_direction(char **str, int angle);
+void	which_direction(t_cub *cub);
+void	define_starting_dydx(t_cub *cub);
 //procuration dalil naima 1er dec 1968
 
 #endif

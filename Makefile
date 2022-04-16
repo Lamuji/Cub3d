@@ -15,6 +15,7 @@ SRC = srcs/main.c \
 	srcs/parser_3.c \
 	srcs/deal_key.c \
 	srcs/minimap.c \
+	srcs/vision.c \
 
 OBJ = $(SRC:%.c=%.o)
 
