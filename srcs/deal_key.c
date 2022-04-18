@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 18:24:37 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/16 01:12:12 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/18 02:49:09 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@ int	deal_key(int keycode, t_cub *cub)
 {
 	if (keycode == ESC)
 		exit_game();
-	// else if (keycode == LEFT)
-	// {
-		
-	// }
+	else if (keycode == LEFT)
+	{
+		cub->angle--;
+		vision(cub);
+	}
 	// else if (keycode == D)
 	// {
 	// 	map->pos = 2;
