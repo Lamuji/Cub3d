@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 18:30:17 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/18 01:20:00 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/19 04:47:37 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ void	define_starting_dydx(t_cub *cub)
 {
 	// if (cub->angle == NORTH)
 	// {
-		cub->dx = cos(convert_ang(cub->angle)) * 30;
-		cub->dy = sin(convert_ang(cub->angle)) * 30;
-		printf("[%lf][%lf][%lf]\n", cub->dx, cub->dy, cub->angle);
+		cub->dx = cos(convert_ang(cub->angle)) * 20;
+		cub->dy = sin(convert_ang(cub->angle)) * 20;
 	// }
 	// else if (cub->angle == SOUTH)
 	// {
