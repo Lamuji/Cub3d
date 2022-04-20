@@ -6,11 +6,23 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 15:07:47 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/16 06:46:20 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/20 09:06:01 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/cub3d.h"
+
+// int	find_walls(t_cub *cub)
+// {
+// 	double Py;
+// 	double Px;
+// 	while (cub->map[Py][Px] != '1')
+// 	double Xa = 32/tan(cub->angle);
+// 	double Ya = 32;
+// 	double Py = floor(cub->player_y/32) * 32 - 1;
+// 	double Px = (cub->player_x + (cub->player_y - Py)/tan(cub->angle));
+// 	printf("%f\n%f\n%c\n", Py/32, floor(Px/32), cub->map[12][26]);
+// }
 
 void	draw_player(t_cub *cub)
 {

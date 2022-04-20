@@ -6,21 +6,27 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/19 05:05:12 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/20 04:48:45 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/cub3d.h"
 
+static	void	put_to_zero(t_cub *cub)
+{
+	cub->pix_x = 0;
+	cub->pix_y = 0;
+}
+
 int	looping(t_cub *cub)
 {
+	mlx_hook(cub->win, 17, 0, exit_game, &cub);
 	draw_minimap(cub);
 	draw_player(cub);
 	vision(cub);
-	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
+	put_to_zero(cub);
 	return (0);
 }
-
 
 static	void	create_tabs(t_cub *cub, char **av)
 {
@@ -82,16 +88,15 @@ void	manager(void *ptr)
 int	main(int ac, char **av)
 {
 	t_cub	cub;
-	int i = -1;
+
 	ft_bzero(&cub, sizeof(t_cub));
 	init_struct(&cub, av);
 	parser(&cub, ac, av);
-	// draw_minimap(&cub);
-	// draw_player(&cub);
-	// vision(&cub);
+	//draw_minimap(&cub);
+	//draw_player(&cub);
+	//vision(&cub);
 	//mlx_put_image_to_window(cub.mlx, cub.win, cub.img.img, 0, 0);
-	mlx_hook(cub.win, 17, 0, exit_game, &cub);
-	mlx_key_hook(cub.win, deal_key, &cub);
+	mlx_hook(cub.win, 2, 0, deal_key, &cub);
 	mlx_loop_hook(cub.mlx, looping, &cub);
 	mlx_loop(cub.mlx);
 	return (0);

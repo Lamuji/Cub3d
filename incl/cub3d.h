@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/19 04:48:24 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/20 09:13:12 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,12 @@ typedef struct s_cub
 	double	angle;
 	void	*mlx;
 	void	*win;
-	double		player_x;
+	double	player_x;
 	double	player_y;
-	double	dy;
+	double	set_y;
+	double	set_x;
 	double	dx;
+	double	dy;
 	double	step;
 	t_data	img;
 	
@@ -100,6 +102,7 @@ void	draw_minimap(t_cub *cub);
 void	draw_player(t_cub *cub);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	vision(t_cub *cub);
+int	find_walls(t_cub *cub);
 int		looping(t_cub *cub);
 
 	/* utils */

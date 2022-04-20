@@ -6,40 +6,11 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 18:30:17 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/19 04:47:37 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/20 09:12:44 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/cub3d.h"
-
-static double convert_ang(double angle)
-{
-	return (angle * (3.14159 / 180));
-}
-
-void	define_starting_dydx(t_cub *cub)
-{
-	// if (cub->angle == NORTH)
-	// {
-		cub->dx = cos(convert_ang(cub->angle)) * 20;
-		cub->dy = sin(convert_ang(cub->angle)) * 20;
-	// }
-	// else if (cub->angle == SOUTH)
-	// {
-	// 	cub->dx = fabs(cos(SOUTH) * 10);
-	// 	cub->dy = fabs(sin(SOUTH) * 10);
-	// }
-	// else if (cub->angle == EAST)
-	// {
-	// 	cub->dx = fabs(cos(EAST) * 10);
-	// 	cub->dy = fabs(sin(EAST) * 10);
-	// }
-	// else if (cub->angle == WEST)
-	// {
-	// 	cub->dx = fabs(cos(EAST) * 10);
-	// 	cub->dy = fabs(sin(EAST) * 10);
-	// }
-}
 
 void	which_direction(t_cub *cub)
 {

@@ -1,5 +1,8 @@
 {
 	"files.associations": {
-		"sstream": "c"
+		"sstream": "c",
+		"ios": "cpp",
+		"istream": "cpp",
+		"locale": "cpp"
 	}
 }
