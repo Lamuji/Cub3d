@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/20 04:48:45 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/21 06:47:44 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ static	void	init_struct(t_cub *cub, char **av)
 	cub->img.img = mlx_new_image(cub->mlx, 1920, 1080);
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, &cub->img.line_length, &cub->img.endian);
 	cub->pix_y = 0;
+	cub->angle = 0;
 	which_direction(cub);
 }
 
@@ -96,6 +97,7 @@ int	main(int ac, char **av)
 	//draw_player(&cub);
 	//vision(&cub);
 	//mlx_put_image_to_window(cub.mlx, cub.win, cub.img.img, 0, 0);
+	cub.angle = cub.start_angle;
 	mlx_hook(cub.win, 2, 0, deal_key, &cub);
 	mlx_loop_hook(cub.mlx, looping, &cub);
 	mlx_loop(cub.mlx);

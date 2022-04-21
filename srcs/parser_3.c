@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 18:30:17 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/20 09:12:44 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/21 07:00:18 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ void	which_direction(t_cub *cub)
 		while (cub->map[i][j])
 		{
 			if (cub->map[i][j] == 'N')
-				cub->angle = NORTH;
+				cub->start_angle = NORTH;
 			if (cub->map[i][j] == 'S')
-				cub->angle = SOUTH;
+				cub->start_angle = SOUTH;
 			if (cub->map[i][j] == 'E')
-				cub->angle = EAST;
+				cub->start_angle = EAST;
 			if (cub->map[i][j] == 'W')
-				cub->angle = WEST;
+				cub->start_angle = WEST;
 			j++;
 		}
 		i++;
@@ -84,3 +84,6 @@ int	check_double(char **str)
 	}
 	return (1);
 }
+
+
+// erreur a gerer : Joueur est en bord de map a la place d'un mur 

@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/20 09:13:12 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/21 06:36:22 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_cub
 	int		pix_y;
 	int		count_pos;
 	int		*rgb;
+	double	start_angle;
 	double	angle;
 	void	*mlx;
 	void	*win;

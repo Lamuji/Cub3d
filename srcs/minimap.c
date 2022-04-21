@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 15:07:47 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/20 09:06:01 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/21 07:57:28 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	draw_player(t_cub *cub)
 	int end_y;
 	int i;
 
-	start_x = (int)cub->player_x - (32 / 10);
-	start_y = (int)cub->player_y - (32 / 10);
-	end_x = (int)cub->player_x  + (32 / 10);
-	end_y = (int)cub->player_y  + (32 / 10);
+	start_x = cub->player_x + 12;
+	start_y = cub->player_y + 12;
+	end_x = cub->player_x + 32 - 12;
+	end_y = cub->player_y + 32 - 12;
 	while (start_y <= end_y)
 	{
 		i = start_x;

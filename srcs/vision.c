@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 13:12:54 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/20 09:12:47 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/21 07:58:41 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,26 @@ static double convert_ang(double angle)
 
 void	define_starting_dydx(t_cub *cub)
 {
-	if (cub->angle == NORTH)
+	if (cub->start_angle == NORTH)
 	{
 		cub->set_x = cos(convert_ang(cub->angle)) * (-100);
 		cub->set_y = sin(convert_ang(cub->angle)) * (-100);
 	}
-	// else if (cub->angle == SOUTH)
-	// {
-	// 	cub->set_x = fabs(cos(SOUTH) * 10);
-	// 	cub->set_y = fabs(sin(SOUTH) * 10);
-	// }
-	// else if (cub->angle == EAST)
-	// {
-	// 	cub->set_x = fabs(cos(EAST) * 10);
-	// 	cub->set_y = fabs(sin(EAST) * 10);
-	// }
-	// else if (cub->angle == WEST)
-	// {
-	// 	cub->set_x = fabs(cos(EAST) * 10);
-	// 	cub->set_y = fabs(sin(EAST) * 10);
-	// }
+	else if (cub->start_angle == SOUTH)
+	{
+		cub->set_x = cos(convert_ang(cub->angle)) * 100;
+		cub->set_y = sin(convert_ang(cub->angle)) * 100;
+	}
+	else if (cub->start_angle == EAST)
+	{
+		cub->set_x = cos(convert_ang(cub->angle)) * 100;
+		cub->set_y = sin(convert_ang(cub->angle)) * 100;
+	}
+	else if (cub->start_angle == WEST)
+	{
+		cub->set_x = cos(convert_ang(cub->angle)) * 100;
+		cub->set_y = sin(convert_ang(cub->angle)) * 100;
+	}
 }
 
 static	void	dda_algo(t_cub *cub, double x, double y)
@@ -64,11 +64,11 @@ static	void	dda_algo(t_cub *cub, double x, double y)
 
 void	vision(t_cub *cub)
 {
-	cub->dx = cub->pix_x - cub->player_x;
-	cub->dy = cub->pix_y - cub->player_y;
+	//cub->dx = cub->pix_x - cub->player_x;
+	//cub->dy = cub->pix_y - cub->player_y;
 	//find_walls(cub);
-	double x = cub->player_x;
-	double y = cub->player_y;
+	double x = cub->player_x + 16;
+	double y = cub->player_y + 16;
 	define_starting_dydx(cub);
 	dda_algo(cub, x, y);
 }
