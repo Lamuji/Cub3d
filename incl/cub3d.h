@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/21 06:36:22 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/22 09:50:45 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 # define SOUTH 270
 # define EAST 0
 # define WEST 180
+# define PI 3.1415926535
 
 typedef struct	s_data {
 	void	*img;
@@ -72,10 +73,10 @@ typedef struct s_cub
 	double	dx;
 	double	dy;
 	double	step;
+	double	wallX;
+	double	wallY;
 	t_data	img;
-	
 }			t_cub;
-
 
 	/*  LE BOSS DES LEAKS */
 void	manager(void *ptr);
@@ -103,7 +104,7 @@ void	draw_minimap(t_cub *cub);
 void	draw_player(t_cub *cub);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	vision(t_cub *cub);
-int	find_walls(t_cub *cub);
+int		find_walls(t_cub *cub, double player_x, double player_y);
 int		looping(t_cub *cub);
 
 	/* utils */

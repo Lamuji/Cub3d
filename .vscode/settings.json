@@ -3,6 +3,7 @@
 		"sstream": "c",
 		"ios": "cpp",
 		"istream": "cpp",
-		"locale": "cpp"
+		"locale": "cpp",
+		"algorithm": "c"
 	}
 }

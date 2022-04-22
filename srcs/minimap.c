@@ -6,23 +6,58 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 15:07:47 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/21 07:57:28 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/22 12:02:17 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/cub3d.h"
 
-// int	find_walls(t_cub *cub)
-// {
-// 	double Py;
-// 	double Px;
-// 	while (cub->map[Py][Px] != '1')
-// 	double Xa = 32/tan(cub->angle);
-// 	double Ya = 32;
-// 	double Py = floor(cub->player_y/32) * 32 - 1;
-// 	double Px = (cub->player_x + (cub->player_y - Py)/tan(cub->angle));
-// 	printf("%f\n%f\n%c\n", Py/32, floor(Px/32), cub->map[12][26]);
-// }
+static	void	check_horizontal(t_cub *cub, double atan, double player_x, double player_y)
+{
+	int dof = 0;
+
+	atan = -1/tan(cub->angle);
+	if (cub->angle > 0 && cub->angle < 180)
+	{
+		cub->wallY = round(player_y / 32) * 32 - 1;
+		cub->wallX = (player_y - cub->wallY) * atan + player_x;
+	}
+	else if (cub->angle < 0 && cub->angle > 180)
+	{
+		cub->wallY = round(player_y / 32) * 32 + 32;
+		cub->wallX = (player_y - cub->wallY) * atan + player_x;
+	}
+	else if (cub->angle == 0 || cub->angle == 180)
+	{
+		cub->wallY = player_y;
+		cub->wallX = player_x;
+		dof = 8;
+	}
+	while (dof < 8)
+	{
+		int mp = (cub->wallY/32) * cub->widthsquare + (cub->wallX/32);
+		if (mp < cub->widthsquare * cub->height && cub->map[(int)cub->wallY/32][(int)cub->wallX/32] == '1')
+		{
+			//printf("salut\n");
+			dof = 8;
+		}
+		else
+		{
+			cub->wallY += -32;
+			cub->wallX += -32 * atan;
+			dof++;
+		}
+	}
+}
+
+int	find_walls(t_cub *cub, double player_x, double player_y)
+{
+	double Xa;
+	double Ya;
+	double	atan = -1/tan(cub->angle);
+	double	ntan = tan(cub->angle) * -1;
+	check_horizontal(cub, atan, player_x, player_y);
+}
 
 void	draw_player(t_cub *cub)
 {
@@ -57,7 +92,10 @@ static	void	putminimap(t_data *data, int x, int y, int color)
 		tx = x;
 		while (tx < x + 32)
 		{
-			my_mlx_pixel_put(data, tx, ty, color);
+			if (tx == x || ty == y)
+				my_mlx_pixel_put(data, tx, ty, 0x009999FF);
+			else
+				my_mlx_pixel_put(data, tx, ty, color);
 			tx++;
 		}
 		ty++;

@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/21 06:47:44 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/22 12:05:20 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,7 @@ int	main(int ac, char **av)
 	ft_bzero(&cub, sizeof(t_cub));
 	init_struct(&cub, av);
 	parser(&cub, ac, av);
-	//draw_minimap(&cub);
-	//draw_player(&cub);
-	//vision(&cub);
-	//mlx_put_image_to_window(cub.mlx, cub.win, cub.img.img, 0, 0);
-	cub.angle = cub.start_angle;
+	//cub.angle = cub.start_angle;
 	mlx_hook(cub.win, 2, 0, deal_key, &cub);
 	mlx_loop_hook(cub.mlx, looping, &cub);
 	mlx_loop(cub.mlx);
