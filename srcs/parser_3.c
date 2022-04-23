@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 18:30:17 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/22 12:03:18 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/22 23:49:33 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ void	which_direction(t_cub *cub)
 				cub->angle = SOUTH;
 			if (cub->map[i][j] == 'E')
 				cub->angle = EAST;
-			if (cub->map[i][j] == 'W')
+			if (cub->map[i][j] == 'W'){
 				cub->angle = WEST;
+			}
 			j++;
 		}
 		i++;

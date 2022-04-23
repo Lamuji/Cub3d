@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/22 12:05:20 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/23 00:27:13 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ static	void	init_struct(t_cub *cub, char **av)
 	cub->img.img = mlx_new_image(cub->mlx, 1920, 1080);
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, &cub->img.line_length, &cub->img.endian);
 	cub->pix_y = 0;
-	cub->angle = 0;
 	which_direction(cub);
 }
 
@@ -93,9 +92,13 @@ int	main(int ac, char **av)
 	ft_bzero(&cub, sizeof(t_cub));
 	init_struct(&cub, av);
 	parser(&cub, ac, av);
-	//cub.angle = cub.start_angle;
+	cub.start_angle = cub.angle;
 	mlx_hook(cub.win, 2, 0, deal_key, &cub);
 	mlx_loop_hook(cub.mlx, looping, &cub);
 	mlx_loop(cub.mlx);
 	return (0);
 }
+
+// salut, revoit la fonction check horizontal et repare tes soucis, 
+//tu dois placer des pixel a chq fois que tu passe par une ligne ou colonne 
+//juska un mur. 

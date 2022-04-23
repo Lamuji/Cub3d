@@ -4,7 +4,7 @@ CC = gcc
 AR = ar -rcs
 
 FLAGS = -Wall -Wextra -Werror
-LDFLAG = -lmlx -framework OpenGL -framework AppKit
+LDFLAG = -Lmlx -framework OpenGL -framework AppKit
 
 NAME = cub3d
 
@@ -23,7 +23,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C libft/
-	@$(CC) $(FLAGS) $(LDFLAG) $^ -o $@ libft/libft.a
+	@$(CC) $(FLAGS) $(LDFLAG) $^ -o $@ libft/libft.a mlx/libmlx.a
 
 clean:
 	@make -C libft/ clean

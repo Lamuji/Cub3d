@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vision.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 13:12:54 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/22 12:08:07 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/23 00:08:58 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ static double convert_ang(double angle)
 
 void	define_starting_dydx(t_cub *cub)
 {
-	if (cub->angle == NORTH)
-	{
-		cub->set_x = cos(convert_ang(cub->angle)) * 16;
-		cub->set_y = sin(convert_ang(cub->angle)) * 16;
-	}
-	else if (cub->angle == SOUTH)
+	if (cub->start_angle == NORTH)
 	{
 		cub->set_x = cos(convert_ang(cub->angle)) * -16;
 		cub->set_y = sin(convert_ang(cub->angle)) * -16;
 	}
-	else if (cub->angle == EAST)
+	else if (cub->start_angle == SOUTH)
+	{
+		cub->set_x = cos(convert_ang(cub->angle)) * -16;
+		cub->set_y = sin(convert_ang(cub->angle)) * -16;
+	}
+	else if (cub->start_angle == EAST)
 	{
 		cub->set_x = cos(convert_ang(cub->angle)) * 16;
 		cub->set_y = sin(convert_ang(cub->angle)) * 16;
 	}
-	else if (cub->angle == WEST)
+	else if (cub->start_angle == WEST)
 	{
 		cub->set_x = cos(convert_ang(cub->angle)) * 16;
 		cub->set_y = sin(convert_ang(cub->angle)) * 16;
@@ -68,7 +68,7 @@ void	vision(t_cub *cub)
 	// cub->dy = cub->pix_y - cub->player_y + 16;
 	double player_x = cub->player_x + 16;
 	double player_y = cub->player_y + 16;
-	find_walls(cub, player_x, player_y);
+	//find_walls(cub, player_x, player_y);
 	define_starting_dydx(cub);
 	dda_algo(cub, player_x, player_y);
 }

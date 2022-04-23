@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 15:07:47 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/22 12:02:17 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/23 00:12:51 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static	void	check_horizontal(t_cub *cub, double atan, double player_x, double pl
 {
 	int dof = 0;
 
-	atan = -1/tan(cub->angle);
 	if (cub->angle > 0 && cub->angle < 180)
 	{
 		cub->wallY = round(player_y / 32) * 32 - 1;
@@ -36,9 +35,11 @@ static	void	check_horizontal(t_cub *cub, double atan, double player_x, double pl
 	while (dof < 8)
 	{
 		int mp = (cub->wallY/32) * cub->widthsquare + (cub->wallX/32);
+		my_mlx_pixel_put(&cub->img, cub->wallX, cub->wallY, 0x00FF00FF);
 		if (mp < cub->widthsquare * cub->height && cub->map[(int)cub->wallY/32][(int)cub->wallX/32] == '1')
 		{
-			//printf("salut\n");
+			my_mlx_pixel_put(&cub->img, cub->wallX, cub->wallY, 0x00FF00FF);
+			printf("salut\n");
 			dof = 8;
 		}
 		else
@@ -55,7 +56,7 @@ int	find_walls(t_cub *cub, double player_x, double player_y)
 	double Xa;
 	double Ya;
 	double	atan = -1/tan(cub->angle);
-	double	ntan = tan(cub->angle) * -1;
+	//double	ntan = tan(cub->angle) * -1;
 	check_horizontal(cub, atan, player_x, player_y);
 }
 
