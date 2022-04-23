@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/23 00:05:25 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/04/23 04:47:11 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,11 @@ void	draw_minimap(t_cub *cub);
 void	draw_player(t_cub *cub);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	vision(t_cub *cub);
-int		find_walls(t_cub *cub, double player_x, double player_y);
+int		find_walls(t_cub *cub);
+void	dda_algo(t_cub *cub, double x, double y);
+void	draw(t_cub *cub, double x, double y);
 int		looping(t_cub *cub);
-
+double convert_ang(double angle);
 	/* utils */
 void	which_direction(t_cub *cub);
 void	define_starting_dydx(t_cub *cub);
