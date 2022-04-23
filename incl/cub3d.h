@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/23 04:47:11 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/23 08:48:26 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@
 # define EAST 0
 # define WEST 180
 # define PI 3.1415926535
+# define P2 PI/2
+# define P3 3*PI/2
 
 typedef struct	s_data {
 	void	*img;
@@ -105,7 +107,7 @@ void	draw_player(t_cub *cub);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	vision(t_cub *cub);
 int		find_walls(t_cub *cub);
-void	dda_algo(t_cub *cub, double x, double y);
+void	dda_algo(t_cub *cub);
 void	draw(t_cub *cub, double x, double y);
 int		looping(t_cub *cub);
 double convert_ang(double angle);

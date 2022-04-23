@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 18:24:37 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/23 06:01:33 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/23 08:23:14 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ int	deal_key(int keycode, t_cub *cub)
 		exit_game();
 	else if (keycode == LEFT)
 	{
-		cub->angle--;
 		if (cub->angle == 0)
 			cub->angle = 360;
+		cub->angle--;
 	}
 	else if (keycode == RIGHT)
 	{
-		cub->angle++;
 		if (cub->angle == 360)
 			cub->angle = 0;
+		cub->angle++;
 	}
 	else if (keycode == W){
 		printf("salut\n");
