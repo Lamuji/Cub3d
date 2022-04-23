@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   deal_key.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 18:24:37 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/23 00:31:37 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/04/23 06:01:33 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,17 @@ int	deal_key(int keycode, t_cub *cub)
 	if (keycode == ESC)
 		exit_game();
 	else if (keycode == LEFT)
+	{
 		cub->angle--;
+		if (cub->angle == 0)
+			cub->angle = 360;
+	}
 	else if (keycode == RIGHT)
+	{
 		cub->angle++;
+		if (cub->angle == 360)
+			cub->angle = 0;
+	}
 	else if (keycode == W){
 		printf("salut\n");
 		cub->player_y-= 5;

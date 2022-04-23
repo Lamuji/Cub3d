@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 15:07:47 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/23 05:06:27 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/23 06:10:21 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,23 @@ static	void	check_horizontal(t_cub *cub)
 	if (cub->angle <= 180 && cub->angle >= 0)
 	{
 		Ya = -32;
-		Ay = floor(cub->player_y/32) * 32 - 0.01;
+		Ay = round(cub->player_y/32) * 32 - 0.01;
 	}
 	else
 	{
 		Ya = 32;
-		Ay = floor(cub->player_y/32) * 32 + 32;
+		Ay = round(cub->player_y/32) * 32 + 32;
 	}
-	Xa = -Ya/tan(convert_ang(cub->angle));
+	Xa = Ya/tan(cub->angle);
 	Ax = cub->player_x + (cub->player_y - Ay)/tan(cub->angle);
-	while (cub->map[(int)Ay/32][(int)Ax/32] == '0' 
+	while ((cub->map[(int)Ay/32][(int)Ax/32] == '0')
 	&& ((Ay/32) > 0 && (Ay/32) < cub->height) && ((Ax/32) > 0 && (Ax/32) < cub->widthsquare))
 	{
+		my_mlx_pixel_put(&cub->img, Ax, Ay, 0x000000FA);
 		Ax += Xa;
 		Ay += Ya;
 	}
+	printf("%f-%f\n", Ax, Ay);
 	draw(cub, Ax, Ay);
 }
 
