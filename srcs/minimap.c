@@ -3,94 +3,108 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 15:07:47 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/23 08:57:43 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/26 17:29:01 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/cub3d.h"
 
+static void	the_right_one(t_cub *cub)
+{
+	double	h;
+	double	v;
+
+	h = sqrt(pow(cub->player_x - cub->Hx, 2)
+		+ pow(cub->player_y - cub->Hy, 2));
+	v = sqrt(pow(cub->player_x - cub->Vx, 2)
+		+ pow(cub->player_y - cub->Vy, 2));
+	if (h < v)
+	{
+		cub->fx = cub->Hx;
+		cub->fy = cub->Hy;
+	}
+	else
+	{
+		cub->fx = cub->Vx;
+		cub->fy = cub->Vy;
+	}
+}
+
 static	void	check_vertical(t_cub *cub)
 {
 	double Ya;
 	double Xa;
-	double Ax;
-	double Ay;
 
-	if (convert_ang(cub->angle) < P2 && convert_ang(cub->angle) > P3)
+	if (convert_ang(cub->angle) > P2 && convert_ang(cub->angle) < P3)
 	{
-		Ya = -32;
-		Ay = floor((int)cub->player_y/32) * 32 - 0.0001;
-		Ax = (cub->player_y - Ay) * (-tan(convert_ang(cub->angle))) + cub->player_x;
-		Xa = -Ya * (-tan(convert_ang(cub->angle)));
+		Xa = 32;
+		cub->Vx = floor((int)cub->player_x/32) * 32 + 32;
+		cub->Vy = (cub->player_x - cub->Vx) * (-tan(convert_ang(cub->angle))) + cub->player_y;
+		Ya = -Xa * (-tan(convert_ang(cub->angle)));
 	}
-	else if (convert_ang(cub->angle) > P2 || convert_ang(cub->angle) < )
+	else if (convert_ang(cub->angle) < P2 || convert_ang(cub->angle) > P3)
 	{
-		Ya = 32;
-		Ay = floor(cub->player_y/32) * 32 + 32;
-		Ax = (cub->player_y - Ay) * (-tan(convert_ang(cub->angle))) + cub->player_x;
-		Xa = -Ya * (-tan(convert_ang(cub->angle)));
+		Xa = -32;
+		cub->Vx = floor(cub->player_y/32) * 32 - 0.0001;
+		cub->Vy = (cub->player_x - cub->Vx) * (-tan(convert_ang(cub->angle))) + cub->player_y;
+		Ya = -Xa * (-tan(convert_ang(cub->angle)));
 	}
 	else if (convert_ang(cub->angle) == 0 || convert_ang(cub->angle) == PI)
 	{
-		Ax = cub->player_x;
-		Ay = cub->player_y;
+		cub->Vx = cub->player_x;
+		cub->Vy = cub->player_y;
 	}
-	while ((cub->map[(int)Ay/32][(int)Ax/32] == '0')
-		&& (((int)Ay/32) > 0 && ((int)Ay/32) < cub->height)
-		&& (((int)Ax/32) > 0 && ((int)Ax/32) < cub->widthsquare))
+	while ((((int)cub->Vy/32) > 0 && ((int)cub->Vy/32) < cub->height
+		&& ((int)cub->Vx/32) > 0 && ((int)cub->Vx/32) < cub->widthsquare)
+		&& cub->map[(int)cub->Vy/32][(int)cub->Vx/32] == '0')
 	{
-		Ax += Xa;
-		Ay += Ya;
-	printf("coordonnee arrivee : [%d - %d]\n coordonnee d incrementation : [%f - %f]\nlargeurmax : %d\n", (int)Ay/32, (int)Ax/32, Ya, Xa, cub->widthsquare);
+		cub->Vx += Xa;
+		cub->Vy += Ya;
 	}
-	draw(cub, Ax, Ay);
-}
 }
 
 static	void	check_horizontal(t_cub *cub)
 {
 	double Ya;
 	double Xa;
-	double Ax;
-	double Ay;
 
 	if (convert_ang(cub->angle) < PI)
 	{
 		Ya = -32;
-		Ay = floor((int)cub->player_y/32) * 32 - 0.0001;
-		Ax = (cub->player_y - Ay) * (-1 /tan(convert_ang(cub->angle))) + cub->player_x;
+		cub->Hy = floor((int)cub->player_y/32) * 32 - 0.0001;
+		cub->Hx = (cub->player_y - cub->Hy) * (-1 /tan(convert_ang(cub->angle))) + cub->player_x;
 		Xa = -Ya * (-1 / tan(convert_ang(cub->angle)));
 	}
 	else if (convert_ang(cub->angle) > PI)
 	{
 		Ya = 32;
-		Ay = floor(cub->player_y/32) * 32 + 32;
-		Ax = (cub->player_y - Ay) * (-1 /tan(convert_ang(cub->angle))) + cub->player_x;
+		cub->Hy = floor(cub->player_y/32) * 32 + 32;
+		cub->Hx = (cub->player_y - cub->Hy) * (-1 /tan(convert_ang(cub->angle))) + cub->player_x;
 		Xa = -Ya * (-1 / tan(convert_ang(cub->angle)));
 	}
 	else if (convert_ang(cub->angle) == 0 || convert_ang(cub->angle) == PI)
 	{
-		Ax = cub->player_x;
-		Ay = cub->player_y;
+		cub->Hx = cub->player_x;
+		cub->Hy = cub->player_y;
 	}
-	while ((cub->map[(int)Ay/32][(int)Ax/32] == '0')
-		&& (((int)Ay/32) > 0 && ((int)Ay/32) < cub->height)
-		&& (((int)Ax/32) > 0 && ((int)Ax/32) < cub->widthsquare))
+	while ((((int)cub->Hy/32) > 0 && ((int)cub->Hy/32) < cub->height)
+		&& (((int)cub->Hx/32) > 0 && ((int)cub->Hx/32) < cub->widthsquare)
+		&& cub->map[(int)cub->Hy/32][(int)cub->Hx/32] == '0')
 	{
-		Ax += Xa;
-		Ay += Ya;
-	printf("coordonnee arrivee : [%d - %d]\n coordonnee d incrementation : [%f - %f]\nlargeurmax : %d\n", (int)Ay/32, (int)Ax/32, Ya, Xa, cub->widthsquare);
+		cub->Hx += Xa;
+		cub->Hy += Ya;
 	}
-	draw(cub, Ax, Ay);
 }
 
 int	find_walls(t_cub *cub)
 {
 	check_horizontal(cub);
 	check_vertical(cub);
+	the_right_one(cub);
+	draw(cub, cub->fx, cub->fy);
 }
 
 void	draw_player(t_cub *cub)

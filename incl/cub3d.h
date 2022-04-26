@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/23 08:48:26 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/26 15:59:31 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 # define WEST 180
 # define PI 3.1415926535
 # define P2 PI/2
-# define P3 3*PI/2
+# define P3 3 * PI/2
 
 typedef struct	s_data {
 	void	*img;
@@ -72,6 +72,12 @@ typedef struct s_cub
 	double	player_y;
 	double	set_y;
 	double	set_x;
+	double	Hx;
+	double	Hy;
+	double	Vx;
+	double	Vy;
+	double	fx;
+	double	fy;
 	double	dx;
 	double	dy;
 	double	step;

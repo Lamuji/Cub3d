@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/23 00:27:13 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/04/26 20:28:00 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static	void	put_to_zero(t_cub *cub)
 
 int	looping(t_cub *cub)
 {
+	mlx_key_hook(cub->win, deal_key, &cub);
 	mlx_hook(cub->win, 17, 0, exit_game, &cub);
 	draw_minimap(cub);
 	draw_player(cub);
@@ -93,7 +94,6 @@ int	main(int ac, char **av)
 	init_struct(&cub, av);
 	parser(&cub, ac, av);
 	cub.start_angle = cub.angle;
-	mlx_hook(cub.win, 2, 0, deal_key, &cub);
 	mlx_loop_hook(cub.mlx, looping, &cub);
 	mlx_loop(cub.mlx);
 	return (0);

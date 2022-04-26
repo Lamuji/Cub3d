@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vision.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 13:12:54 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/23 08:26:08 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/04/26 16:15:23 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,7 @@ void	draw(t_cub *cub, double x, double y)
 
 void	vision(t_cub *cub)
 {
-	// cub->dx = cub->pix_x - cub->player_x + 16;
-	// cub->dy = cub->pix_y - cub->player_y + 16;
 	cub->player_x += 16;
 	cub->player_y += 16;
-	//define_starting_dydx(cub);
-//	dda_algo(cub);
 	find_walls(cub);
 }
