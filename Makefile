@@ -16,6 +16,7 @@ SRC = srcs/main.c \
 	srcs/deal_key.c \
 	srcs/minimap.c \
 	srcs/vision.c \
+	srcs/movements.c \
 
 OBJ = $(SRC:%.c=%.o)
 

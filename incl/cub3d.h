@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/26 15:59:31 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/04/27 08:35:18 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@
 # define PI 3.1415926535
 # define P2 PI/2
 # define P3 3 * PI/2
+# define DR	0.0174533
+# define SPEED 10
 
 typedef struct	s_data {
 	void	*img;
@@ -101,6 +103,7 @@ void	check_pos(t_cub *cub);
 int		elem_nbr(t_cub *cub);
 int		check_closed(char **str);
 int		check_double(char **str);
+void	player_pos(t_cub *cub);
 
 	/*	deal with key */
 int		deal_key(int keycode, t_cub *cub);
@@ -112,12 +115,18 @@ void	draw_minimap(t_cub *cub);
 void	draw_player(t_cub *cub);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	vision(t_cub *cub);
-int		find_walls(t_cub *cub);
 void	dda_algo(t_cub *cub);
 void	draw(t_cub *cub, double x, double y);
 int		looping(t_cub *cub);
-double convert_ang(double angle);
+void	check_horizontal(t_cub *cub);
+void	check_vertical(t_cub *cub);
+void	the_right_one(t_cub *cub);
+
+	/*	movements */
+void    move_forward(t_cub *cub);
+
 	/* utils */
+double	convert_ang(double angle);
 void	which_direction(t_cub *cub);
 void	define_starting_dydx(t_cub *cub);
 //procuration dalil naima 1er dec 1968
