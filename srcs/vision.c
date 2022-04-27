@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 13:12:54 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/27 09:53:25 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/04/27 20:18:04 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,73 +26,80 @@ void	the_right_one(t_cub *cub)
 		cub->fx = cub->Hx;
 		cub->fy = cub->Hy;
 	}
-	else
+	else if (h > v)
 	{
 		cub->fx = cub->Vx;
 		cub->fy = cub->Vy;
 	}
 }
 
-void	check_vertical(t_cub *cub)
+void	check_vertical_right(t_cub *cub)
 {
 	double Ya;
 	double Xa;
 
-	if (convert_ang(cub->angle) > P2 && convert_ang(cub->angle) < P3)
-	{
-		Xa = 32;
-		cub->Vx = floor((int)cub->dx/32) * 32 + 32;
-		cub->Vy = (cub->dx - cub->Vx) * (-tan(convert_ang(cub->angle))) + cub->dy;
-		Ya = -Xa * (-tan(convert_ang(cub->angle)));
-	}
-	else if (convert_ang(cub->angle) < P2 || convert_ang(cub->angle) > P3)
-	{
-		Xa = -32;
-		cub->Vx = floor(cub->dy/32) * 32 - 0.0001;
-		cub->Vy = (cub->dx - cub->Vx) * (-tan(convert_ang(cub->angle))) + cub->dy;
-		Ya = -Xa * (-tan(convert_ang(cub->angle)));
-	}
-	else if (convert_ang(cub->angle) == 0 || convert_ang(cub->angle) == PI)
-	{
-		cub->Vx = cub->dx;
-		cub->Vy = cub->dy;
-	}
+	Xa = -32;
+	cub->Vx = floor(cub->dy/32) * 32 - 0.000001;
+	cub->Vy = (cub->dx - cub->Vx) * (-tan(cub->ra_angle)) + cub->dy;
+	Ya = -Xa * (-tan(cub->ra_angle));
 	while ((((int)cub->Vy/32) > 0 && ((int)cub->Vy/32) < cub->height
 		&& ((int)cub->Vx/32) > 0 && ((int)cub->Vx/32) < cub->widthsquare)
-		&& cub->map[(int)cub->Vy/32][(int)cub->Vx/32] == '0')
+		&& cub->map[(int)cub->Vy/32][(int)cub->Vx/32] != '1')
 	{
 		cub->Vx += Xa;
 		cub->Vy += Ya;
 	}
 }
 
-void	check_horizontal(t_cub *cub)
+void	check_vertical_left(t_cub *cub)
 {
 	double Ya;
 	double Xa;
 
-	if (convert_ang(cub->angle) < PI)
+	Xa = 32;
+	cub->Vx = floor((int)cub->dx/32) * 32 + 32;
+	cub->Vy = (cub->dx - cub->Vx) * (-tan(cub->ra_angle)) + cub->dy;
+	Ya = -Xa * (-tan(cub->ra_angle));
+	while ((((int)cub->Vy/32) > 0 && ((int)cub->Vy/32) < cub->height
+		&& ((int)cub->Vx/32) > 0 && ((int)cub->Vx/32) < cub->widthsquare)
+		&& cub->map[(int)cub->Vy/32][(int)cub->Vx/32] != '1')
 	{
-		Ya = -32;
-		cub->Hy = floor((int)cub->dy/32) * 32 - 0.0001;
-		cub->Hx = (cub->dy - cub->Hy) * (-1 /tan(convert_ang(cub->angle))) + cub->dx;
-		Xa = -Ya * (-1 / tan(convert_ang(cub->angle)));
+		cub->Vx += Xa;
+		cub->Vy += Ya;
 	}
-	else if (convert_ang(cub->angle) > PI)
-	{
-		Ya = 32;
-		cub->Hy = floor(cub->dy/32) * 32 + 32;
-		cub->Hx = (cub->dy - cub->Hy) * (-1 /tan(convert_ang(cub->angle))) + cub->dx;
-		Xa = -Ya * (-1 / tan(convert_ang(cub->angle)));
-	}
-	else if (convert_ang(cub->angle) == 0 || convert_ang(cub->angle) == PI)
-	{
-		cub->Hx = cub->dx;
-		cub->Hy = cub->dy;
-	}
+}
+
+void	check_horizontal_down(t_cub *cub)
+{
+	double Ya;
+	double Xa;
+
+	Ya = 32;
+	cub->Hy = floor(cub->dy/32) * 32 + 32;
+	cub->Hx = (cub->dy - cub->Hy) * (-1 /tan(cub->ra_angle)) + cub->dx;
+	Xa = -Ya * (-1 / tan(cub->ra_angle));
 	while ((((int)cub->Hy/32) > 0 && ((int)cub->Hy/32) < cub->height)
 		&& (((int)cub->Hx/32) > 0 && ((int)cub->Hx/32) < cub->widthsquare)
-		&& cub->map[(int)cub->Hy/32][(int)cub->Hx/32] == '0')
+		&& cub->map[(int)cub->Hy/32][(int)cub->Hx/32] != '1')
+	{
+		cub->Hx += Xa;
+		cub->Hy += Ya;
+	}
+}
+
+void	check_horizontal_up(t_cub *cub)
+{
+	double Ya;
+	double Xa;
+
+
+	Ya = -32;
+	cub->Hy = floor((int)cub->dy/32) * 32 - 0.000001;
+	cub->Hx = (cub->dy - cub->Hy) * (-1 /tan(cub->ra_angle)) + cub->dx;
+	Xa = -Ya * (-1 / tan(cub->ra_angle));
+	while ((((int)cub->Hy/32) > 0 && ((int)cub->Hy/32) < cub->height)
+		&& (((int)cub->Hx/32) > 0 && ((int)cub->Hx/32) < cub->widthsquare)
+		&& cub->map[(int)cub->Hy/32][(int)cub->Hx/32] != '1')
 	{
 		cub->Hx += Xa;
 		cub->Hy += Ya;
@@ -124,8 +131,18 @@ void	vision(t_cub *cub)
 {
 		cub->dy = cub->player_y + 16;
 		cub->dx = cub->player_x + 16;
-		check_vertical(cub);
-		check_horizontal(cub);
+		cub->ra_angle = convert_ang(cub->angle);
+		if (cub->ra_angle != 0 && cub->ra_angle != PI)
+		{
+			if (cub->ra_angle < PI)
+				check_horizontal_up(cub);
+			else if (cub->ra_angle > PI)
+				check_horizontal_down(cub);
+		}
+		if (cub->ra_angle > P2 && cub->ra_angle < P3)
+			check_vertical_left(cub);
+		if (cub->ra_angle < P2 || cub->ra_angle > P3)
+			check_vertical_right(cub);
 		the_right_one(cub);
 		draw(cub, cub->fx, cub->fy);
 }

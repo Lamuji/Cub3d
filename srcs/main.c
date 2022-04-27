@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/27 09:49:23 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/04/27 10:10:57 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	looping(t_cub *cub)
 {
-	player_pos(cub);
+	check_move(cub);
 	draw_minimap(cub);
 	draw_player(cub);
 	vision(cub);
@@ -85,6 +85,7 @@ int	main(int ac, char **av)
 	ft_bzero(&cub, sizeof(t_cub));
 	init_struct(&cub, av);
 	parser(&cub, ac, av);
+	player_pos(&cub);
 	//printf("position player x %f y %f\n", cub.dx, cub.dy);
 	mlx_hook(cub.win, 2, 0, deal_key, &cub);
 	mlx_hook(cub.win, 17, 0, exit_game, &cub);

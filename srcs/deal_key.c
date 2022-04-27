@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 18:24:37 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/27 09:08:34 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/04/27 12:53:29 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ int	deal_key(int keycode, t_cub *cub)
 		cub->angle++;
 	}
 	else if (keycode == W)
-		move_forward(cub);
+		cub->set_x = 1;
 	// else if (keycode == A)
 	// 	cub->player_x-= 5;
 	// else if (keycode == D)
 	// 	cub->player_x-= 5;
-	// else if (keycode == S)
-	// 	cub->player_y-= 5;
+	else if (keycode == S)
+		cub->set_x = 2;
 	return (0);
 }
 

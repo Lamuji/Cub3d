@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/27 08:35:18 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/04/27 20:16:38 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_cub
 	int		*rgb;
 	double	start_angle;
 	double	angle;
+	double	ra_angle;
 	void	*mlx;
 	void	*win;
 	double	player_x;
@@ -118,12 +119,14 @@ void	vision(t_cub *cub);
 void	dda_algo(t_cub *cub);
 void	draw(t_cub *cub, double x, double y);
 int		looping(t_cub *cub);
-void	check_horizontal(t_cub *cub);
-void	check_vertical(t_cub *cub);
+void	check_horizontal_up(t_cub *cub);
+void	check_horizontal_down(t_cub *cub);
+void	check_vertical_right(t_cub *cub);
+void	check_vertical_left(t_cub *cub);
 void	the_right_one(t_cub *cub);
 
 	/*	movements */
-void    move_forward(t_cub *cub);
+void	check_move(t_cub *cub);
 
 	/* utils */
 double	convert_ang(double angle);
