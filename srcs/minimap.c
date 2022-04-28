@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 15:07:47 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/27 09:09:18 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/04/28 07:49:46 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	player_pos(t_cub *cub)
 			if (cub->map[i][j] == 'N' || cub->map[i][j] == 'S'
 			|| cub->map[i][j] == 'W' || cub->map[i][j] == 'E')
 			{
-				cub->player_x = j * 32;
-				cub->player_y = i * 32;
+				cub->player_x = j * 16;
+				cub->player_y = i * 16;
 			}
 			j++;
 		}
@@ -43,10 +43,10 @@ void	draw_player(t_cub *cub)
 	int end_y;
 	int i;
 
-	start_x = cub->player_x + 12;
-	start_y = cub->player_y + 12;
-	end_x = cub->player_x + 32 - 12;
-	end_y = cub->player_y + 32 - 12;
+	start_x = cub->player_x + 6;
+	start_y = cub->player_y + 6;
+	end_x = cub->player_x + 16 - 6;
+	end_y = cub->player_y + 16 - 6;
 	while (start_y <= end_y)
 	{
 		i = start_x;
@@ -63,10 +63,10 @@ static	void	putminimap(t_data *data, int x, int y, int color)
 {
 	int tx;
 	int ty = y;
-	while (ty < y + 32)
+	while (ty < y + 16)
 	{
 		tx = x;
-		while (tx < x + 32)
+		while (tx < x + 16)
 		{
 			if (tx == x || ty == y)
 				my_mlx_pixel_put(data, tx, ty, 0x009999FF);
@@ -96,10 +96,10 @@ void	draw_minimap(t_cub *cub)
 				putminimap(&cub->img, cub->pix_x, cub->pix_y, 0x00ACACAC);
 			if (cub->map[i][j] != '1' && cub->map[i][j] != '*')
 				putminimap(&cub->img, cub->pix_x, cub->pix_y, 0x00FFFFFF);
-			cub->pix_x += 32;
+			cub->pix_x += 16;
 			j++;
 		}
-		cub->pix_y += 32;
+		cub->pix_y += 16;
 		i++;
 	}
 }

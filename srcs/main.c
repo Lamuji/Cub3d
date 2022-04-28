@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/27 10:10:57 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/04/28 07:46:45 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ static	void	init_struct(t_cub *cub, char **av)
 	cub->rgb = ft_calloc(sizeof(int), 3);
 	manager(cub->rgb);
 	cub->mlx = mlx_init();
-	cub->win = mlx_new_window(cub->mlx, 1920, 1080, "Cub3d");
-	cub->img.img = mlx_new_image(cub->mlx, 1920, 1080);
+	cub->win = mlx_new_window(cub->mlx, 900, 600, "Cub3d");
+	cub->img.img = mlx_new_image(cub->mlx, 900, 600);
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, &cub->img.line_length, &cub->img.endian);
-	cub->set_x = 0;
+	cub->set_key = 0;
 	which_direction(cub);
 }
 

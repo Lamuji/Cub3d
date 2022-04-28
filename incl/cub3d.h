@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/27 20:16:38 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/04/28 08:43:05 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,17 +73,17 @@ typedef struct s_cub
 	void	*win;
 	double	player_x;
 	double	player_y;
-	double	set_y;
-	double	set_x;
-	double	Hx;
-	double	Hy;
-	double	Vx;
-	double	Vy;
-	double	fx;
-	double	fy;
-	double	dx;
+	double	set_key;
+	double	Hx; // final horiz dist x
+	double	Hy; // final horiz dist y
+	double	Vx; // final vertical dist x
+	double	Vy; // final vertical dist y
+	double	fx; // final distance x
+	double	fy; // final distance y
+	double	dx; 
 	double	dy;
 	double	step;
+	double	ray_length;
 	double	wallX;
 	double	wallY;
 	t_data	img;
