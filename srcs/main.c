@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/28 07:46:45 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/04/29 06:56:02 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,27 @@
 
 int	looping(t_cub *cub)
 {
+	int l = 0;
 	check_move(cub);
+	double i = cub->angle - 30;
 	draw_minimap(cub);
 	draw_player(cub);
-	vision(cub);
+	vision(cub, cub->angle);
+	double slice_height = cub->projected_dist * (cub->ray_length * 6);
+	int begin = SCR_H/2 - slice_height;
+	int end = SCR_H/2 + slice_height;
+	while (l < SCR_W)
+	{
+		end = 920/2 + slice_height;
+		while (begin < end)
+		{
+			my_mlx_pixel_put(&cub->img, l, end, 0x00FF0000);
+			end--;
+		}
+		l++;
+	}
+//	cub3d(cub, i);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
 	return (0);
 }
 
@@ -62,10 +79,11 @@ static	void	init_struct(t_cub *cub, char **av)
 	cub->rgb = ft_calloc(sizeof(int), 3);
 	manager(cub->rgb);
 	cub->mlx = mlx_init();
-	cub->win = mlx_new_window(cub->mlx, 900, 600, "Cub3d");
-	cub->img.img = mlx_new_image(cub->mlx, 900, 600);
+	cub->win = mlx_new_window(cub->mlx, 1080, 920, "Cub3d");
+	cub->img.img = mlx_new_image(cub->mlx, 1080, 920);
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, &cub->img.line_length, &cub->img.endian);
 	cub->set_key = 0;
+	cub->projected_dist = 64/(floor(460/tan(convert_ang(30))));
 	which_direction(cub);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 13:12:54 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/28 08:46:00 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/04/29 05:04:28 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,14 +126,13 @@ void	draw(t_cub *cub, double x, double y)
 		cub->dy += yinc;
 		i++;
 	}
-	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
 }
 
-void	vision(t_cub *cub)
+void	vision(t_cub *cub, double angle)
 {
 	cub->dy = cub->player_y + 8;
 	cub->dx = cub->player_x + 8;
-	cub->ra_angle = convert_ang(cub->angle);
+	cub->ra_angle = convert_ang(angle);
 	if (cub->ra_angle > 2 * PI)
 		cub->ra_angle -= 2 * PI;
 	if (cub->ra_angle < 0)

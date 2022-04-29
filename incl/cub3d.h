@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/28 08:43:05 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/04/29 06:09:30 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@
 # define P3 3 * PI/2
 # define DR	0.0174533
 # define SPEED 10
+# define SCR_W 1080
+# define SCR_H 920
 
 typedef struct	s_data {
 	void	*img;
@@ -84,7 +86,7 @@ typedef struct s_cub
 	double	dy;
 	double	step;
 	double	ray_length;
-	double	wallX;
+	double	projected_dist;
 	double	wallY;
 	t_data	img;
 }			t_cub;
@@ -115,7 +117,7 @@ int		exit_game(void);
 void	draw_minimap(t_cub *cub);
 void	draw_player(t_cub *cub);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	vision(t_cub *cub);
+void	vision(t_cub *cub, double angle);
 void	dda_algo(t_cub *cub);
 void	draw(t_cub *cub, double x, double y);
 int		looping(t_cub *cub);
@@ -124,6 +126,8 @@ void	check_horizontal_down(t_cub *cub);
 void	check_vertical_right(t_cub *cub);
 void	check_vertical_left(t_cub *cub);
 void	the_right_one(t_cub *cub);
+
+void	cub3d(t_cub *cub, double angle);
 
 	/*	movements */
 void	check_move(t_cub *cub);

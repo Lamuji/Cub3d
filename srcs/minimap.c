@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 15:07:47 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/28 07:49:46 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/04/29 05:04:14 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,9 @@ void	draw_minimap(t_cub *cub)
 		while (cub->map[i][j])
 		{
 			if (cub->map[i][j] == '1')
-				putminimap(&cub->img, cub->pix_x, cub->pix_y, 0x00ACACAC);
+				putminimap(&cub->img, cub->pix_x, cub->pix_y, 0x44ACACAC);
 			if (cub->map[i][j] != '1' && cub->map[i][j] != '*')
-				putminimap(&cub->img, cub->pix_x, cub->pix_y, 0x00FFFFFF);
+				putminimap(&cub->img, cub->pix_x, cub->pix_y, 0x44FFFFFF);
 			cub->pix_x += 16;
 			j++;
 		}

@@ -17,6 +17,7 @@ SRC = srcs/main.c \
 	srcs/minimap.c \
 	srcs/vision.c \
 	srcs/movements.c \
+	srcs/map3d.c \
 
 OBJ = $(SRC:%.c=%.o)
 
