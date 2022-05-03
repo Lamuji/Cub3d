@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/29 06:09:30 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/03 10:55:35 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@
 # define SPEED 10
 # define SCR_W 1080
 # define SCR_H 920
+# define MINIPIX 16
+# define TRIDPIX 32
 
 typedef struct	s_data {
 	void	*img;
@@ -87,7 +89,6 @@ typedef struct s_cub
 	double	step;
 	double	ray_length;
 	double	projected_dist;
-	double	wallY;
 	t_data	img;
 }			t_cub;
 
@@ -107,6 +108,7 @@ int		elem_nbr(t_cub *cub);
 int		check_closed(char **str);
 int		check_double(char **str);
 void	player_pos(t_cub *cub);
+void	player_pos_game(t_cub *cub);
 
 	/*	deal with key */
 int		deal_key(int keycode, t_cub *cub);
@@ -121,10 +123,10 @@ void	vision(t_cub *cub, double angle);
 void	dda_algo(t_cub *cub);
 void	draw(t_cub *cub, double x, double y);
 int		looping(t_cub *cub);
-void	check_horizontal_up(t_cub *cub);
-void	check_horizontal_down(t_cub *cub);
-void	check_vertical_right(t_cub *cub);
-void	check_vertical_left(t_cub *cub);
+void	check_horizontal_up(t_cub *cub, int size);
+void	check_horizontal_down(t_cub *cub, int size);
+void	check_vertical_right(t_cub *cub, int size);
+void	check_vertical_left(t_cub *cub, int size);
 void	the_right_one(t_cub *cub);
 
 void	cub3d(t_cub *cub, double angle);
