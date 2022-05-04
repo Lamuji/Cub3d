@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/03 11:05:04 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/04 15:02:51 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,22 @@
 
 int	looping(t_cub *cub)
 {
-	t_cub	render;
+	printf("yo\n");
 	double i = cub->angle - 30;
-	render = *cub;
-	check_move(cub);
-	cub3d(&render, i);
+	cub->render = cub;
+	cub3d(cub, i);
 	draw_minimap(cub);
 	draw_player(cub);
 	vision(cub, cub->angle);
+	check_move(cub);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->img2.img, 0, 0);
+	mlx_destroy_image(cub->mlx, cub->img2.img);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
+	mlx_destroy_image(cub->mlx, cub->img.img);
+	cub->img2.img = mlx_new_image(cub->mlx, SCR_W, SCR_H);
+	cub->img.img = mlx_new_image(cub->mlx, cub->widthsquare * 16, cub->height * 16);
+	void *tmp;
+
 	return (0);
 }
 
@@ -67,11 +74,13 @@ static	void	init_struct(t_cub *cub, char **av)
 	cub->rgb = ft_calloc(sizeof(int), 3);
 	manager(cub->rgb);
 	cub->mlx = mlx_init();
-	cub->win = mlx_new_window(cub->mlx, 1080, 920, "Cub3d");
-	cub->img.img = mlx_new_image(cub->mlx, 1080, 920);
+	cub->win = mlx_new_window(cub->mlx, SCR_W, SCR_H, "Cub3d");
+	cub->img2.img = mlx_new_image(cub->mlx, SCR_W, SCR_H);
+	cub->img2.addr = mlx_get_data_addr(cub->img2.img, &cub->img2.bits_per_pixel, &cub->img2.line_length, &cub->img2.endian);
+	cub->img.img = mlx_new_image(cub->mlx, cub->widthsquare * 16, cub->height * 16);
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, &cub->img.line_length, &cub->img.endian);
 	cub->set_key = 0;
-	//cub->projected_dist = 64/(floor(590/tan(convert_ang(30))));
+	cub->projected_dist = floor(465/tan(convert_ang(30.0)));
 	which_direction(cub);
 }
 
@@ -93,7 +102,7 @@ int	main(int ac, char **av)
 	init_struct(&cub, av);
 	parser(&cub, ac, av);
 	player_pos(&cub);
-	//printf("position player x %f y %f\n", cub.dx, cub.dy);
+	printf("position player x %f y %f\n", cub.dx, cub.dy);
 	mlx_hook(cub.win, 2, 0, deal_key, &cub);
 	mlx_hook(cub.win, 17, 0, exit_game, &cub);
 	mlx_loop_hook(cub.mlx, looping, &cub);

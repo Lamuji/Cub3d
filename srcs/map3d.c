@@ -6,44 +6,44 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 10:12:30 by ramzi             #+#    #+#             */
-/*   Updated: 2022/05/03 12:17:45 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/04 15:09:06 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/cub3d.h"
 
-static	void	ceiling(t_cub *cub, int x, int j)
+static	void	ceiling(t_cub *cub, int x, double j)
 {
-	int i;
+	double i;
 
 	i = 0;
 	while (i < j)
 	{
-		my_mlx_pixel_put(&cub->img, x, j, 0x000E05FF);
+		my_mlx_pixel_put(&cub->img2, x, (int)j, 0x00D1D8FF);
 		i++;
 	}
 }
 
-static	void	ground(t_cub *cub, int x, int j)
+static	void	ground(t_cub *cub, int x, double j)
 {
-	int i;
+	double i;
 
 	i = 0;
 	while (i < j)
 	{
-		my_mlx_pixel_put(&cub->img, x, j, 0x0033407F);
+		my_mlx_pixel_put(&cub->img2, x, (int)j, 0x0033407F);
 		i++;
 	}
 }
 
-static	void	walls(t_cub *cub, int x, int j)
+void	walls(t_cub *cub, int x, double j)
 {
-	int i;
+	double i;
 
 	i = 0;
 	while (i < j)
 	{
-		my_mlx_pixel_put(&cub->img, x, j, 0x006680FF);
+		my_mlx_pixel_put(&cub->img2, x, (int)j, 0x006680FF);
 		i++;
 	}
 }
@@ -71,33 +71,33 @@ static	void	find_wall(t_cub *cub)
 
 void	cub3d(t_cub *cub, double angle)
 {
-	int i = 0;
-	int j;
+	int i = -1;
+	double j;
 	double wall_bottom;
 	double wall_top;
 	double slice_height;
+//	double *ray_lenght;
 
-	//printf("%f-%f\n", cub->player_x, cub->player_y);
-	cub->ra_angle = convert_ang(angle);
-	while (i < SCR_W)
+	cub->render->ra_angle = convert_ang(angle);
+	printf("debut==============\n");
+	while (++i < SCR_W)
 	{
-		find_wall(cub);
-		slice_height = floor(32 / cub->ray_length * (590/tan(convert_ang(30))));
-		wall_bottom = 460 + slice_height/2;
-		wall_top =  460 - slice_height/2;
-		j = 0;
-		while (j < SCR_H)
+		find_wall(cub->render);
+		//ub->render->ray_length =   
+		slice_height = floor(32 / cub->render->ray_length * cub->render->projected_dist);
+		wall_bottom = floor(400.00 + slice_height/2);
+		wall_top =  SCR_H - wall_bottom;
+		j = -1;
+		while (++j < SCR_H)
 		{
 			if (j < wall_top)
 				ceiling(cub, i, j);
-			if (j >= wall_top && j <= wall_bottom)
+			else if (j >= wall_top && j <= wall_bottom)
 				walls(cub, i, j);
-			if (j > wall_bottom)
+			else if (j > wall_bottom)
 				ground(cub, i, j);
-			j++;
 		}
-		cub->ra_angle += convert_ang(0.055555);
-	 	i++;
+		cub->render->ra_angle += 0.0010908;
 	}
 }
 
