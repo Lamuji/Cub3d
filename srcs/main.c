@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/04 15:02:51 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/04 15:20:44 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,7 @@ int	looping(t_cub *cub)
 	draw_player(cub);
 	vision(cub, cub->angle);
 	check_move(cub);
-	mlx_put_image_to_window(cub->mlx, cub->win, cub->img2.img, 0, 0);
-	mlx_destroy_image(cub->mlx, cub->img2.img);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
-	mlx_destroy_image(cub->mlx, cub->img.img);
-	cub->img2.img = mlx_new_image(cub->mlx, SCR_W, SCR_H);
-	cub->img.img = mlx_new_image(cub->mlx, cub->widthsquare * 16, cub->height * 16);
 	void *tmp;
 
 	return (0);
@@ -75,9 +70,7 @@ static	void	init_struct(t_cub *cub, char **av)
 	manager(cub->rgb);
 	cub->mlx = mlx_init();
 	cub->win = mlx_new_window(cub->mlx, SCR_W, SCR_H, "Cub3d");
-	cub->img2.img = mlx_new_image(cub->mlx, SCR_W, SCR_H);
-	cub->img2.addr = mlx_get_data_addr(cub->img2.img, &cub->img2.bits_per_pixel, &cub->img2.line_length, &cub->img2.endian);
-	cub->img.img = mlx_new_image(cub->mlx, cub->widthsquare * 16, cub->height * 16);
+	cub->img.img = mlx_new_image(cub->mlx, SCR_W, SCR_H);
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, &cub->img.line_length, &cub->img.endian);
 	cub->set_key = 0;
 	cub->projected_dist = floor(465/tan(convert_ang(30.0)));

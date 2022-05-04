@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 10:12:30 by ramzi             #+#    #+#             */
-/*   Updated: 2022/05/04 15:09:06 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/04 15:19:33 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static	void	ceiling(t_cub *cub, int x, double j)
 	i = 0;
 	while (i < j)
 	{
-		my_mlx_pixel_put(&cub->img2, x, (int)j, 0x00D1D8FF);
+		my_mlx_pixel_put(&cub->img, x, (int)j, 0x00D1D8FF);
 		i++;
 	}
 }
@@ -31,7 +31,7 @@ static	void	ground(t_cub *cub, int x, double j)
 	i = 0;
 	while (i < j)
 	{
-		my_mlx_pixel_put(&cub->img2, x, (int)j, 0x0033407F);
+		my_mlx_pixel_put(&cub->img, x, (int)j, 0x0033407F);
 		i++;
 	}
 }
@@ -43,7 +43,7 @@ void	walls(t_cub *cub, int x, double j)
 	i = 0;
 	while (i < j)
 	{
-		my_mlx_pixel_put(&cub->img2, x, (int)j, 0x006680FF);
+		my_mlx_pixel_put(&cub->img, x, (int)j, 0x006680FF);
 		i++;
 	}
 }
