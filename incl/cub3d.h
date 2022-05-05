@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/04 14:33:22 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/05 07:30:51 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,9 @@ typedef struct s_cub
 	double	step;
 	double	ray_length;
 	double	projected_dist;
+	double	wall_top;
+	double	wall_bottom;
+	double	slice_height;
 	struct s_cub *render;
 	t_data	img;
 	t_data	img2;
@@ -131,8 +134,6 @@ void	check_horizontal_down(t_cub *cub, int size);
 void	check_vertical_right(t_cub *cub, int size);
 void	check_vertical_left(t_cub *cub, int size);
 void	the_right_one(t_cub *cub);
-void	walls(t_cub *cub, int x, double j);
-
 void	cub3d(t_cub *cub, double angle);
 
 	/*	movements */

@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/04 15:20:44 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/04 20:29:02 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	looping(t_cub *cub)
 {
-	printf("yo\n");
+	cub->img.img = mlx_new_image(cub->mlx, SCR_W, SCR_H);
+	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, &cub->img.line_length, &cub->img.endian);
 	double i = cub->angle - 30;
 	cub->render = cub;
 	cub3d(cub, i);
@@ -23,8 +24,7 @@ int	looping(t_cub *cub)
 	vision(cub, cub->angle);
 	check_move(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
-	void *tmp;
-
+	mlx_destroy_image(cub->mlx, cub->img.img);
 	return (0);
 }
 
@@ -95,7 +95,6 @@ int	main(int ac, char **av)
 	init_struct(&cub, av);
 	parser(&cub, ac, av);
 	player_pos(&cub);
-	printf("position player x %f y %f\n", cub.dx, cub.dy);
 	mlx_hook(cub.win, 2, 0, deal_key, &cub);
 	mlx_hook(cub.win, 17, 0, exit_game, &cub);
 	mlx_loop_hook(cub.mlx, looping, &cub);
