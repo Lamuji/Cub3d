@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 13:12:54 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/03 09:17:19 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/05 08:38:02 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ void	vision(t_cub *cub, double angle)
 	{
 		if (cub->ra_angle < PI)
 			check_horizontal_up(cub, MINIPIX);
-		else if (cub->ra_angle > PI)
+		if (cub->ra_angle > PI)
 			check_horizontal_down(cub, MINIPIX);
 	}
 	if (cub->ra_angle > P2 && cub->ra_angle < P3)
@@ -149,5 +149,5 @@ void	vision(t_cub *cub, double angle)
 	if (cub->ra_angle < P2 || cub->ra_angle > P3)
 		check_vertical_right(cub, MINIPIX);
 	the_right_one(cub);
-	draw(cub, cub->fx, cub->fy);
+	//draw(cub, cub->fx, cub->fy);
 }

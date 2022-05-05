@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 15:07:47 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/03 22:13:44 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/05 10:19:42 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	draw_player(t_cub *cub)
 		i = start_x;
 		while (i <= end_x)
 		{
-			my_mlx_pixel_put(&cub->img, i, start_y, 0x00728840);
+			my_mlx_pixel_put(&cub->img, i, start_y, 0x50728840);
 			i++;
 		}
 		start_y++;
@@ -69,7 +69,7 @@ static	void	putminimap(t_data *data, int x, int y, int color)
 		while (tx < x + 16)
 		{
 			if (tx == x || ty == y)
-				my_mlx_pixel_put(data, tx, ty, 0x009999FF);
+				my_mlx_pixel_put(data, tx, ty, 0x509999FF);
 			else
 				my_mlx_pixel_put(data, tx, ty, color);
 			tx++;
@@ -93,9 +93,9 @@ void	draw_minimap(t_cub *cub)
 		while (cub->map[i][j])
 		{
 			if (cub->map[i][j] == '1')
-				putminimap(&cub->img, cub->pix_x, cub->pix_y, 0x44ACACAC);
+				putminimap(&cub->img, cub->pix_x, cub->pix_y, 0x50ACACAC);
 			if (cub->map[i][j] != '1' && cub->map[i][j] != '*')
-				putminimap(&cub->img, cub->pix_x, cub->pix_y, 0x44FFFFFF);
+				putminimap(&cub->img, cub->pix_x, cub->pix_y, 0x50FFFFFF);
 			cub->pix_x += 16;
 			j++;
 		}
