@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vision.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 13:12:54 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/06 16:31:04 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/12 12:34:37 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ void	check_horizontal_up(t_cub *cub, int size)
 	double Ya;
 	double Xa;
 
-
 	Ya = -size;
 	cub->Hy = floor((int)cub->dy/size) * size - 0.000001;
 	cub->Hx = (cub->dy - cub->Hy) * (-1 /tan(cub->ra_angle)) + cub->dx;
@@ -135,10 +134,10 @@ void	vision(t_cub *cub, double angle)
 	cub->dy = cub->player_y + 8;
 	cub->dx = cub->player_x + 8;
 	cub->ra_angle = convert_ang(angle);
-	if (cub->ra_angle > 2 * PI)
-		cub->ra_angle -= 2 * PI;
+	if (cub->ra_angle > 6.2831853)
+		cub->ra_angle -= 6.2831853;
 	if (cub->ra_angle < 0)
-		cub->ra_angle += 2 * PI;
+		cub->ra_angle += 6.2831853;
 	if (cub->ra_angle != 0 && cub->ra_angle != PI)
 	{
 		if (cub->ra_angle < PI)

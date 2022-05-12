@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:19:29 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/05 18:22:44 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/12 16:06:40 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,14 @@ static	int	check_params(char *str, t_cub *cub)
 		if (ft_reverse_ch_int(str, ".xpm"))
 			return (1);
 	}
-	else if (ft_ch_int(str, "C ") || ft_ch_int(str, "F "))
+	else if (ft_ch_int(str, "C "))
 	{
-		if (norm_color(str, cub->rgb))
+		if (norm_color(str, cub->rgbC))
+			return (1);
+	}
+	else if (ft_ch_int(str, "F "))
+	{
+		if (norm_color(str, cub->rgbF))
 			return (1);
 	}
 	return (0);

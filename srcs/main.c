@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/11 11:48:09 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/12 17:17:16 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,14 @@ static	void	init_struct(t_cub *cub, char **av)
 	turn_into_square(cub->map);
 	cub->height = ft_arrlen(cub->map);
 	cub->count_pos = 0;
-	cub->rgb = ft_calloc(sizeof(int), 3);
-	manager(cub->rgb);
+	cub->rgbF = ft_calloc(sizeof(int), 3);
+	cub->rgbC = ft_calloc(sizeof(int), 3);
+	manager(cub->rgbC);
+	manager(cub->rgbF);
 	cub->mlx = mlx_init();
 	cub->win = mlx_new_window(cub->mlx, SCR_W, SCR_H, "Cub3d");
 	cub->set_key = 0;
-	cub->projected_dist = floor((SCR_H/2)/tan(convert_ang(30.0)));
+	cub->projected_dist = floor((MID_H)/tan(convert_ang(30.0)));
 	which_direction(cub);
 }
 
@@ -91,14 +93,13 @@ int	main(int ac, char **av)
 {
 	t_cub	cub;
 	int i = -1;
-	//ft_bzero(&render, sizeof(t_cub));
 	ft_bzero(&cub, sizeof(t_cub));
 	init_struct(&cub, av);
 	parser(&cub, ac, av);
 	player_pos(&cub);
 	mlx_hook(cub.win, 2, 0, deal_key, &cub);
 	mlx_hook(cub.win, 17, 0, exit_game, &cub);
-	//mlx_hook(cub.win, 2, 0, moving_mouse, &cub);
+	mlx_hook(cub.win, 6, 0, deal_mouse, &cub);
 	mlx_loop_hook(cub.mlx, looping, &cub);
 	mlx_loop(cub.mlx);
 	return (0);
@@ -106,4 +107,4 @@ int	main(int ac, char **av)
 
 // change minimap, forme ronde, fait deplacer la map sur le joueur qui reste au centre
 
-// touche d et s pour deplacemeent lateral
+// touche d et s pour deplacemeent lateral OK

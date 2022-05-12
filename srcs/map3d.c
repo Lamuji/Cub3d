@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 10:12:30 by ramzi             #+#    #+#             */
-/*   Updated: 2022/05/06 16:29:00 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/12 16:32:30 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 static	void	ceiling(t_cub *cub, int x)
 {
 	int i = cub->wall_top;
-		while (i >= 0)
-		{
-			my_mlx_pixel_put(&cub->img, x, i, 0x00D1D8FF);
-			i--;
-		}
+	while (i >= 0)
+	{
+		my_mlx_pixel_put(&cub->img, x, i, rgb_to_hex(cub->rgbC[0], cub->rgbC[1], cub->rgbC[2]));
+		i--;
+	}
 }
 
 static	void	ground(t_cub *cub, int x)
 {
 	int i = cub->wall_bottom;
-		while (i < SCR_H)
-		{
-			my_mlx_pixel_put(&cub->img, x, i, 0x0033407F);
-			i++;
-		}
+	while (i < SCR_H)
+	{
+		my_mlx_pixel_put(&cub->img, x, i, rgb_to_hex(cub->rgbF[0], cub->rgbF[1], cub->rgbF[2]));
+		i++;
+	}
 }
 
 static	void	walls(t_cub *cub, int x)
@@ -46,10 +46,10 @@ static	void	find_wall(t_cub *cub)
 {
 	cub->dy = cub->player_y * 2 + 16;
 	cub->dx = cub->player_x * 2 + 16;
-	if (cub->ra_angle > 2 * PI)
-		cub->ra_angle -= 2 * PI;
+	if (cub->ra_angle > 6.2831853)
+		cub->ra_angle -= 6.2831853;
 	if (cub->ra_angle < 0)
-		cub->ra_angle += 2 * PI;
+		cub->ra_angle += 6.2831853;
 	if (cub->ra_angle != 0 && cub->ra_angle != PI)
 	{
 		if (cub->ra_angle < PI)
@@ -81,7 +81,7 @@ void	cub3d(t_cub *cub, double angle)
 		cub->slice_height = floor(32 / cub->ray_length * cub->projected_dist);
 		if (cub->slice_height > SCR_H)
 			cub->slice_height = SCR_H;
-		cub->wall_bottom = floor(SCR_H/2 + cub->slice_height/2);
+		cub->wall_bottom = floor(MID_H + cub->slice_height/2);
 		if (cub->wall_bottom > SCR_H)
 			cub->wall_bottom = SCR_H;
 		cub->wall_top =  SCR_H - cub->wall_bottom;

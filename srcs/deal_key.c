@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   deal_key.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 18:24:37 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/08 15:31:59 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/12 18:22:55 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,22 @@ double convert_ang(double angle)
 	return (angle * (3.14159 / 180));
 }
 
-int	moving_mouse(int keycode)
+int	deal_mouse(int x, int y, t_cub *cub)
 {
-	
+	cursor = x;
+	if (x < x_start)
+	{
+		if (cub->angle <= 0)
+			cub->angle = 360;
+		cub->angle -= 1;
+	}
+	//if ()
+	if (x > x_start)
+	{
+		if (cub->angle >= 360)
+			cub->angle = 0;
+		cub->angle += 1;
+	}
 	return 0;
 }
 

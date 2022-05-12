@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 16:28:53 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/06 16:21:11 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/12 16:07:10 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,9 @@ void	parser(t_cub *cub, int ac, char **av)
 		ft_putendl_exit("Error: Map not closed", STDERR_FILENO);
 	if (check_holes(cub->map))
 		ft_putendl_exit("Error: Map error", STDERR_FILENO);
+	int i = -1;
+	while (cub->rgbF[++i])
+		printf("%d\n", cub->rgbF[i]);
 }
 
 // mauvais nb d'arguments OK

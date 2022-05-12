@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/07 10:35:56 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/12 18:22:44 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,11 @@
 # define SPEED 10
 # define SCR_W 960
 # define SCR_H 800
+# define MID_H SCR_H/2
 # define MINIPIX 16
 # define TRIDPIX 32
+
+//const int	cursor;
 
 typedef struct	s_data {
 	void	*img;
@@ -78,7 +81,8 @@ typedef struct s_cub
 	int		pix_x;
 	int		pix_y;
 	int		count_pos;
-	int		*rgb;
+	int		*rgbC;
+	int		*rgbF;
 	double	start_angle;
 	double	angle;
 	double	ra_angle;
@@ -129,6 +133,7 @@ void	player_pos_game(t_cub *cub);
 
 	/*	deal with key */
 int		deal_key(int keycode, t_cub *cub);
+int		deal_mouse(int x, int y, t_cub *cub);
 int		exit_game(void);
 
 	/*	graphical part */
@@ -151,9 +156,10 @@ void	cub3d(t_cub *cub, double angle);
 void	check_move(t_cub *cub);
 
 	/* utils */
-double	convert_ang(double angle);
-void	which_direction(t_cub *cub);
-void	define_starting_dydx(t_cub *cub);
+unsigned long 	rgb_to_hex(int r, int g, int b);
+double			convert_ang(double angle);
+void			which_direction(t_cub *cub);
+void			define_starting_dydx(t_cub *cub);
 //procuration dalil naima 1er dec 1968
 
 #endif
