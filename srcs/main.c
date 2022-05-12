@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/05 09:24:19 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/11 11:48:09 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,18 @@ int	looping(t_cub *cub)
 {
 	cub->img.img = mlx_new_image(cub->mlx, SCR_W, SCR_H);
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, &cub->img.line_length, &cub->img.endian);
+	cub->img2.img = mlx_new_image(cub->mlx, cub->widthsquare * 16, cub->height * 16);
+	cub->img2.addr = mlx_get_data_addr(cub->img2.img, &cub->img2.bits_per_pixel, &cub->img2.line_length, &cub->img2.endian);
 	double i = cub->angle - 30;
-	//cub->render = cub;
 	cub3d(cub, i);
 	draw_minimap(cub);
 	draw_player(cub);
 	vision(cub, cub->angle);
 	check_move(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->img2.img, 0, 0);
 	mlx_destroy_image(cub->mlx, cub->img.img);
+	mlx_destroy_image(cub->mlx, cub->img2.img);
 	return (0);
 }
 
@@ -70,8 +73,6 @@ static	void	init_struct(t_cub *cub, char **av)
 	manager(cub->rgb);
 	cub->mlx = mlx_init();
 	cub->win = mlx_new_window(cub->mlx, SCR_W, SCR_H, "Cub3d");
-	//cub->img.img = mlx_new_image(cub->mlx, SCR_W, SCR_H);
-	//cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, &cub->img.line_length, &cub->img.endian);
 	cub->set_key = 0;
 	cub->projected_dist = floor((SCR_H/2)/tan(convert_ang(30.0)));
 	which_direction(cub);
@@ -97,11 +98,12 @@ int	main(int ac, char **av)
 	player_pos(&cub);
 	mlx_hook(cub.win, 2, 0, deal_key, &cub);
 	mlx_hook(cub.win, 17, 0, exit_game, &cub);
+	//mlx_hook(cub.win, 2, 0, moving_mouse, &cub);
 	mlx_loop_hook(cub.mlx, looping, &cub);
 	mlx_loop(cub.mlx);
 	return (0);
 }
 
-// salut, revoit la fonction check horizontal et repare tes soucis, 
-//tu dois placer des pixel a chq fois que tu passe par une ligne ou colonne 
-//juska un mur. 
+// change minimap, forme ronde, fait deplacer la map sur le joueur qui reste au centre
+
+// touche d et s pour deplacemeent lateral

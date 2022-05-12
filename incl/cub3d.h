@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/05 07:30:51 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/07 10:35:56 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,15 @@ typedef struct	s_data {
 	int		endian;
 }				t_data;
 
+typedef	struct s_render
+{
+	int	color_v;
+	int	color_h;
+	char *text_v;
+	char *text_h;
+	char *text;
+}			t_render;
+
 typedef struct s_cub
 {
 	char	**elem;
@@ -92,11 +101,13 @@ typedef struct s_cub
 	double	wall_top;
 	double	wall_bottom;
 	double	slice_height;
-	struct s_cub *render;
+	t_render render;
 	t_data	img;
 	t_data	img2;
 	t_data	img3;
 }			t_cub;
+
+
 
 	/*  LE BOSS DES LEAKS */
 void	manager(void *ptr);
@@ -111,7 +122,7 @@ int		arg_is_correct(int ac, char *str);
 int		check_invalid_char(char **str);
 void	check_pos(t_cub *cub);
 int		elem_nbr(t_cub *cub);
-int		check_closed(char **str);
+int		check_closed(char **str, int width);
 int		check_double(char **str);
 void	player_pos(t_cub *cub);
 void	player_pos_game(t_cub *cub);

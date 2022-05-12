@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 16:28:53 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/29 04:51:54 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/06 16:21:11 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	parser(t_cub *cub, int ac, char **av)
 		ft_putendl_exit("Error: Too many or no starting pos", STDERR_FILENO);
 	if (check_invalid_char(cub->map))
 		ft_putendl_exit("Error: Invalid character", STDERR_FILENO);
-	if (!check_closed(cub->map))
+	if (!check_closed(cub->map, cub->widthsquare))
 		ft_putendl_exit("Error: Map not closed", STDERR_FILENO);
 	if (check_holes(cub->map))
 		ft_putendl_exit("Error: Map error", STDERR_FILENO);
@@ -132,3 +132,7 @@ void	parser(t_cub *cub, int ac, char **av)
 // trop de positions de départ OK 
 // aucune position de départ OK
 // map pas entouré de mur / les 0 sont entourés de 0 ou de 1 OK
+
+// salut, revoit la fonction check horizontal et repare tes soucis, 
+//tu dois placer des pixel a chq fois que tu passe par une ligne ou colonne 
+//juska un mur. 

@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 18:30:17 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/04/24 18:12:26 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/06 16:29:46 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	which_direction(t_cub *cub)
 	}
 }
 
-int	check_closed(char **str)
+int	check_closed(char **str, int width)
 {
 	int	i;
 	int	j;
@@ -47,6 +47,8 @@ int	check_closed(char **str)
 	while (str[i])
 	{
 		j = 0;
+		// if (str[i][width] != '1' && str[i][width] != '*')
+		// 	return (0);
 		while (str[i][j])
 		{
 			if (str[0][j] != '1' && str[0][j] != '*')
@@ -87,5 +89,9 @@ int	check_double(char **str)
 }
 
 
+// int	check_arround_start(t_cub *cub)
+// {
+
+// }
 // erreur a gerer : Joueur est en bord de map a la place d'un mur 
 // joueur est entoure de mur 

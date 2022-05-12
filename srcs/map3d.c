@@ -6,7 +6,7 @@
 /*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 10:12:30 by ramzi             #+#    #+#             */
-/*   Updated: 2022/05/05 10:08:36 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/06 16:29:00 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static	void	walls(t_cub *cub, int x)
 	int	i = cub->wall_bottom - 1;
 	while (i > cub->wall_top)
 	{
-		my_mlx_pixel_put(&cub->img, x, i, 0x006680FF);
+		my_mlx_pixel_put(&cub->img, x, i, cub->render.color_h);
 		i--;
 	}
 }
@@ -67,13 +67,11 @@ static	void	find_wall(t_cub *cub)
 void	cub3d(t_cub *cub, double angle)
 {
 	int	i;
-	double incr = 0.0010908;
 	double	saved_lenght;
 	double	corrected;
 	double	beta;
+
 	i = -1;
-	//cub->ra_angle = convert_ang(cub->angle);
-	//find_wall(cub);
 	cub->ra_angle = convert_ang(angle);
 	while (++i < SCR_W)
 	{
@@ -94,6 +92,5 @@ void	cub3d(t_cub *cub, double angle)
 		ground(cub, i);
 		cub->ra_angle += 0.0010908;
 		saved_lenght += 0.0010908;
-		//incr +=;
 	}
 }
