@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/12 18:22:44 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/13 16:06:35 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include "../libft/libft.h"
 # include <fcntl.h>
 # include "mlx.h"
+# include <OpenGL/OpenGL.h> 
+// # include "../mlx/mlx_opengl.h"
+// # include "../mlx/mlx_int.h"
 # include <math.h>
 # define SUCCESS 0
 # define FAILURE 1
@@ -52,7 +55,7 @@
 # define MINIPIX 16
 # define TRIDPIX 32
 
-//const int	cursor;
+static	int	cursor;
 
 typedef struct	s_data {
 	void	*img;
@@ -160,6 +163,7 @@ unsigned long 	rgb_to_hex(int r, int g, int b);
 double			convert_ang(double angle);
 void			which_direction(t_cub *cub);
 void			define_starting_dydx(t_cub *cub);
+int				mlx_mouse_hide();
 //procuration dalil naima 1er dec 1968
 
 #endif

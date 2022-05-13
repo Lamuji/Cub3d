@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 18:24:37 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/12 18:22:55 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/13 15:15:45 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@ double convert_ang(double angle)
 
 int	deal_mouse(int x, int y, t_cub *cub)
 {
-	cursor = x;
-	if (x < x_start)
+
+	if (x < cursor)
 	{
 		if (cub->angle <= 0)
 			cub->angle = 360;
-		cub->angle -= 1;
+		cub->angle -= 3;
 	}
-	//if ()
-	if (x > x_start)
+	if (x > cursor)
 	{
 		if (cub->angle >= 360)
 			cub->angle = 0;
-		cub->angle += 1;
+		cub->angle += 3;
 	}
+	cursor = x;
 	return 0;
 }
 

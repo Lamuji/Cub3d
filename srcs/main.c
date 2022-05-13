@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/12 17:17:16 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/13 16:03:27 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	looping(t_cub *cub)
 	check_move(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img2.img, 0, 0);
+	mlx_mouse_hide();
 	mlx_destroy_image(cub->mlx, cub->img.img);
 	mlx_destroy_image(cub->mlx, cub->img2.img);
 	return (0);
