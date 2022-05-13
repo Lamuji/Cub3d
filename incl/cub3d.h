@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/13 16:06:35 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/13 17:22:35 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 # include <fcntl.h>
 # include "mlx.h"
 # include <OpenGL/OpenGL.h> 
-// # include "../mlx/mlx_opengl.h"
-// # include "../mlx/mlx_int.h"
 # include <math.h>
 # define SUCCESS 0
 # define FAILURE 1
@@ -50,14 +48,15 @@
 # define DR	0.0174533
 # define SPEED 10
 # define SCR_W 960
-# define SCR_H 800
+# define SCR_H 640
 # define MID_H SCR_H/2
 # define MINIPIX 16
 # define TRIDPIX 32
 
 static	int	cursor;
 
-typedef struct	s_data {
+typedef struct	s_data 
+{
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;

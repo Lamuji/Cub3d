@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 07:55:24 by ramzi             #+#    #+#             */
-/*   Updated: 2022/05/10 11:12:15 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/13 16:42:18 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static	void	move_right(t_cub *cub, double Xdis, double Ydis)
 {
 	cub->set_key = 0;
-	Xdis = cos(convert_ang(cub->angle - 90)) * 5;
-    Ydis = sin(convert_ang(cub->angle - 90)) * 5;
+	Xdis = cos(convert_ang(cub->angle - 90)) * 1;
+    Ydis = sin(convert_ang(cub->angle - 90)) * 1;
     cub->player_x += Xdis;
     cub->player_y += Ydis;
 }
@@ -24,8 +24,8 @@ static	void	move_right(t_cub *cub, double Xdis, double Ydis)
 static	void	move_left(t_cub *cub, double Xdis, double Ydis)
 {
 	cub->set_key = 0;
-	Xdis = cos(convert_ang(cub->angle + 90)) * 5;
-    Ydis = sin(convert_ang(cub->angle + 90)) * 5;
+	Xdis = cos(convert_ang(cub->angle + 90)) * 1;
+    Ydis = sin(convert_ang(cub->angle + 90)) * 1;
     cub->player_x += Xdis;
     cub->player_y += Ydis;
 }

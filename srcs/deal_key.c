@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 18:24:37 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/13 15:15:45 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/13 17:08:24 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	deal_mouse(int x, int y, t_cub *cub)
 	{
 		if (cub->angle <= 0)
 			cub->angle = 360;
-		cub->angle -= 3;
+		cub->angle -= 4;
 	}
 	if (x > cursor)
 	{
 		if (cub->angle >= 360)
 			cub->angle = 0;
-		cub->angle += 3;
+		cub->angle += 4;
 	}
 	cursor = x;
 	return 0;

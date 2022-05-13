@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 10:12:30 by ramzi             #+#    #+#             */
-/*   Updated: 2022/05/12 16:32:30 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/13 17:16:40 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static	void	ground(t_cub *cub, int x)
 static	void	walls(t_cub *cub, int x)
 {
 	int	i = cub->wall_bottom - 1;
-	while (i > cub->wall_top)
+	while (i >= cub->wall_top)
 	{
 		my_mlx_pixel_put(&cub->img, x, i, cub->render.color_h);
 		i--;
@@ -66,14 +66,12 @@ static	void	find_wall(t_cub *cub)
 
 void	cub3d(t_cub *cub, double angle)
 {
-	int	i;
-	double	saved_lenght;
-	double	corrected;
+	int		i;
 	double	beta;
 
-	i = -1;
+	i = 0;
 	cub->ra_angle = convert_ang(angle);
-	while (++i < SCR_W)
+	while (i < SCR_W)
 	{
 		find_wall(cub);
 		beta = fabs(convert_ang(cub->angle) - cub->ra_angle);
@@ -81,7 +79,7 @@ void	cub3d(t_cub *cub, double angle)
 		cub->slice_height = floor(32 / cub->ray_length * cub->projected_dist);
 		if (cub->slice_height > SCR_H)
 			cub->slice_height = SCR_H;
-		cub->wall_bottom = floor(MID_H + cub->slice_height/2);
+		cub->wall_bottom = MID_H + cub->slice_height/2;
 		if (cub->wall_bottom > SCR_H)
 			cub->wall_bottom = SCR_H;
 		cub->wall_top =  SCR_H - cub->wall_bottom;
@@ -91,6 +89,6 @@ void	cub3d(t_cub *cub, double angle)
 		walls(cub, i);
 		ground(cub, i);
 		cub->ra_angle += 0.0010908;
-		saved_lenght += 0.0010908;
+		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/13 16:03:27 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/13 17:22:49 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static	void	init_struct(t_cub *cub, char **av)
 	cub->mlx = mlx_init();
 	cub->win = mlx_new_window(cub->mlx, SCR_W, SCR_H, "Cub3d");
 	cub->set_key = 0;
-	cub->projected_dist = floor((MID_H)/tan(convert_ang(30.0)));
+	cub->projected_dist = floor(MID_H/tan(convert_ang(30.0)));
 	which_direction(cub);
 }
 
