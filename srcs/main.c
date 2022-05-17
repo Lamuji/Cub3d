@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/13 17:22:49 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/17 16:29:34 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,10 @@ static	void	init_struct(t_cub *cub, char **av)
 	manager(cub->rgbF);
 	cub->mlx = mlx_init();
 	cub->win = mlx_new_window(cub->mlx, SCR_W, SCR_H, "Cub3d");
+	cub->render.ea = NULL;
+	cub->render.no = NULL;
+	cub->render.so = NULL;
+	cub->render.we = NULL;
 	cub->set_key = 0;
 	cub->projected_dist = floor(MID_H/tan(convert_ang(30.0)));
 	which_direction(cub);
@@ -93,11 +97,12 @@ void	manager(void *ptr)
 int	main(int ac, char **av)
 {
 	t_cub	cub;
-	int i = -1;
+
 	ft_bzero(&cub, sizeof(t_cub));
 	init_struct(&cub, av);
 	parser(&cub, ac, av);
 	player_pos(&cub);
+	
 	mlx_hook(cub.win, 2, 0, deal_key, &cub);
 	mlx_hook(cub.win, 17, 0, exit_game, &cub);
 	mlx_hook(cub.win, 6, 0, deal_mouse, &cub);

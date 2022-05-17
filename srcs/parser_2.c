@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:19:29 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/12 16:06:40 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/17 12:11:05 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ static	int	check_params(char *str, t_cub *cub)
 	if (ft_ch_int(str, "NO ") || ft_ch_int(str, "SO ")
 		|| ft_ch_int(str, "EA ") || ft_ch_int(str, "WE "))
 	{
+		path_to_text(cub, str, (char *)str + 3);
 		if (ft_reverse_ch_int(str, ".xpm"))
 			return (1);
 	}

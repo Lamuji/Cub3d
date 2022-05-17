@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/13 17:22:35 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/17 16:26:17 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 # define SCR_H 640
 # define MID_H SCR_H/2
 # define MINIPIX 16
-# define TRIDPIX 32
+# define TRIDPIX 64
 
 static	int	cursor;
 
@@ -66,11 +66,15 @@ typedef struct	s_data
 
 typedef	struct s_render
 {
-	int	color_v;
+	int	*color_v;
 	int	color_h;
-	char *text_v;
-	char *text_h;
+	char *wall_v;
+	char *wall_h;
 	char *text;
+	void *no;
+	char *so;
+	char *we;
+	char *ea;
 }			t_render;
 
 typedef struct s_cub
@@ -115,7 +119,7 @@ typedef struct s_cub
 
 
 
-	/*  LE BOSS DES LEAKS */
+	/*	LE BOSS DES LEAKS	*/
 void	manager(void *ptr);
 
 	/* PARSING */
@@ -133,12 +137,7 @@ int		check_double(char **str);
 void	player_pos(t_cub *cub);
 void	player_pos_game(t_cub *cub);
 
-	/*	deal with key */
-int		deal_key(int keycode, t_cub *cub);
-int		deal_mouse(int x, int y, t_cub *cub);
-int		exit_game(void);
-
-	/*	graphical part */
+	/*	graphical part	*/
 
 void	draw_minimap(t_cub *cub);
 void	draw_player(t_cub *cub);
@@ -154,15 +153,19 @@ void	check_vertical_left(t_cub *cub, int size);
 void	the_right_one(t_cub *cub);
 void	cub3d(t_cub *cub, double angle);
 
-	/*	movements */
+	/*	movements	*/
 void	check_move(t_cub *cub);
+int		deal_key(int keycode, t_cub *cub);
+int		deal_mouse(int x, int y, t_cub *cub);
+int		exit_game(void);
 
-	/* utils */
+	/*	utils	*/
 unsigned long 	rgb_to_hex(int r, int g, int b);
 double			convert_ang(double angle);
 void			which_direction(t_cub *cub);
 void			define_starting_dydx(t_cub *cub);
 int				mlx_mouse_hide();
+void			path_to_text(t_cub *cub, char *str, char *path);
 //procuration dalil naima 1er dec 1968
 
 #endif

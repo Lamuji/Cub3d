@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 10:12:30 by ramzi             #+#    #+#             */
-/*   Updated: 2022/05/13 17:16:40 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/17 17:01:46 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,31 @@ static	void	ground(t_cub *cub, int x)
 static	void	walls(t_cub *cub, int x)
 {
 	int	i = cub->wall_bottom - 1;
+	// int	wallX;
+	// int texX;
+	// int texY;
+	
 	while (i >= cub->wall_top)
 	{
 		my_mlx_pixel_put(&cub->img, x, i, cub->render.color_h);
 		i--;
 	}
+	// int a;
+	// int b;
+	// int c;
+	// int color = 0;
+	// for(int y=0; y < 64; y++) {
+	// 	for(int x=0; x < 64; x++) {
+	// 		color = cub->render.color_v[x + y * 64];
+	// 		my_mlx_pixel_put(&(cub->img), x, y, color);
+	// 	}
+	// }
 }
 
 static	void	find_wall(t_cub *cub)
 {
-	cub->dy = cub->player_y * 2 + 16;
-	cub->dx = cub->player_x * 2 + 16;
+	cub->dy = cub->player_y * 4 + 32;
+	cub->dx = cub->player_x * 4 + 32;
 	if (cub->ra_angle > 6.2831853)
 		cub->ra_angle -= 6.2831853;
 	if (cub->ra_angle < 0)
@@ -76,7 +90,7 @@ void	cub3d(t_cub *cub, double angle)
 		find_wall(cub);
 		beta = fabs(convert_ang(cub->angle) - cub->ra_angle);
 		cub->ray_length = cub->ray_length * cos(beta);
-		cub->slice_height = floor(32 / cub->ray_length * cub->projected_dist);
+		cub->slice_height = floor(64 / cub->ray_length * cub->projected_dist);
 		if (cub->slice_height > SCR_H)
 			cub->slice_height = SCR_H;
 		cub->wall_bottom = MID_H + cub->slice_height/2;
