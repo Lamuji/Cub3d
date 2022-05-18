@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 13:12:54 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/17 11:46:34 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/18 16:09:58 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void	draw(t_cub *cub, double x, double y)
 	yinc = (y - cub->dy) / cub->step;
 	while (i <= cub->step)
 	{
-		my_mlx_pixel_put(&cub->img, cub->dx, cub->dy, 0x000000FF);
+		my_mlx_pixel_put(&cub->img2, cub->dx, cub->dy, 0x000000FF);
 		cub->dx += xinc;
 		cub->dy += yinc;
 		i++;

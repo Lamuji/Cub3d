@@ -6,11 +6,13 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 15:07:47 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/16 15:37:49 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/18 17:16:50 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/cub3d.h"
+
+
 
 void	player_pos(t_cub *cub)
 {
@@ -28,6 +30,8 @@ void	player_pos(t_cub *cub)
 			{
 				cub->player_x = j * 16;
 				cub->player_y = i * 16;
+				cub->minimap.plmapx = j * 10;
+				cub->minimap.plmapy = i * 10;
 			}
 			j++;
 		}
@@ -52,7 +56,7 @@ void	draw_player(t_cub *cub)
 		i = start_x;
 		while (i <= end_x)
 		{
-			my_mlx_pixel_put(&cub->img, i, start_y, 0x50728840);
+			my_mlx_pixel_put(&cub->img2, i, start_y, 0x50728840);
 			i++;
 		}
 		start_y++;
@@ -63,10 +67,10 @@ static	void	putminimap(t_data *data, int x, int y, int color)
 {
 	int tx;
 	int ty = y;
-	while (ty < y + 16)
+	while (ty < y + 10)
 	{
 		tx = x;
-		while (tx < x + 16)
+		while (tx < x + 10)
 		{
 			if (tx == x || ty == y)
 				my_mlx_pixel_put(data, tx, ty, 0x509999FF);
@@ -82,24 +86,28 @@ void	draw_minimap(t_cub *cub)
 {
 	int		i;
 	int		j;
+	int		k;
+	int		l;
 
-	cub->pix_x = 0;
 	cub->pix_y = 0;
-	i = 0;
-	while (cub->map[i])
+	i = (cub->minimap.plmapy - 100)/ 10;
+	k = (cub->minimap.plmapy +100)/10;
+	l = (cub->minimap.plmapx + 100)/10;
+	printf("%d\n%d\n%d\n", i, k, l);
+	while (i < k)
 	{
-		j = 0;
+	 	j = (cub->minimap.plmapx - 100) / 10;
 		cub->pix_x = 0;
-		while (cub->map[i][j])
+		while (j < l)
 		{
 			if (cub->map[i][j] == '1' || cub->map[i][j] == '*')
 				putminimap(&cub->img2, cub->pix_x, cub->pix_y, 0x70ACACAC);
 			if (cub->map[i][j] != '1' && cub->map[i][j] != '*')
 				putminimap(&cub->img2, cub->pix_x, cub->pix_y, 0x70FFFFFF);
-			cub->pix_x += 16;
+			cub->pix_x += 10;
 			j++;
 		}
-		cub->pix_y += 16;
+		cub->pix_y += 10;
 		i++;
 	}
 }

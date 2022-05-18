@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/17 16:26:17 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/18 16:38:33 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,12 @@ typedef	struct s_render
 	char *ea;
 }			t_render;
 
+typedef struct s_minimap
+{
+	int plmapx;
+	int plmapy;
+}				t_minimap;
+
 typedef struct s_cub
 {
 	char	**elem;
@@ -112,6 +118,7 @@ typedef struct s_cub
 	double	wall_bottom;
 	double	slice_height;
 	t_render render;
+	t_minimap minimap;
 	t_data	img;
 	t_data	img2;
 	t_data	img3;
