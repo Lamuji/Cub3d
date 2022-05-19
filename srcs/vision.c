@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 13:12:54 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/18 16:09:58 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/19 17:05:34 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,8 +131,8 @@ void	draw(t_cub *cub, double x, double y)
 
 void	vision(t_cub *cub, double angle)
 {
-	cub->dy = cub->player_y + 8;
-	cub->dx = cub->player_x + 8;
+	cub->dy = cub->player_y + 4;
+	cub->dx = cub->player_x + 4;
 	cub->ra_angle = convert_ang(angle);
 	if (cub->ra_angle > 6.2831853)
 		cub->ra_angle -= 6.2831853;

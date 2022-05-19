@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 10:12:30 by ramzi             #+#    #+#             */
-/*   Updated: 2022/05/17 17:01:46 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/19 16:50:12 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ static	void	walls(t_cub *cub, int x)
 
 static	void	find_wall(t_cub *cub)
 {
-	cub->dy = cub->player_y * 4 + 32;
-	cub->dx = cub->player_x * 4 + 32;
+	cub->dy = cub->player_y * 8 + 32;
+	cub->dx = cub->player_x * 8 + 32;
 	if (cub->ra_angle > 6.2831853)
 		cub->ra_angle -= 6.2831853;
 	if (cub->ra_angle < 0)

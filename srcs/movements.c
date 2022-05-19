@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 07:55:24 by ramzi             #+#    #+#             */
-/*   Updated: 2022/05/13 16:42:18 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/19 16:38:22 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,44 @@ static	void	move_right(t_cub *cub, double Xdis, double Ydis)
 {
 	cub->set_key = 0;
 	Xdis = cos(convert_ang(cub->angle - 90)) * 1;
-    Ydis = sin(convert_ang(cub->angle - 90)) * 1;
-    cub->player_x += Xdis;
-    cub->player_y += Ydis;
+	Ydis = sin(convert_ang(cub->angle - 90)) * 1;
+	if (cub->map[(int)round((cub->player_y + Ydis)/8)][(int)round((cub->player_x + Xdis)/8)] != '1')
+	{
+		cub->player_x += Xdis;
+		cub->player_y += Ydis;
+	}
 }
 
 static	void	move_left(t_cub *cub, double Xdis, double Ydis)
 {
 	cub->set_key = 0;
 	Xdis = cos(convert_ang(cub->angle + 90)) * 1;
-    Ydis = sin(convert_ang(cub->angle + 90)) * 1;
-    cub->player_x += Xdis;
-    cub->player_y += Ydis;
+	Ydis = sin(convert_ang(cub->angle + 90)) * 1;
+	if (cub->map[(int)round((cub->player_y + Ydis)/8)][(int)round((cub->player_x + Xdis)/8)] != '1')
+	{
+		cub->player_x += Xdis;
+		cub->player_y += Ydis;
+	}
 }
 
 static	void	move_backward(t_cub *cub, double Xdis, double Ydis)
 {
-    cub->set_key = 0;
-    cub->player_x += Xdis;
-    cub->player_y += Ydis;
+	cub->set_key = 0;
+	if (cub->map[(int)round((cub->player_y + Ydis)/8)][(int)round((cub->player_x + Xdis)/8)] != '1')
+	{
+		cub->player_x += Xdis;
+		cub->player_y += Ydis;
+	}
 }
 
 static	void	move_forward(t_cub *cub, double Xdis, double Ydis)
 {
-    cub->set_key = 0;
-    cub->player_x -= Xdis;
-    cub->player_y -= Ydis;
+	cub->set_key = 0;
+	if (cub->map[(int)round((cub->player_y - Ydis)/8)][((int)round(cub->player_x - Xdis)/8)] != '1')
+	{	
+		cub->player_x -= Xdis;
+		cub->player_y -= Ydis;
+	}
 }
 
 void	check_move(t_cub *cub)
@@ -49,8 +61,8 @@ void	check_move(t_cub *cub)
     double Xdis;
     double Ydis;
 
-    Xdis = cos(convert_ang(cub->angle)) * 5;
-    Ydis = sin(convert_ang(cub->angle)) * 5;
+    Xdis = cos(convert_ang(cub->angle)) * 1;
+    Ydis = sin(convert_ang(cub->angle)) * 1;
     if (cub->set_key == 1)
         move_forward(cub, Xdis, Ydis);
     if (cub->set_key == 2)

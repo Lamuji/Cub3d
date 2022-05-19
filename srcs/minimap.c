@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 15:07:47 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/18 17:16:50 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/19 15:06:10 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	player_pos(t_cub *cub)
 			if (cub->map[i][j] == 'N' || cub->map[i][j] == 'S'
 			|| cub->map[i][j] == 'W' || cub->map[i][j] == 'E')
 			{
-				cub->player_x = j * 16;
-				cub->player_y = i * 16;
-				cub->minimap.plmapx = j * 10;
-				cub->minimap.plmapy = i * 10;
+				cub->player_x = j * 8;
+				cub->player_y = i * 8;
+				cub->minimap.plmapx = j * 8;
+				cub->minimap.plmapy = i * 8;
 			}
 			j++;
 		}
@@ -47,10 +47,10 @@ void	draw_player(t_cub *cub)
 	int end_y;
 	int i;
 
-	start_x = cub->player_x + 6;
-	start_y = cub->player_y + 6;
-	end_x = cub->player_x + 16 - 6;
-	end_y = cub->player_y + 16 - 6;
+	start_x = cub->player_x + 3;
+	start_y = cub->player_y + 3;
+	end_x = cub->player_x + 8 - 3;
+	end_y = cub->player_y + 8 - 3;
 	while (start_y <= end_y)
 	{
 		i = start_x;
@@ -67,10 +67,10 @@ static	void	putminimap(t_data *data, int x, int y, int color)
 {
 	int tx;
 	int ty = y;
-	while (ty < y + 10)
+	while (ty < y + 8)
 	{
 		tx = x;
-		while (tx < x + 10)
+		while (tx < x + 8)
 		{
 			if (tx == x || ty == y)
 				my_mlx_pixel_put(data, tx, ty, 0x509999FF);
@@ -86,28 +86,23 @@ void	draw_minimap(t_cub *cub)
 {
 	int		i;
 	int		j;
-	int		k;
-	int		l;
 
 	cub->pix_y = 0;
-	i = (cub->minimap.plmapy - 100)/ 10;
-	k = (cub->minimap.plmapy +100)/10;
-	l = (cub->minimap.plmapx + 100)/10;
-	printf("%d\n%d\n%d\n", i, k, l);
-	while (i < k)
+	i = 0;
+	while (cub->map[i])
 	{
-	 	j = (cub->minimap.plmapx - 100) / 10;
+	 	j = 0;
 		cub->pix_x = 0;
-		while (j < l)
+		while (cub->map[i][j])
 		{
 			if (cub->map[i][j] == '1' || cub->map[i][j] == '*')
 				putminimap(&cub->img2, cub->pix_x, cub->pix_y, 0x70ACACAC);
 			if (cub->map[i][j] != '1' && cub->map[i][j] != '*')
 				putminimap(&cub->img2, cub->pix_x, cub->pix_y, 0x70FFFFFF);
-			cub->pix_x += 10;
+			cub->pix_x += 8;
 			j++;
 		}
-		cub->pix_y += 10;
+		cub->pix_y += 8;
 		i++;
 	}
 }

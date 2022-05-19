@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/18 16:44:04 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/19 17:06:55 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int	looping(t_cub *cub)
 {
 	cub->img.img = mlx_new_image(cub->mlx, SCR_W, SCR_H);
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, &cub->img.line_length, &cub->img.endian);
-	cub->img2.img = mlx_new_image(cub->mlx, 200, 200);
+	cub->img2.img = mlx_new_image(cub->mlx, cub->widthsquare * 8, cub->height * 8);
 	cub->img2.addr = mlx_get_data_addr(cub->img2.img, &cub->img2.bits_per_pixel, &cub->img2.line_length, &cub->img2.endian);
 	double i = cub->angle - 30;
 	cub3d(cub, i);
 	draw_minimap(cub);
-	// draw_player(cub);
-	// vision(cub, cub->angle);
+	draw_player(cub);
+	//vision(cub, cub->angle);
 	check_move(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img2.img, 20, 20);
@@ -102,8 +102,8 @@ int	main(int ac, char **av)
 	init_struct(&cub, av);
 	parser(&cub, ac, av);
 	player_pos(&cub);
-	
 	mlx_hook(cub.win, 2, 0, deal_key, &cub);
+	mlx_hook(cub.win, 36, 0, deal_key, &cub);
 	mlx_hook(cub.win, 17, 0, exit_game, &cub);
 	mlx_hook(cub.win, 6, 0, deal_mouse, &cub);
 	mlx_loop_hook(cub.mlx, looping, &cub);
