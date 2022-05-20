@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/18 16:38:33 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/20 16:54:24 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,15 @@ typedef struct	s_data
 
 typedef	struct s_render
 {
-	int	*color_v;
+	int	*color;
 	int	color_h;
+	int	foundcolor;
+	int	type;
 	char *wall_v;
 	char *wall_h;
-	char *text;
+	int	tx;
+	int	ty;
+	int	index;
 	void *no;
 	char *so;
 	char *we;
@@ -173,6 +177,7 @@ void			which_direction(t_cub *cub);
 void			define_starting_dydx(t_cub *cub);
 int				mlx_mouse_hide();
 void			path_to_text(t_cub *cub, char *str, char *path);
+void			find_pixel(t_cub *cub, int i);
 //procuration dalil naima 1er dec 1968
 
 #endif

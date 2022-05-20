@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 13:12:54 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/19 17:05:34 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/20 15:02:18 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	the_right_one(t_cub *cub)
 		+ pow(cub->dy - cub->Vy, 2));
 	if (h < v)
 	{
+		cub->render.type = 1;
 		cub->fx = cub->Hx;
 		cub->fy = cub->Hy;
 		cub->ray_length = h;
@@ -30,6 +31,7 @@ void	the_right_one(t_cub *cub)
 	}
 	else if (h > v)
 	{
+		cub->render.type = 2;
 		cub->fx = cub->Vx;
 		cub->fy = cub->Vy;
 		cub->ray_length = v;

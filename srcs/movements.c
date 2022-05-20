@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 07:55:24 by ramzi             #+#    #+#             */
-/*   Updated: 2022/05/19 16:38:22 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/20 15:00:22 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	check_move(t_cub *cub)
     double Xdis;
     double Ydis;
 
-    Xdis = cos(convert_ang(cub->angle)) * 1;
-    Ydis = sin(convert_ang(cub->angle)) * 1;
+    Xdis = cos(convert_ang(cub->angle)) * 2;
+    Ydis = sin(convert_ang(cub->angle)) * 2;
     if (cub->set_key == 1)
         move_forward(cub, Xdis, Ydis);
     if (cub->set_key == 2)

@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 10:12:30 by ramzi             #+#    #+#             */
-/*   Updated: 2022/05/19 16:50:12 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/20 16:55:59 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static	void	walls(t_cub *cub, int x)
 	
 	while (i >= cub->wall_top)
 	{
-		my_mlx_pixel_put(&cub->img, x, i, cub->render.color_h);
+		my_mlx_pixel_put(&cub->img, x, i, cub->render.color[cub->render.index]);
 		i--;
 	}
 	// int a;
@@ -100,6 +100,7 @@ void	cub3d(t_cub *cub, double angle)
 		if (cub->wall_top < 0)
 			cub->wall_top = 0;
 		ceiling(cub, i);
+		find_pixel(cub, i);
 		walls(cub, i);
 		ground(cub, i);
 		cub->ra_angle += 0.0010908;
