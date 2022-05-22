@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 18:28:59 by ramzi             #+#    #+#             */
-/*   Updated: 2022/05/20 17:06:13 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/21 23:51:53 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,18 @@ void	path_to_text(t_cub *cub, char *str, char *path)
 		}
 }
 
-void	find_pixel(t_cub *cub, int i)
-{ 
+int	find_pixel(t_cub *cub, int i)
+{
+	int	color;
+
+	color = 0;
 	if (cub->render.type == 1)
-		cub->render.tx = fmod(cub->fy / cub->slice_height, 1.0) * 64;
+		cub->render.tx = fmod(cub->fy / cub->slice_height, 1.0) * 64.0;
 	else if (cub->render.type == 2)
-		cub->render.tx = fmod(cub->fx / cub->slice_height, 1.0) * 64;
-	cub->render.ty = (1.0 - (double)(cub->wall_bottom - i)) / (double)cub->wall_top * 64.0;
-	cub->render.index = cub->render.tx + (cub->render.ty * 64);
+		cub->render.tx = fmod(cub->fx / cub->slice_height, 1.0) * 64.0;
+	cub->render.ty = (1.0 - (cub->wall_bottom - i) / cub->slice_height) * 64.0;
+	cub->render.index = (int)(cub->render.tx + (cub->render.ty * 64.0));
+	color = cub->render.color[cub->render.index];
+	return (color);
 }
 

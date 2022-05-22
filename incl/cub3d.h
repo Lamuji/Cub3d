@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/20 16:54:24 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/21 23:45:47 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ typedef	struct s_render
 	int	type;
 	char *wall_v;
 	char *wall_h;
-	int	tx;
-	int	ty;
+	double	tx;
+	double	ty;
 	int	index;
 	void *no;
 	char *so;
@@ -177,7 +177,7 @@ void			which_direction(t_cub *cub);
 void			define_starting_dydx(t_cub *cub);
 int				mlx_mouse_hide();
 void			path_to_text(t_cub *cub, char *str, char *path);
-void			find_pixel(t_cub *cub, int i);
+int				find_pixel(t_cub *cub, int i);
 //procuration dalil naima 1er dec 1968
 
 #endif
