@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 18:19:45 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/23 18:24:02 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/23 19:12:28 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,18 @@ void	turn_into_square(char **str)
 
 char	*ft_strdupmap(const char *src, int len)
 {
-	size_t	i;
+	int		i;
 	char	*dest;
 
-	dest = ft_calloc(sizeof(char), (len + 1));
+	dest = ft_calloc(sizeof(char), (len + 2));
 	if (dest == NULL)
 		return (0);
 	i = 0;
-	while ((int)i < len)
+	while (i < len)
 	{
 		if (src[i] == '\0')
 		{
-			while ((int)i < len)
+			while (i < len)
 			{
 				dest[i] = '*';
 				i++;
