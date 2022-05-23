@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 18:30:17 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/06 16:29:46 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/23 18:52:15 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,22 @@ int	check_closed(char **str, int width)
 {
 	int	i;
 	int	j;
-
+	
+	(void)width;
 	i = 0;
 	while (str[i])
 	{
 		j = 0;
-		// if (str[i][width] != '1' && str[i][width] != '*')
-		// 	return (0);
 		while (str[i][j])
 		{
 			if (str[0][j] != '1' && str[0][j] != '*')
 				return (0);
 			if (str[i + 1] == NULL)
+			{
+				if (str[i][j] != '1' && str[i][j] != '*')
+					return (0);
+			}
+			if (!str[i][j + 1])
 			{
 				if (str[i][j] != '1' && str[i][j] != '*')
 					return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 10:12:30 by ramzi             #+#    #+#             */
-/*   Updated: 2022/05/23 00:56:17 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/23 18:25:27 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,27 +35,38 @@ static	void	ground(t_cub *cub, int x)
 static	void	walls(t_cub *cub, int x)
 {
 	int	i = cub->wall_bottom - 1;
-	int	color;
 
 	while (i >= cub->wall_top)
 	{
-		if (cub->render.type == 1)
-		{
-			if (cub->angle < 90 || cub->angle > 270)
-			{
-				if (cub->ra_angle < PI)
-					my_mlx_pixel_put(&cub->img, x, i, cub->render.we_color[find_pixel(cub, i)]);
-				else
-					my_mlx_pixel_put(&cub->img, x, i, cub->render.ea_color[find_pixel(cub, i)]);
-			}
-		}
-		else
-		{
-			if (cub->angle < 180 || cub->angle > 0)
-				my_mlx_pixel_put(&cub->img, x, i, cub->render.no_color[find_pixel(cub, i)]);
-			else
-				my_mlx_pixel_put(&cub->img, x, i, cub->render.so_color[find_pixel(cub, i)]);
-		}
+		if (cub->ra_angle < PI && cub->render.type == 1)
+			my_mlx_pixel_put(&cub->img, x, i, cub->render.no_color[find_pixel(cub, i)]);
+		else if (cub->ra_angle > PI && cub->render.type == 1)
+			my_mlx_pixel_put(&cub->img, x, i, cub->render.so_color[find_pixel(cub, i)]);
+		else if (cub->ra_angle > P2 && cub->ra_angle < P3 && cub->render.type == 2)
+			my_mlx_pixel_put(&cub->img, x, i, cub->render.we_color[find_pixel(cub, i)]);
+		else if (cub->ra_angle < P2 || cub->ra_angle > P3)
+			my_mlx_pixel_put(&cub->img, x, i, cub->render.ea_color[find_pixel(cub, i)]);
+		// else if (cub->angle >= 90.0 && cub->angle <= 270.0 && cub->render.type == 2)
+		// 	my_mlx_pixel_put(&cub->img, x, i, cub->render.ea_color[find_pixel(cub, i)]);
+		// else if (cub->render.type == 2)
+		// 	my_mlx_pixel_put(&cub->img, x, i, cub->render.we_color[find_pixel(cub, i)]);
+		// if (cub->render.type == 1)
+		// {
+		// 	if (cos(cub->ra_angle) > 0)
+		// 	{
+		// 		if (cub->ra_angle < PI)
+		// 			my_mlx_pixel_put(&cub->img, x, i, cub->render.we_color[find_pixel(cub, i)]);
+		// 		else
+		// 			my_mlx_pixel_put(&cub->img, x, i, cub->render.ea_color[find_pixel(cub, i)]);
+		// 	}
+		// }
+		// else
+		// {
+		// 	if (cub->angle < 180 || cub->angle > 0)
+		//	
+		// 	else
+		//
+		// }
 		i--;
 	}
 }

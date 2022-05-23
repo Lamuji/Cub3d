@@ -1,12 +1,8 @@
- 
-CC = gcc
-
-AR = ar -rcs
-
-FLAGS = -Wall -Wextra -Werror
-LDFLAG = -Lmlx -framework OpenGL -framework AppKit
-
 NAME = cub3d
+
+CC = cc
+FLAGS =  -Wall -Wextra -Werror 
+LDFLAG = -Lmlx -framework OpenGL -framework AppKit
 
 SRC = srcs/main.c \
 	srcs/ft_split_cub.c \
@@ -23,11 +19,13 @@ SRC = srcs/main.c \
 
 OBJ = $(SRC:%.c=%.o)
 
+%.o: %.c
+	$(CC) $(FLAGS) -c $< -o $@ 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C libft/
-	@$(CC) $(FLAGS) $(LDFLAG) $^ -o $@ libft/libft.a mlx/libmlx.a
+	@$(CC) $(LDFLAG) $(FLAGS) $^ -o $@ libft/libft.a mlx/libmlx.a
 
 clean:
 	@make -C libft/ clean

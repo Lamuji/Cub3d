@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/22 22:30:46 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/23 18:28:52 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ typedef	struct s_render
 	char *wall_h;
 	int	tx;
 	int	ty;
-	int	index;
+	double	index;
 	void *no;
 	char *so;
 	char *we;

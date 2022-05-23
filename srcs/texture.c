@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 18:28:59 by ramzi             #+#    #+#             */
-/*   Updated: 2022/05/23 01:13:37 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/23 17:21:25 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	path_to_text(t_cub *cub, char *str, char *path)
 	else if (ft_ch_int(str, "SO")){
 		cub->render.so = mlx_xpm_file_to_image(cub->mlx, path, &width, &height);
 		cub->render.so_color = (int*)mlx_get_data_addr(cub->render.so, &a, &b, &c);
-	}
+		}
 	else if (ft_ch_int(str, "WE")){
 		cub->render.we = mlx_xpm_file_to_image(cub->mlx, path, &width, &height);
 		cub->render.we_color = (int*)mlx_get_data_addr(cub->render.we, &a, &b, &c);
@@ -41,13 +41,12 @@ int	find_pixel(t_cub *cub, int i)
 
 	color = 0;
 	if (cub->render.type == 1)
-		cub->render.tx = fmod(cub->fy / cub->slice_height, 1.0) * 64.0;
+		cub->render.tx = fmod(cub->fx / 64.0, 1.0) * 64.0;
 	else if (cub->render.type == 2)
-		cub->render.tx = fmod(cub->fx / cub->slice_height, 1.0) * 64.0;
+		cub->render.tx = fmod(cub->fy / 64.0, 1.0) * 64.0;
 	//printf("%f\n", cub->fx);
-	cub->render.ty = (1 - (cub->wall_bottom - i) / (cub->slice_height)) * 64;
+	cub->render.ty = (1.0 - ((320 + cub->slice_height) - i) / (cub->slice_height * 2)) * 64.0;
 	cub->render.index = (cub->render.tx + (cub->render.ty * 64.0));
 	color = cub->render.index;
 	return (color);
 }
-
