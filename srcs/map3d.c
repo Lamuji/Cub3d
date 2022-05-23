@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 10:12:30 by ramzi             #+#    #+#             */
-/*   Updated: 2022/05/21 23:50:53 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/23 00:56:17 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,25 +35,29 @@ static	void	ground(t_cub *cub, int x)
 static	void	walls(t_cub *cub, int x)
 {
 	int	i = cub->wall_bottom - 1;
-	// int	wallX;
-	// int texX;
-	// int texY;
-	
+	int	color;
+
 	while (i >= cub->wall_top)
 	{
-		my_mlx_pixel_put(&cub->img, x, i, find_pixel(cub, i));
+		if (cub->render.type == 1)
+		{
+			if (cub->angle < 90 || cub->angle > 270)
+			{
+				if (cub->ra_angle < PI)
+					my_mlx_pixel_put(&cub->img, x, i, cub->render.we_color[find_pixel(cub, i)]);
+				else
+					my_mlx_pixel_put(&cub->img, x, i, cub->render.ea_color[find_pixel(cub, i)]);
+			}
+		}
+		else
+		{
+			if (cub->angle < 180 || cub->angle > 0)
+				my_mlx_pixel_put(&cub->img, x, i, cub->render.no_color[find_pixel(cub, i)]);
+			else
+				my_mlx_pixel_put(&cub->img, x, i, cub->render.so_color[find_pixel(cub, i)]);
+		}
 		i--;
 	}
-	// int a;
-	// int b;
-	// int c;
-	// int color = 0;
-	// for(int y=0; y < 64; y++) {
-	// 	for(int x=0; x < 64; x++) {
-	// 		color = cub->render.color_v[x + y * 64];
-	// 		my_mlx_pixel_put(&(cub->img), x, y, color);
-	// 	}
-	// }
 }
 
 static	void	find_wall(t_cub *cub)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/21 23:45:47 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/22 22:30:46 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,17 @@ typedef struct	s_data
 
 typedef	struct s_render
 {
-	int	*color;
+	int	*so_color;
+	int *no_color;
+	int	*ea_color;
+	int	*we_color;
 	int	color_h;
 	int	foundcolor;
 	int	type;
 	char *wall_v;
 	char *wall_h;
-	double	tx;
-	double	ty;
+	int	tx;
+	int	ty;
 	int	index;
 	void *no;
 	char *so;
