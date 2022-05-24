@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 07:55:24 by ramzi             #+#    #+#             */
-/*   Updated: 2022/05/20 15:00:22 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/24 12:36:36 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static	void	move_right(t_cub *cub, double Xdis, double Ydis)
 	cub->set_key = 0;
 	Xdis = cos(convert_ang(cub->angle - 90)) * 1;
 	Ydis = sin(convert_ang(cub->angle - 90)) * 1;
-	if (cub->map[(int)round((cub->player_y + Ydis)/8)][(int)round((cub->player_x + Xdis)/8)] != '1')
+	if (cub->map[(int)((cub->player_y + Ydis)/8)][(int)((cub->player_x + Xdis)/8)] != '1')
 	{
 		cub->player_x += Xdis;
 		cub->player_y += Ydis;
@@ -29,7 +29,7 @@ static	void	move_left(t_cub *cub, double Xdis, double Ydis)
 	cub->set_key = 0;
 	Xdis = cos(convert_ang(cub->angle + 90)) * 1;
 	Ydis = sin(convert_ang(cub->angle + 90)) * 1;
-	if (cub->map[(int)round((cub->player_y + Ydis)/8)][(int)round((cub->player_x + Xdis)/8)] != '1')
+	if (cub->map[(int)(cub->player_y + Ydis)/8][(int)(cub->player_x + Xdis)/8] != '1')
 	{
 		cub->player_x += Xdis;
 		cub->player_y += Ydis;
@@ -39,7 +39,7 @@ static	void	move_left(t_cub *cub, double Xdis, double Ydis)
 static	void	move_backward(t_cub *cub, double Xdis, double Ydis)
 {
 	cub->set_key = 0;
-	if (cub->map[(int)round((cub->player_y + Ydis)/8)][(int)round((cub->player_x + Xdis)/8)] != '1')
+	if (cub->map[(int)(cub->player_y + Ydis)/8][(int)(cub->player_x + Xdis)/8] != '1')
 	{
 		cub->player_x += Xdis;
 		cub->player_y += Ydis;
@@ -49,7 +49,7 @@ static	void	move_backward(t_cub *cub, double Xdis, double Ydis)
 static	void	move_forward(t_cub *cub, double Xdis, double Ydis)
 {
 	cub->set_key = 0;
-	if (cub->map[(int)round((cub->player_y - Ydis)/8)][((int)round(cub->player_x - Xdis)/8)] != '1')
+	if (cub->map[(int)(cub->player_y - Ydis)/8 == ][(int)(cub->player_x - Xdis)/8] != '1')
 	{	
 		cub->player_x -= Xdis;
 		cub->player_y -= Ydis;

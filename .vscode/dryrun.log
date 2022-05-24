@@ -1,0 +1,18 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/ramzi/Desktop/42/Cub3d'
+cc -g -Wall -Wextra -Werror  -c srcs/main.c -o srcs/main.o 
+cc -g -Wall -Wextra -Werror  -c srcs/ft_split_cub.c -o srcs/ft_split_cub.o 
+cc -g -Wall -Wextra -Werror  -c srcs/parser.c -o srcs/parser.o 
+cc -g -Wall -Wextra -Werror  -c srcs/parser_2.c -o srcs/parser_2.o 
+cc -g -Wall -Wextra -Werror  -c srcs/parser_3.c -o srcs/parser_3.o 
+cc -g -Wall -Wextra -Werror  -c srcs/deal_key.c -o srcs/deal_key.o 
+cc -g -Wall -Wextra -Werror  -c srcs/minimap.c -o srcs/minimap.o 
+cc -g -Wall -Wextra -Werror  -c srcs/vision.c -o srcs/vision.o 
+cc -g -Wall -Wextra -Werror  -c srcs/movements.c -o srcs/movements.o 
+cc -g -Wall -Wextra -Werror  -c srcs/map3d.c -o srcs/map3d.o 
+cc -g -Wall -Wextra -Werror  -c srcs/utils.c -o srcs/utils.o 
+cc -g -Wall -Wextra -Werror  -c srcs/texture.c -o srcs/texture.o 
+make -C libft/
+cc -Lmlx -framework OpenGL -framework AppKit -g -Wall -Wextra -Werror  srcs/main.o srcs/ft_split_cub.o srcs/parser.o srcs/parser_2.o srcs/parser_3.o srcs/deal_key.o srcs/minimap.o srcs/vision.o srcs/movements.o srcs/map3d.o srcs/utils.o srcs/texture.o -o cub3d libft/libft.a mlx/libmlx.a
+make: Leaving directory `/Users/ramzi/Desktop/42/Cub3d'
+ 

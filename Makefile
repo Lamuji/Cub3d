@@ -1,7 +1,7 @@
 NAME = cub3d
 
 CC = cc
-FLAGS =  -g -Wall -Wextra -Werror -fsanitize=address
+FLAGS =  -g -Wall -Wextra -Werror 
 LDFLAG = -Lmlx -framework OpenGL -framework AppKit
 
 SRC = srcs/main.c \
