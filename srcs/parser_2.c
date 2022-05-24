@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:19:29 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/24 18:06:02 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/24 23:39:15 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,12 @@ static	int	check_params(char *str, t_cub *cub)
 	}
 	else if (ft_ch_int(str, "C "))
 	{
-		if (norm_color(str, cub->rgbC))
+		if (norm_color(str, cub->rgbc))
 			return (1);
 	}
 	else if (ft_ch_int(str, "F "))
 	{
-		if (norm_color(str, cub->rgbF))
+		if (norm_color(str, cub->rgbf))
 			return (1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/24 18:59:39 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/24 23:39:15 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,15 @@ static	void	create_tabs(t_cub *cub, char **av)
 
 static	void	init_struct(t_cub *cub, char **av)
 {
+	init_value(cub);
 	create_tabs(cub, av);
 	turn_into_square(cub->map);
 	cub->height = ft_arrlen(cub->map);
 	cub->count_pos = 0;
-	cub->rgbF = ft_calloc(sizeof(int), 3);
-	cub->rgbC = ft_calloc(sizeof(int), 3);
-	manager(cub->rgbC);
-	manager(cub->rgbF);
+	cub->rgbf = ft_calloc(sizeof(int), 3);
+	cub->rgbc = ft_calloc(sizeof(int), 3);
+	manager(cub->rgbc);
+	manager(cub->rgbf);
 	cub->mlx = mlx_init();
 	cub->win = mlx_new_window(cub->mlx, SCR_W, SCR_H, "Cub3d");
 	cub->set_key = 0;
@@ -99,7 +100,7 @@ int	main(int ac, char **av)
 	parser(&cub, ac, av);
 	player_pos(&cub);
 	mlx_hook(cub.win, 2, 0, deal_key, &cub);
-	mlx_hook(cub.win, 36, 0, deal_key, &cub);
+	mlx_hook(cub.win, 3, 0, deal_key, &cub);
 	mlx_hook(cub.win, 17, 0, exit_game, &cub);
 	mlx_hook(cub.win, 6, 0, deal_mouse, &cub);
 	mlx_loop_hook(cub.mlx, looping, &cub);

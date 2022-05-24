@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 10:12:30 by ramzi             #+#    #+#             */
-/*   Updated: 2022/05/24 20:31:45 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/24 23:39:15 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static	void	ceiling(t_cub *cub, int x)
 	int i = cub->wall_top;
 	while (i >= 0)
 	{
-		my_mlx_pixel_put(&cub->img, x, i, rgb_to_hex(cub->rgbC[0], cub->rgbC[1], cub->rgbC[2]));
+		my_mlx_pixel_put(&cub->img, x, i, rgb_to_hex(cub->rgbc[0], cub->rgbc[1], cub->rgbc[2]));
 		i--;
 	}
 }
@@ -27,7 +27,7 @@ static	void	ground(t_cub *cub, int x)
 	int i = cub->wall_bottom;
 	while (i < SCR_H)
 	{
-		my_mlx_pixel_put(&cub->img, x, i, rgb_to_hex(cub->rgbF[0], cub->rgbF[1], cub->rgbF[2]));
+		my_mlx_pixel_put(&cub->img, x, i, rgb_to_hex(cub->rgbf[0], cub->rgbf[1], cub->rgbf[2]));
 		i++;
 	}
 }
@@ -84,12 +84,12 @@ void	cub3d(t_cub *cub, double angle)
 		find_wall(cub);
 		beta = fabs(convert_ang(cub->angle) - cub->ra_angle);
 		cub->fov_lenght = cub->ray_length * cos(beta);
-		cub->slice_height = floor(64 / cub->fov_lenght * cub->projected_dist);
+		cub->slice_height = floor(64.0 / cub->fov_lenght * cub->projected_dist);
 		if (cub->slice_height > SCR_H)
 			cub->slice_height = SCR_H;
 		cub->wall_bottom = MID_H + cub->slice_height/2;
-		if (cub->wall_bottom > SCR_H)
-			cub->wall_bottom = SCR_H;
+		// if (cub->wall_bottom > SCR_H)
+		// 	cub->wall_bottom = SCR_H;
 		cub->wall_top =  SCR_H - cub->wall_bottom;
 		if (cub->wall_top < 0)
 			cub->wall_top = 0;

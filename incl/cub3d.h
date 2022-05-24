@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/24 20:31:54 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/24 23:42:07 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,19 @@
 # define EAST 0
 # define WEST 180
 # define PI 3.1415926535
-# define P2 PI/2
-# define P3 3 * PI/2
+# define P2 1.5707963267
+# define P3 4.7123889803
 # define DR	0.0174533
 # define SPEED 10
-# define SCR_W 960
-# define SCR_H 640
-# define MID_H SCR_H/2
+# define SCR_W 960.0
+# define SCR_H 640.0
+# define MID_H 320.0
 # define MINIPIX 16.0
 # define TRIDPIX 64.0
 
-static	int	cursor;
+static int	g_cursor;
 
-typedef struct	s_data 
+typedef struct s_data 
 {
 	void	*img;
 	char	*addr;
@@ -65,79 +65,74 @@ typedef struct	s_data
 	int		endian;
 }				t_data;
 
-typedef	struct s_render
+typedef struct s_render
 {
-	int	*so_color;
-	int *no_color;
-	int	*ea_color;
-	int	*we_color;
-	int	color_h;
-	int	foundcolor;
-	int	type;
-	char *wall_v;
-	char *wall_h;
-	int	tx;
-	int	ty;
+	int		*so_color;
+	int		*no_color;
+	int		*ea_color;
+	int		*we_color;
+	int		color_h;
+	int		foundcolor;
+	int		type;
+	char	*wall_v;
+	char	*wall_h;
+	int		tx;
+	int		ty;
 	double	index;
-	void *no;
-	char *so;
-	char *we;
-	char *ea;
+	void	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
 }			t_render;
 
 typedef struct s_minimap
 {
-	int plmapx;
-	int plmapy;
+	int	plmapx;
+	int	plmapy;
 }				t_minimap;
 
 typedef struct s_cub
 {
-	char	**elem;
-	char	**map;
-	int		widthsquare;
-	int		width;
-	int		height;
-	int		pix_x;
-	int		pix_y;
-	int		count_pos;
-	int		*rgbC;
-	int		*rgbF;
-	double	start_angle;
-	double	angle;
-	double	ra_angle;
-	void	*mlx;
-	void	*win;
-	double	player_x;
-	double	player_y;
-	double	set_key;
-	double	Hx; // final horiz dist x
-	double	Hy; // final horiz dist y
-	double	Vx; // final vertical dist x
-	double	Vy; // final vertical dist y
-	double	fx; // final distance x
-	double	fy; // final distance y
-	double	dx; 
-	double	dy;
-	double	step;
-	double	ray_length;
-	double	fov_lenght;
-	double	projected_dist;
-	double	wall_top;
-	double	wall_bottom;
-	double	slice_height;
-	t_render render;
-	t_minimap minimap;
-	t_data	img;
-	t_data	img2;
-	t_data	img3;
+	char		**elem;
+	char		**map;
+	int			widthsquare;
+	int			width;
+	int			height;
+	int			pix_x;
+	int			pix_y;
+	int			count_pos;
+	int			*rgbc;
+	int			*rgbf;
+	double		start_angle;
+	double		angle;
+	double		ra_angle;
+	void		*mlx;
+	void		*win;
+	double		player_x;
+	double		player_y;
+	double		set_key;
+	double		Hx;
+	double		Hy;
+	double		Vx;
+	double		Vy;
+	double		fx;
+	double		fy;
+	double		dx;
+	double		dy;
+	double		step;
+	double		ray_length;
+	double		fov_lenght;
+	double		projected_dist;
+	double		wall_top;
+	double		wall_bottom;
+	double		slice_height;
+	t_render	render;
+	t_data		img;
+	t_data		img2;
+	t_data		img3;
 }			t_cub;
-
-
-
 	/*	LE BOSS DES LEAKS	*/
 void	manager(void *ptr);
-
 	/* PARSING */
 char	**get_tab(char **av);
 void	turn_into_square(char **str);
@@ -152,9 +147,7 @@ int		check_closed(char **str, int width);
 int		check_double(char **str);
 void	player_pos(t_cub *cub);
 void	player_pos_game(t_cub *cub);
-
-	/*	graphical part	*/
-
+	/*	GRAPHICAL PART	*/
 void	draw_minimap(t_cub *cub);
 void	draw_player(t_cub *cub);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
@@ -169,7 +162,7 @@ void	check_vertical_left(t_cub *cub, int size);
 void	the_right_one(t_cub *cub);
 void	cub3d(t_cub *cub, double angle);
 
-	/*	movements	*/
+	/*	MOVEMENTS	*/
 void	check_move(t_cub *cub);
 int		deal_key(int keycode, t_cub *cub);
 int		deal_mouse(int x, int y, t_cub *cub);
@@ -178,6 +171,7 @@ int		exit_game(void);
 	/*	utils	*/
 unsigned long 	rgb_to_hex(int r, int g, int b);
 double			convert_ang(double angle);
+void			init_value(t_cub *cub);
 void			which_direction(t_cub *cub);
 void			define_starting_dydx(t_cub *cub);
 int				mlx_mouse_hide();

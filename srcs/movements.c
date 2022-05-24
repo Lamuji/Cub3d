@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 07:55:24 by ramzi             #+#    #+#             */
-/*   Updated: 2022/05/24 20:39:40 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/24 23:28:21 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	check_move(t_cub *cub)
 {
     double Xdis;
     double Ydis;
-//	printf("[%f - %f]\n", round(cub->player_y/8.0), round(cub->player_x/8.0));
+
     Xdis = cos(convert_ang(cub->angle)) * 1.0;
     Ydis = sin(convert_ang(cub->angle)) * 1.0;
     if (cub->set_key == 1)
