@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 15:07:47 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/19 15:06:10 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/24 20:25:42 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	player_pos(t_cub *cub)
 			if (cub->map[i][j] == 'N' || cub->map[i][j] == 'S'
 			|| cub->map[i][j] == 'W' || cub->map[i][j] == 'E')
 			{
-				cub->player_x = j * 8;
-				cub->player_y = i * 8;
+				cub->player_x = (double)j * 8.0;
+				cub->player_y = (double)i * 8.0;
 				cub->minimap.plmapx = j * 8;
 				cub->minimap.plmapy = i * 8;
 			}

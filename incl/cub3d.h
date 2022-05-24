@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/24 02:57:53 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/24 20:31:54 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define SUCCESS 0
 # define FAILURE 1
 # define NORM "01NSEW"
+# define CLOSE "1*"
 # define W 13
 # define A 0
 # define S 1
@@ -50,8 +51,8 @@
 # define SCR_W 960
 # define SCR_H 640
 # define MID_H SCR_H/2
-# define MINIPIX 16
-# define TRIDPIX 64
+# define MINIPIX 16.0
+# define TRIDPIX 64.0
 
 static	int	cursor;
 
@@ -120,6 +121,7 @@ typedef struct s_cub
 	double	dy;
 	double	step;
 	double	ray_length;
+	double	fov_lenght;
 	double	projected_dist;
 	double	wall_top;
 	double	wall_bottom;
@@ -181,6 +183,7 @@ void			define_starting_dydx(t_cub *cub);
 int				mlx_mouse_hide();
 void			path_to_text(t_cub *cub, char *str, char *path);
 int				find_pixel(t_cub *cub, int i);
+int				schr(char *str, int c);
 //procuration dalil naima 1er dec 1968
 
 #endif

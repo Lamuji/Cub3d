@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:19:29 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/17 12:11:05 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/24 18:06:02 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,20 +121,3 @@ int	elem_nbr(t_cub *cub)
 	}
 	return (1);
 }
-
-// mauvais nb d'arguments OK
-// pas un fichier .cub OK
-// dossier envoyé
-// un paramètre (texture/couleur) est défini 2 fois
-// un paramètre n'a pas été décrit ou est décrit après la map OK
-// fichier de texture qui finit pas par .xpm OK
-// couleur contient pas 3 nombres OK
-// que des nombres pour les couleurs (is digit)  OK
-// un nombre est plus petit que 0 ou plus grand que 255 OK
-// un paramètre est mal décrit (exemple: la ligne du nord commence par NOO et pas NO) OK
-// mauvais caractère dans la map OK
-// pas de map OK
-// espace pas entouré par des murs ou par un autre espace OK
-// trop de positions de départ OK 
-// aucune position de départ OK
-// map pas entouré de mur / les 0 sont entourés de 0 ou de 1 OK

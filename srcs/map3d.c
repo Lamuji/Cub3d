@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 10:12:30 by ramzi             #+#    #+#             */
-/*   Updated: 2022/05/23 18:25:27 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/24 20:31:45 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,35 +46,14 @@ static	void	walls(t_cub *cub, int x)
 			my_mlx_pixel_put(&cub->img, x, i, cub->render.we_color[find_pixel(cub, i)]);
 		else if (cub->ra_angle < P2 || cub->ra_angle > P3)
 			my_mlx_pixel_put(&cub->img, x, i, cub->render.ea_color[find_pixel(cub, i)]);
-		// else if (cub->angle >= 90.0 && cub->angle <= 270.0 && cub->render.type == 2)
-		// 	my_mlx_pixel_put(&cub->img, x, i, cub->render.ea_color[find_pixel(cub, i)]);
-		// else if (cub->render.type == 2)
-		// 	my_mlx_pixel_put(&cub->img, x, i, cub->render.we_color[find_pixel(cub, i)]);
-		// if (cub->render.type == 1)
-		// {
-		// 	if (cos(cub->ra_angle) > 0)
-		// 	{
-		// 		if (cub->ra_angle < PI)
-		// 			my_mlx_pixel_put(&cub->img, x, i, cub->render.we_color[find_pixel(cub, i)]);
-		// 		else
-		// 			my_mlx_pixel_put(&cub->img, x, i, cub->render.ea_color[find_pixel(cub, i)]);
-		// 	}
-		// }
-		// else
-		// {
-		// 	if (cub->angle < 180 || cub->angle > 0)
-		//	
-		// 	else
-		//
-		// }
 		i--;
 	}
 }
 
 static	void	find_wall(t_cub *cub)
 {
-	cub->dy = cub->player_y * 8 + 32;
-	cub->dx = cub->player_x * 8 + 32;
+	cub->dy = cub->player_y * 8.0 + 32.0;
+	cub->dx = cub->player_x * 8.0 + 32.0;
 	if (cub->ra_angle > 6.2831853)
 		cub->ra_angle -= 6.2831853;
 	if (cub->ra_angle < 0)
@@ -104,8 +83,8 @@ void	cub3d(t_cub *cub, double angle)
 	{
 		find_wall(cub);
 		beta = fabs(convert_ang(cub->angle) - cub->ra_angle);
-		cub->ray_length = cub->ray_length * cos(beta);
-		cub->slice_height = floor(64 / cub->ray_length * cub->projected_dist);
+		cub->fov_lenght = cub->ray_length * cos(beta);
+		cub->slice_height = floor(64 / cub->fov_lenght * cub->projected_dist);
 		if (cub->slice_height > SCR_H)
 			cub->slice_height = SCR_H;
 		cub->wall_bottom = MID_H + cub->slice_height/2;

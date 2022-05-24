@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 18:30:17 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/23 18:52:15 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/24 18:50:45 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	check_closed(char **str, int width)
 		{
 			if (str[0][j] != '1' && str[0][j] != '*')
 				return (0);
-			if (str[i + 1] == NULL)
+			if (str[i + 1] == NULL || str[i][j + 1] == '\0')
 			{
 				if (str[i][j] != '1' && str[i][j] != '*')
 					return (0);
@@ -60,6 +60,11 @@ int	check_closed(char **str, int width)
 			if (!str[i][j + 1])
 			{
 				if (str[i][j] != '1' && str[i][j] != '*')
+					return (0);
+			}
+			if (str[i][j] == '*')
+			{
+				if ( !schr(CLOSE, str[i][j - 1]))
 					return (0);
 			}
 			j++;

@@ -6,13 +6,13 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 16:28:53 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/13 16:08:15 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/24 18:17:18 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/cub3d.h"
 
-static int	schr(char *str, int c)
+int	schr(char *str, int c)
 {
 	int	i;
 
