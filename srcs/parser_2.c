@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:19:29 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/24 23:39:15 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/25 13:37:12 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static	int	norm_color(char *str, int *rgb)
 	char	**spl_color;
 
 	i = -1;
-	spl_color = ft_split(((char *)str + 2),',');
+	spl_color = ft_split(((char *)str + 2), ',');
 	manager(spl_color);
 	if (ft_arrlen(spl_color) != 3)
 		return (0);

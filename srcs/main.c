@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:05 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/24 23:39:15 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/25 13:22:49 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,19 @@
 
 int	looping(t_cub *cub)
 {
+	double	i;
+
 	cub->img.img = mlx_new_image(cub->mlx, SCR_W, SCR_H);
-	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, &cub->img.line_length, &cub->img.endian);
-	cub->img2.img = mlx_new_image(cub->mlx, cub->widthsquare * 8, cub->height * 8);
-	cub->img2.addr = mlx_get_data_addr(cub->img2.img, &cub->img2.bits_per_pixel, &cub->img2.line_length, &cub->img2.endian);
-	double i = cub->angle - 30;
+	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel,
+			&cub->img.line_length, &cub->img.endian);
+	cub->img2.img = mlx_new_image(cub->mlx, cub->widthsquare * 8,
+			cub->height * 8);
+	cub->img2.addr = mlx_get_data_addr(cub->img2.img, &cub->img2.bits_per_pixel,
+			&cub->img2.line_length, &cub->img2.endian);
+	i = cub->angle - 30;
 	cub3d(cub, i);
 	draw_minimap(cub);
 	draw_player(cub);
-	//vision(cub, cub->angle);
 	check_move(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img2.img, 20, 20);
@@ -40,6 +44,7 @@ static	void	create_tabs(t_cub *cub, char **av)
 	int		tablen;
 
 	i = -1;
+	j = 0;
 	tab = get_tab(av);
 	if (tab[0] == NULL)
 		ft_putendl_exit("Error. - file.cub is empty", STDERR_FILENO);
@@ -48,20 +53,7 @@ static	void	create_tabs(t_cub *cub, char **av)
 	manager(cub->elem);
 	cub->map = ft_calloc(sizeof(char *), tablen - 5);
 	manager(cub->map);
-	while (++i < 6)
-	{
-		cub->elem[i] = ft_strdup(tab[i]);
-		manager(cub->elem[i]);
-	}
-	j = 0;
-	cub->widthsquare = ft_arrlenmax(&tab[i]);
-	while (tab[i])
-	{
-		cub->map[j] = ft_strdupmap(tab[i], cub->widthsquare);
-		manager(cub->map[j]);
-		i++;
-		j++;
-	}
+	fill_tabs(cub, i, j, tab);
 }
 
 static	void	init_struct(t_cub *cub, char **av)
@@ -78,7 +70,7 @@ static	void	init_struct(t_cub *cub, char **av)
 	cub->mlx = mlx_init();
 	cub->win = mlx_new_window(cub->mlx, SCR_W, SCR_H, "Cub3d");
 	cub->set_key = 0;
-	cub->projected_dist = floor(MID_H/tan(convert_ang(30.0)));
+	cub->projected_dist = floor(MID_H / tan(convert_ang(30.0)));
 	which_direction(cub);
 }
 
@@ -107,7 +99,3 @@ int	main(int ac, char **av)
 	mlx_loop(cub.mlx);
 	return (0);
 }
-
-// change minimap, forme ronde, fait deplacer la map sur le joueur qui reste au centre
-
-// touche d et s pour deplacemeent lateral OK

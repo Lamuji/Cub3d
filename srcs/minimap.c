@@ -3,21 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 15:07:47 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/25 09:39:22 by ramzi            ###   ########.fr       */
+/*   Updated: 2022/05/25 20:40:27 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/cub3d.h"
 
-
-
 void	player_pos(t_cub *cub)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (cub->map[i])
@@ -39,11 +37,11 @@ void	player_pos(t_cub *cub)
 
 void	draw_player(t_cub *cub)
 {
-	int start_x;
-	int start_y;
-	int end_x;
-	int end_y;
-	int i;
+	int	start_x;
+	int	start_y;
+	int	end_x;
+	int	end_y;
+	int	i;
 
 	start_x = cub->player_x + 3;
 	start_y = cub->player_y + 3;
@@ -54,7 +52,7 @@ void	draw_player(t_cub *cub)
 		i = start_x;
 		while (i <= end_x)
 		{
-			my_mlx_pixel_put(&cub->img2, i, start_y, 0x50728840);
+			my_mlx_pixel_put(&cub->img2, i, start_y, 0x30728840);
 			i++;
 		}
 		start_y++;
@@ -63,15 +61,17 @@ void	draw_player(t_cub *cub)
 
 static	void	putminimap(t_data *data, int x, int y, int color)
 {
-	int tx;
-	int ty = y;
+	int	tx;
+	int	ty;
+
+	ty = y;
 	while (ty < y + 8)
 	{
 		tx = x;
 		while (tx < x + 8)
 		{
 			if (tx == x || ty == y)
-				my_mlx_pixel_put(data, tx, ty, 0x509999FF);
+				my_mlx_pixel_put(data, tx, ty, 0x309999FF);
 			else
 				my_mlx_pixel_put(data, tx, ty, color);
 			tx++;
@@ -82,14 +82,14 @@ static	void	putminimap(t_data *data, int x, int y, int color)
 
 void	draw_minimap(t_cub *cub)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	cub->pix_y = 0;
 	i = 0;
 	while (cub->map[i])
 	{
-	 	j = 0;
+		j = 0;
 		cub->pix_x = 0;
 		while (cub->map[i][j])
 		{
@@ -110,5 +110,5 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x *(data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }

@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/24 23:42:07 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/25 14:12:41 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 # define P2 1.5707963267
 # define P3 4.7123889803
 # define DR	0.0174533
-# define SPEED 10
+# define SPEED 2
 # define SCR_W 960.0
 # define SCR_H 640.0
 # define MID_H 320.0
@@ -56,7 +56,7 @@
 
 static int	g_cursor;
 
-typedef struct s_data 
+typedef struct s_data
 {
 	void	*img;
 	char	*addr;
@@ -65,7 +65,7 @@ typedef struct s_data
 	int		endian;
 }				t_data;
 
-typedef struct s_render
+typedef struct s_r
 {
 	int		*so_color;
 	int		*no_color;
@@ -83,7 +83,12 @@ typedef struct s_render
 	char	*so;
 	char	*we;
 	char	*ea;
-}			t_render;
+	int		width;
+	int		height;
+	int		a;
+	int		b;
+	int		c;
+}			t_r;
 
 typedef struct s_minimap
 {
@@ -111,10 +116,10 @@ typedef struct s_cub
 	double		player_x;
 	double		player_y;
 	double		set_key;
-	double		Hx;
-	double		Hy;
-	double		Vx;
-	double		Vy;
+	double		hx;
+	double		hy;
+	double		vx;
+	double		vy;
 	double		fx;
 	double		fy;
 	double		dx;
@@ -126,58 +131,58 @@ typedef struct s_cub
 	double		wall_top;
 	double		wall_bottom;
 	double		slice_height;
-	t_render	render;
+	t_r			r;
 	t_data		img;
 	t_data		img2;
 	t_data		img3;
 }			t_cub;
 	/*	LE BOSS DES LEAKS	*/
-void	manager(void *ptr);
+void			manager(void *ptr);
 	/* PARSING */
-char	**get_tab(char **av);
-void	turn_into_square(char **str);
-char	*ft_strdupmap(const char *src, int len);
-void	parser(t_cub *cub, int ac, char **av);
-int		check_holes(char **tab);
-int		arg_is_correct(int ac, char *str);
-int		check_invalid_char(char **str);
-void	check_pos(t_cub *cub);
-int		elem_nbr(t_cub *cub);
-int		check_closed(char **str, int width);
-int		check_double(char **str);
-void	player_pos(t_cub *cub);
-void	player_pos_game(t_cub *cub);
+char			**get_tab(char **av);
+void			turn_into_square(char **str);
+char			*ft_strdupmap(const char *src, int len);
+void			parser(t_cub *cub, int ac, char **av);
+int				check_holes(char **tab);
+int				arg_is_correct(int ac, char *str);
+int				check_invalid_char(char **str);
+void			check_pos(t_cub *cub);
+int				elem_nbr(t_cub *cub);
+int				check_closed(char **str, int width);
+int				check_double(char **str);
+void			player_pos(t_cub *cub);
+void			player_pos_game(t_cub *cub);
 	/*	GRAPHICAL PART	*/
-void	draw_minimap(t_cub *cub);
-void	draw_player(t_cub *cub);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	vision(t_cub *cub, double angle);
-void	dda_algo(t_cub *cub);
-void	draw(t_cub *cub, double x, double y);
-int		looping(t_cub *cub);
-void	check_horizontal_up(t_cub *cub, int size);
-void	check_horizontal_down(t_cub *cub, int size);
-void	check_vertical_right(t_cub *cub, int size);
-void	check_vertical_left(t_cub *cub, int size);
-void	the_right_one(t_cub *cub);
-void	cub3d(t_cub *cub, double angle);
+void			draw_minimap(t_cub *cub);
+void			draw_player(t_cub *cub);
+void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void			vision(t_cub *cub, double angle);
+void			dda_algo(t_cub *cub);
+void			draw(t_cub *cub, double x, double y);
+int				looping(t_cub *cub);
+void			check_horizontal_up(t_cub *cub, int size);
+void			check_horizontal_down(t_cub *cub, int size);
+void			check_vertical_right(t_cub *cub, int size);
+void			check_vertical_left(t_cub *cub, int size);
+void			the_right_one(t_cub *cub);
+void			cub3d(t_cub *cub, double angle);
 
 	/*	MOVEMENTS	*/
-void	check_move(t_cub *cub);
-int		deal_key(int keycode, t_cub *cub);
-int		deal_mouse(int x, int y, t_cub *cub);
-int		exit_game(void);
+void			check_move(t_cub *cub);
+int				deal_key(int keycode, t_cub *cub);
+int				deal_mouse(int x, int y, t_cub *cub);
+int				exit_game(void);
 
 	/*	utils	*/
-unsigned long 	rgb_to_hex(int r, int g, int b);
+unsigned long	rgb_to_hex(int r, int g, int b);
 double			convert_ang(double angle);
 void			init_value(t_cub *cub);
 void			which_direction(t_cub *cub);
 void			define_starting_dydx(t_cub *cub);
-int				mlx_mouse_hide();
+int				mlx_mouse_hide(void);
 void			path_to_text(t_cub *cub, char *str, char *path);
 int				find_pixel(t_cub *cub, int i);
 int				schr(char *str, int c);
-//procuration dalil naima 1er dec 1968
+void			fill_tabs(t_cub *cub, int i, int j, char **tab);
 
 #endif
