@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 18:28:59 by ramzi             #+#    #+#             */
-/*   Updated: 2022/05/24 22:56:28 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/25 09:41:12 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ int	find_pixel(t_cub *cub, int i)
 
 	color = 0;
 	if (cub->render.type == 1)
-		cub->render.tx = fmod(cub->fx / 64.0, 1) * 64.0;
+		cub->render.tx = fmod(cub->fx / 64.0, 1) * 200.0;
 	else if (cub->render.type == 2)
-		cub->render.tx = fmod(cub->fy / 64.0, 1.0) * 64.0;
-	cub->render.ty = (1.0 - ((320.0 + cub->slice_height) - i) / (cub->slice_height * 2.0)) * 64.0;
-	cub->render.index = (cub->render.tx + (cub->render.ty * 64.0));
+		cub->render.tx = fmod(cub->fy / 64.0, 1.0) * 200.0;
+	cub->render.ty = (1.0 - ((320.0 + cub->slice_height) - i) / (cub->slice_height * 2.0)) * 200.0;
+	cub->render.index = (cub->render.tx + (cub->render.ty * 200.0));
 	color = cub->render.index;
 	return (color);
 }

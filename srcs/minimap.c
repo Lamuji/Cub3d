@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ramzi <ramzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 15:07:47 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/24 20:25:42 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/25 09:39:22 by ramzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void	player_pos(t_cub *cub)
 			{
 				cub->player_x = (double)j * 8.0;
 				cub->player_y = (double)i * 8.0;
-				cub->minimap.plmapx = j * 8;
-				cub->minimap.plmapy = i * 8;
 			}
 			j++;
 		}

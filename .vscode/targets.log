@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
 
-# Make data base, printed on Tue May 24 17:00:07 2022
+# Make data base, printed on Wed May 25 09:37:41 2022
 
 # Variables
 
@@ -42,7 +42,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/v2/dbvlmy_s0gzdqldggwjnz0r80000gn/T/vscode-ipc-b0cf3215-7aae-4525-b5c9-5522025e5346.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/v2/dbvlmy_s0gzdqldggwjnz0r80000gn/T/vscode-ipc-27396761-0b91-4ef8-b373-c0653d8919c6.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -152,7 +152,7 @@ LANG = C
 # environment
 VSCODE_PID = 359
 # variable set hash-table stats:
-# Load=70/1024=7%, Rehash=0, Collisions=3/102=3%
+# Load=70/1024=7%, Rehash=0, Collisions=3/98=3%
 
 # Pattern-specific Variable Values
 
@@ -160,10 +160,10 @@ VSCODE_PID = 359
 
 # Directories
 
-# . (device 16777225, inode 12932646735): 14 files, no impossibilities.
-# srcs (device 16777225, inode 12932647240): 28 files, no impossibilities so far.
+# . (device 16777225, inode 12932646735): 13 files, no impossibilities.
+# srcs (device 16777225, inode 12932647240): 27 files, no impossibilities so far.
 
-# 42 files, no impossibilities in 2 directories.
+# 40 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -179,7 +179,7 @@ VSCODE_PID = 359
 srcs/minimap.o: srcs/minimap.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/minimap'
-#  Last modified 2022-05-24 02:57:56
+#  Last modified 2022-05-25 00:38:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -191,7 +191,7 @@ srcs/minimap.o: srcs/minimap.c
 # Not a target:
 srcs/parser.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-22 17:19:53
+#  Last modified 2022-05-25 00:38:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -202,14 +202,14 @@ all: cub3d
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Needs to be updated (-q is set).
+#  Successfully updated.
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 srcs/parser_2.o: srcs/parser_2.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/parser_2'
-#  Last modified 2022-05-24 02:57:56
+#  Last modified 2022-05-25 00:38:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -221,7 +221,7 @@ srcs/parser_2.o: srcs/parser_2.c
 srcs/deal_key.o: srcs/deal_key.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/deal_key'
-#  Last modified 2022-05-24 02:57:56
+#  Last modified 2022-05-25 00:38:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -230,19 +230,25 @@ srcs/deal_key.o: srcs/deal_key.c
 	$(CC) $(FLAGS) -c $< -o $@ 
 	
 
-# Not a target:
-srcs/map3d.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+srcs/map3d.o: srcs/map3d.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/map3d'
+#  Last modified 2022-05-25 00:38:44
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 23):
+	$(CC) $(FLAGS) -c $< -o $@ 
+	
 
 cub3d: srcs/main.o srcs/ft_split_cub.o srcs/parser.o srcs/parser_2.o srcs/parser_3.o srcs/deal_key.o srcs/minimap.o srcs/vision.o srcs/movements.o srcs/map3d.o srcs/utils.o srcs/texture.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-05-24 12:29:06
+#  Last modified 2022-05-25 00:38:44
 #  File has been updated.
-#  Needs to be updated (-q is set).
+#  Successfully updated.
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 #  commands to execute (from `Makefile', line 27):
 	@make -C libft/
 	@$(CC) $(LDFLAG) $(FLAGS) $^ -o $@ libft/libft.a mlx/libmlx.a
@@ -251,7 +257,7 @@ cub3d: srcs/main.o srcs/ft_split_cub.o srcs/parser.o srcs/parser_2.o srcs/parser
 # Not a target:
 srcs/movements.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-24 12:36:36
+#  Last modified 2022-05-25 00:38:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -275,28 +281,41 @@ Makefile:
 # Not a target:
 srcs/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-24 02:04:00
+#  Last modified 2022-05-25 00:38:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-# Not a target:
-srcs/texture.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+srcs/texture.o: srcs/texture.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/texture'
+#  Last modified 2022-05-25 00:38:44
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 23):
+	$(CC) $(FLAGS) -c $< -o $@ 
+	
 
-# Not a target:
-srcs/utils.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+ 
+srcs/utils.o: srcs/utils.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `srcs/utils'
+#  Last modified 2022-05-25 00:38:44
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 23):
+	$(CC) $(FLAGS) -c $< -o $@ 
+	
 
 # Not a target:
 srcs/minimap.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-22 17:19:53
+#  Last modified 2022-05-25 00:38:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -304,9 +323,8 @@ srcs/minimap.c:
 
 # Not a target:
 srcs/parser_2.c:
- 
 #  Implicit rule search has been done.
-#  Last modified 2022-05-22 17:19:53
+#  Last modified 2022-05-25 00:38:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -315,7 +333,7 @@ srcs/parser_2.c:
 # Not a target:
 srcs/deal_key.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-24 02:04:00
+#  Last modified 2022-05-25 00:38:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -333,7 +351,7 @@ fclean: clean
 srcs/vision.o: srcs/vision.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/vision'
-#  Last modified 2022-05-24 02:57:56
+#  Last modified 2022-05-25 00:38:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -345,7 +363,7 @@ srcs/vision.o: srcs/vision.c
 srcs/parser_3.o: srcs/parser_3.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/parser_3'
-#  Last modified 2022-05-24 02:57:56
+#  Last modified 2022-05-25 00:38:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -357,7 +375,7 @@ srcs/parser_3.o: srcs/parser_3.c
 srcs/ft_split_cub.o: srcs/ft_split_cub.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/ft_split_cub'
-#  Last modified 2022-05-24 02:57:55
+#  Last modified 2022-05-25 00:38:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -365,6 +383,15 @@ srcs/ft_split_cub.o: srcs/ft_split_cub.c
 #  commands to execute (from `Makefile', line 23):
 	$(CC) $(FLAGS) -c $< -o $@ 
 	
+
+# Not a target:
+srcs/map3d.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-25 00:38:44
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 .DEFAULT:
@@ -386,10 +413,28 @@ clean:
 	rm -f $(OBJ)
 	
 
+# Not a target:
+srcs/texture.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-25 00:38:44
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/utils.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-25 00:38:44
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
 srcs/parser.o: srcs/parser.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/parser'
-#  Last modified 2022-05-24 02:57:55
+#  Last modified 2022-05-25 00:38:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -410,7 +455,7 @@ srcs/vision.c:
 # Not a target:
 srcs/parser_3.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-24 02:04:00
+#  Last modified 2022-05-25 00:38:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -419,27 +464,11 @@ srcs/parser_3.c:
 srcs/movements.o: srcs/movements.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/movements'
-#  Last modified 2022-05-24 12:29:06
+#  Last modified 2022-05-25 00:38:44
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := srcs/movements.o
-# automatic
-# % := 
-# automatic
-# * := srcs/movements
-# automatic
-# + := srcs/movements.c
-# automatic
-# | := 
-# automatic
-# < := srcs/movements.c
-# automatic
-# ^ := srcs/movements.c
-# automatic
-# ? := srcs/movements.c
+#  Successfully updated.
 # variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/14=7%
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 #  commands to execute (from `Makefile', line 23):
 	$(CC) $(FLAGS) -c $< -o $@ 
 	
@@ -456,7 +485,7 @@ srcs/ft_split_cub.c:
 srcs/main.o: srcs/main.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `srcs/main'
-#  Last modified 2022-05-24 02:57:55
+#  Last modified 2022-05-25 00:38:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -466,7 +495,7 @@ srcs/main.o: srcs/main.c
 	
 
 # files hash-table stats:
-# Load=29/1024=3%, Rehash=0, Collisions=0/85=0%
+# Load=32/1024=3%, Rehash=0, Collisions=0/97=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -478,6 +507,6 @@ srcs/main.o: srcs/main.c
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Tue May 24 17:00:07 2022
+# Finished Make data base on Wed May 25 09:37:41 2022
 
  

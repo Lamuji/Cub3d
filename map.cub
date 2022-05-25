@@ -1,11 +1,11 @@
-C 100,149,254
-F 122,193,147
+C 112,128,144
+F 47,79,79
 
 
-NO ./textures/cobblestone.xpm
-SO ./textures/cobblem.xpm
-WE ./textures/stone.xpm
-EA ./textures/stonem.xpm
+NO ./textures/NO.xpm
+SO ./textures/SO.xpm
+WE ./textures/WE.xpm
+EA ./textures/EA.xpm
 
 
 1111111111111111111111111111
