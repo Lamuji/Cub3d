@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/25 14:12:41 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/25 21:20:46 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@
 # define UP 126
 # define NORTH 90
 # define SOUTH 270
-# define EAST 0
-# define WEST 180
+# define EAST 180
+# define WEST 0
 # define PI 3.1415926535
 # define P2 1.5707963267
 # define P3 4.7123889803
