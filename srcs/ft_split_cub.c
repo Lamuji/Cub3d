@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 18:19:45 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/23 19:12:28 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/26 20:00:29 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ char	**get_tab(char **av)
 		buffer[r] = '\0';
 		line = ft_strjjoin(line, buffer);
 	}
+	hole_in_map(line);
 	tab = ft_split(line, '\n');
 	manager(tab);
 	return (tab);

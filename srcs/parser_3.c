@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 18:30:17 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/25 13:47:46 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/26 21:07:57 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ static	int	mago_kun(char **str, int i, int j)
 	}
 	if (str[i][j] == '*')
 	{
-		if (!schr(CLOSE, str[i][j - 1]))
-			return (0);
+		if (str[i][j - 1])
+		{
+			if (!schr(CLOSE, str[i][j - 1]))
+				return (0);
+		}
 	}
 	return (1);
 }
@@ -59,7 +62,7 @@ void	which_direction(t_cub *cub)
 	}
 }
 
-int	check_closed(char **str, int width)
+int	check_closed(char **str, int width, int height)
 {
 	int	i;
 	int	j;
@@ -73,6 +76,8 @@ int	check_closed(char **str, int width)
 		{
 			if (!mago_kun(str, i, j))
 				return (0);
+			if (check_character(str, height))
+				return (0);
 			j++;
 		}
 		i++;
@@ -85,15 +90,14 @@ int	check_double(char **str)
 	int	i;
 	int	j;
 
-	j = 0;
-	i = 1;
+	i = 0;
 	while (str[i])
 	{
-		j = 0;
-		while (str[j] && i < 4)
+		j = 1;
+		if (i > 0)
+			j = 0;
+		while (str[j])
 		{
-			if (i == j)
-				j++;
 			if (str[i][0] == str[j][0])
 				return (0);
 			j++;

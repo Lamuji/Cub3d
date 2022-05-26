@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 10:47:24 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/25 21:20:46 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/26 20:40:42 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ int				arg_is_correct(int ac, char *str);
 int				check_invalid_char(char **str);
 void			check_pos(t_cub *cub);
 int				elem_nbr(t_cub *cub);
-int				check_closed(char **str, int width);
+int				check_closed(char **str, int width, int height);
 int				check_double(char **str);
 void			player_pos(t_cub *cub);
 void			player_pos_game(t_cub *cub);
@@ -184,5 +184,9 @@ void			path_to_text(t_cub *cub, char *str, char *path);
 int				find_pixel(t_cub *cub, int i);
 int				schr(char *str, int c);
 void			fill_tabs(t_cub *cub, int i, int j, char **tab);
+int				check_character(char **tab, int height);
+char			*path(char *str);
+void			hole_in_map(char *line);
+int				check_virgule(char *str);
 
 #endif

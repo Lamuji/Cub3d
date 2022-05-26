@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 16:28:53 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/24 18:17:18 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/26 14:56:56 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,32 +107,8 @@ void	parser(t_cub *cub, int ac, char **av)
 		ft_putendl_exit("Error: Too many or no starting pos", STDERR_FILENO);
 	if (check_invalid_char(cub->map))
 		ft_putendl_exit("Error: Invalid character", STDERR_FILENO);
-	if (!check_closed(cub->map, cub->widthsquare))
+	if (!check_closed(cub->map, cub->widthsquare, cub->height))
 		ft_putendl_exit("Error: Map not closed", STDERR_FILENO);
 	if (check_holes(cub->map))
 		ft_putendl_exit("Error: Map error", STDERR_FILENO);
 }
-
-// mauvais nb d'arguments OK
-// pas un fichier .cub OK
-// dossier envoyé 
-// un paramètre (texture/couleur) est défini 2 fois 
-// un paramètre n'a pas été décrit ou est décrit après la map
-// fichier de texture existe pas
-// fichier de texture qui est un dossier
-// fichier de texture qui finit pas par .xpm
-// couleur contient pas 3 nombres
-// que des nombres pour les couleurs (is digit)
-// un nombre est plus petit que 0 ou plus grand que 255
-// un paramètre est mal décrit (exemple: la ligne du nord commence 
-//par NOO et pas NO) OK
-// mauvais caractère dans la map OK
-// pas de map
-// espace pas entouré par des murs ou par un autre espace
-// trop de positions de départ OK 
-// aucune position de départ OK
-// map pas entouré de mur / les 0 sont entourés de 0 ou de 1 OK
-
-// salut, revoit la fonction check horizontal et repare tes soucis, 
-//tu dois placer des pixel a chq fois que tu passe par une ligne ou colonne 
-//juska un mur. 

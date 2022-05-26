@@ -15,6 +15,7 @@ SRC = srcs/main.c \
 	srcs/movements.c \
 	srcs/map3d.c \
 	srcs/utils.c \
+	srcs/utils_2.c \
 	srcs/texture.c \
 
 OBJ = $(SRC:%.c=%.o)

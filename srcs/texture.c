@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 18:28:59 by ramzi             #+#    #+#             */
-/*   Updated: 2022/05/25 14:20:51 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/26 13:49:24 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static	void	east_west(t_cub *cub, char *str, char *path)
 	{
 		cub->r.we = mlx_xpm_file_to_image(cub->mlx, path,
 				&cub->r.width, &cub->r.height);
+		if (!cub->r.we)
+			ft_putendl_exit("Error - File.xpm not valid", STDERR_FILENO);
 		cub->r.we_color = (int *)mlx_get_data_addr
 			(cub->r.we, &cub->r.a, &cub->r.b, &cub->r.c);
 	}
@@ -25,6 +27,8 @@ static	void	east_west(t_cub *cub, char *str, char *path)
 	{
 		cub->r.ea = mlx_xpm_file_to_image(cub->mlx, path,
 				&cub->r.width, &cub->r.height);
+		if (!cub->r.ea)
+			ft_putendl_exit("Error - File.xpm not valid", STDERR_FILENO);
 		cub->r.ea_color = (int *)mlx_get_data_addr
 			(cub->r.ea, &cub->r.a, &cub->r.b, &cub->r.c);
 	}
@@ -36,6 +40,8 @@ void	path_to_text(t_cub *cub, char *str, char *path)
 	{
 		cub->r.no = mlx_xpm_file_to_image(cub->mlx, path,
 				&cub->r.width, &cub->r.height);
+		if (!cub->r.no)
+			ft_putendl_exit("Error - File.xpm not valid", STDERR_FILENO);
 		cub->r.no_color = (int *)mlx_get_data_addr
 			(cub->r.no, &cub->r.a, &cub->r.b, &cub->r.c);
 	}
@@ -43,6 +49,8 @@ void	path_to_text(t_cub *cub, char *str, char *path)
 	{
 		cub->r.so = mlx_xpm_file_to_image(cub->mlx, path,
 				&cub->r.width, &cub->r.height);
+		if (!cub->r.so)
+			ft_putendl_exit("Error - File.xpm not valid", STDERR_FILENO);
 		cub->r.so_color = (int *)mlx_get_data_addr
 			(cub->r.so, &cub->r.a, &cub->r.b, &cub->r.c);
 	}

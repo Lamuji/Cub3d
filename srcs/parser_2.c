@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:19:29 by rfkaier           #+#    #+#             */
-/*   Updated: 2022/05/25 13:37:12 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/26 20:52:21 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static	int	norm_color(char *str, int *rgb)
 	char	**spl_color;
 
 	i = -1;
+	if (!check_virgule(str))
+		return (0);
 	spl_color = ft_split(((char *)str + 2), ',');
 	manager(spl_color);
 	if (ft_arrlen(spl_color) != 3)
@@ -70,9 +72,11 @@ static	int	check_params(char *str, t_cub *cub)
 	if (ft_ch_int(str, "NO ") || ft_ch_int(str, "SO ")
 		|| ft_ch_int(str, "EA ") || ft_ch_int(str, "WE "))
 	{
-		path_to_text(cub, str, (char *)str + 3);
 		if (ft_reverse_ch_int(str, ".xpm"))
+		{
+			path_to_text(cub, str, path(str));
 			return (1);
+		}
 	}
 	else if (ft_ch_int(str, "C "))
 	{
