@@ -6,7 +6,7 @@
 /*   By: rfkaier <rfkaier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 07:55:24 by ramzi             #+#    #+#             */
-/*   Updated: 2022/05/27 03:56:47 by rfkaier          ###   ########.fr       */
+/*   Updated: 2022/05/25 13:36:22 by rfkaier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@ static	void	move_right(t_cub *cub, double xdis, double ydis)
 	cub->set_key = 0;
 	xdis = cos(convert_ang(cub->angle - 90.0)) * 1.0;
 	ydis = sin(convert_ang(cub->angle - 90.0)) * 1.0;
-	cub->player_x += xdis;
-	cub->player_y += ydis;
+	if (cub->map[(int)round(((cub->player_y + ydis) / 8.0))]
+		[(int)round(((cub->player_x + xdis) / 8.0))] != '1')
+	{
+		cub->player_x += xdis;
+		cub->player_y += ydis;
+	}
 }
 
 static	void	move_left(t_cub *cub, double xdis, double ydis)
@@ -26,22 +30,34 @@ static	void	move_left(t_cub *cub, double xdis, double ydis)
 	cub->set_key = 0;
 	xdis = cos(convert_ang(cub->angle + 90.0)) * 1;
 	ydis = sin(convert_ang(cub->angle + 90.0)) * 1;
-	cub->player_x += xdis;
-	cub->player_y += ydis;
+	if (cub->map[(int)round(((cub->player_y + ydis) / 8.0))]
+		[(int)round(((cub->player_x + xdis) / 8.0))] != '1')
+	{
+		cub->player_x += xdis;
+		cub->player_y += ydis;
+	}
 }
 
 static	void	move_backward(t_cub *cub, double xdis, double ydis)
 {
 	cub->set_key = 0;
-	cub->player_x += xdis;
-	cub->player_y += ydis;
+	if (cub->map[(int)round(((cub->player_y + ydis) / 8.0))]
+		[(int)round(((cub->player_x + xdis) / 8.0))] != '1')
+	{
+		cub->player_x += xdis;
+		cub->player_y += ydis;
+	}
 }
 
 static	void	move_forward(t_cub *cub, double xdis, double ydis)
 {
 	cub->set_key = 0;
-	cub->player_x -= xdis;
-	cub->player_y -= ydis;
+	if (cub->map[(int)round(((cub->player_y - ydis) / 8.0))]
+		[(int)round(((cub->player_x - xdis) / 8.0))] != '1')
+	{
+		cub->player_x -= xdis;
+		cub->player_y -= ydis;
+	}
 }
 
 void	check_move(t_cub *cub)
