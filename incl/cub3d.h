@@ -54,6 +54,7 @@
 # define MINIPIX 16.0
 # define TRIDPIX 64.0
 
+
 static int	g_cursor;
 
 typedef struct s_data
