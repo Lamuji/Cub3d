@@ -12,6 +12,8 @@
 
 #include "../incl/cub3d.h"
 
+int	g_cursor;
+
 int	looping(t_cub *cub)
 {
 	double	i;
@@ -30,7 +32,11 @@ int	looping(t_cub *cub)
 	check_move(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->img2.img, 20, 20);
+# ifdef __APPLE__
 	mlx_mouse_hide();
+# else
+	mlx_mouse_hide(cub->mlx, cub->win);
+# endif
 	mlx_destroy_image(cub->mlx, cub->img.img);
 	mlx_destroy_image(cub->mlx, cub->img2.img);
 	return (0);

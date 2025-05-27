@@ -12,6 +12,8 @@
 
 #include "../incl/cub3d.h"
 
+int	g_cursor;
+
 int	looping(t_cub *cub)
 {
 	double	i;

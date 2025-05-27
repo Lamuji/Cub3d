@@ -20,7 +20,9 @@
 # include "../libft/libft.h"
 # include <fcntl.h>
 # include "mlx.h"
+# ifdef __APPLE__
 # include <OpenGL/OpenGL.h> 
+# endif
 # include <math.h>
 # define SUCCESS 0
 # define FAILURE 1
@@ -55,7 +57,7 @@
 # define TRIDPIX 64.0
 
 
-static int	g_cursor;
+extern int	g_cursor;
 
 typedef struct s_data
 {
@@ -180,7 +182,11 @@ double			convert_ang(double angle);
 void			init_value(t_cub *cub);
 void			which_direction(t_cub *cub);
 void			define_starting_dydx(t_cub *cub);
+# ifdef __APPLE__
 int				mlx_mouse_hide(void);
+# else
+int				mlx_mouse_hide(void *mlx_ptr, void *win_ptr);
+# endif
 void			path_to_text(t_cub *cub, char *str, char *path);
 int				find_pixel(t_cub *cub, int i);
 int				schr(char *str, int c);
